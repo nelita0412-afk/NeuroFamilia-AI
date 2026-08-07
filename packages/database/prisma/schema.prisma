@@ -1,0 +1,76 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum DevelopmentStage {
+  EARLY_CHILDHOOD
+  MIDDLE_CHILDHOOD
+  ADOLESCENCE
+}
+
+model Account {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+
+  person Person?
+}
+
+model Person {
+  id        String   @id @default(cuid())
+  firstName String
+  lastName  String
+  birthDate DateTime?
+
+  accountId String? @unique
+  account   Account? @relation(fields: [accountId], references: [id])
+
+  families FamilyMember[]
+
+  createdAt DateTime @default(now())
+}
+
+model FamilyGroup {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
+
+  members FamilyMember[]
+  profiles Profile[]
+}
+
+model FamilyMember {
+  id String @id @default(cuid())
+
+  familyId String
+  personId String
+
+  relationship String
+
+  family FamilyGroup @relation(fields: [familyId], references: [id])
+  person Person @relation(fields: [personId], references: [id])
+
+  @@unique([familyId, personId])
+}
+
+model Profile {
+  id String @id @default(cuid())
+
+  familyId String
+
+  fullName String
+
+  birthDate DateTime
+
+  developmentStage DevelopmentStage
+
+  family FamilyGroup @relation(fields: [familyId], references: [id])
+
+  createdAt DateTime @default(now())
+}

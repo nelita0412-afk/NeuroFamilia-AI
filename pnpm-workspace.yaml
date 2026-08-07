@@ -2,4 +2,7 @@ packages:
   - "apps/*"
   - "packages/*"
 allowBuilds:
+  '@prisma/engines': false
+  bcrypt: true
+  prisma: false
   unrs-resolver: true
