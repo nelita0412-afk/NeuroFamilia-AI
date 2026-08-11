@@ -3,4 +3,4 @@ dist
 .env
 .next
 coverage
-.prisma
+.prisma.pnpm-store/
