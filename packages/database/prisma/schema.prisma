@@ -12,6 +12,39 @@ enum DevelopmentStage {
   ADOLESCENCE
 }
 
+enum PersonRole {
+  CHILD
+  ADOLESCENT
+  YOUNG
+  MOTHER
+  FATHER
+  TUTOR
+  PROFESSIONAL
+  ADMINISTRATOR
+}
+
+enum RelationshipType {
+  CHILD
+  ADOLESCENT
+  YOUNG
+  MOTHER
+  FATHER
+  TUTOR
+  PROFESSIONAL
+  CAREGIVER
+  SIBLING
+  OTHER
+}
+
+enum PermissionAction {
+  READ_PROFILE
+  WRITE_PROFILE
+  READ_FAMILY
+  WRITE_FAMILY
+  READ_GROWTH
+  WRITE_GROWTH
+}
+
 model Account {
   id           String   @id @default(cuid())
   email        String   @unique
@@ -22,15 +55,20 @@ model Account {
 }
 
 model Person {
-  id        String   @id @default(cuid())
+  id        String     @id @default(cuid())
   firstName String
   lastName  String
   birthDate DateTime?
+  role      PersonRole @default(TUTOR)
 
   accountId String? @unique
   account   Account? @relation(fields: [accountId], references: [id])
 
   families FamilyMember[]
+  profiles Profile[]
+
+  grantedPermissions  PermissionGrant[] @relation("GrantedPermissions")
+  subjectPermissions  PermissionGrant[] @relation("SubjectPermissions")
 
   createdAt DateTime @default(now())
 }
@@ -42,6 +80,7 @@ model FamilyGroup {
 
   members FamilyMember[]
   profiles Profile[]
+  permissionGrants PermissionGrant[]
 }
 
 model FamilyMember {
@@ -50,7 +89,7 @@ model FamilyMember {
   familyId String
   personId String
 
-  relationship String
+  relationship RelationshipType
 
   family FamilyGroup @relation(fields: [familyId], references: [id])
   person Person @relation(fields: [personId], references: [id])
@@ -62,6 +101,7 @@ model Profile {
   id String @id @default(cuid())
 
   familyId String
+  personId String?
 
   fullName String
 
@@ -69,7 +109,46 @@ model Profile {
 
   developmentStage DevelopmentStage
 
+  person Person? @relation(fields: [personId], references: [id])
   family FamilyGroup @relation(fields: [familyId], references: [id])
 
+  observations GrowthObservation[]
+  permissionGrants PermissionGrant[]
+
   createdAt DateTime @default(now())
+}
+
+model GrowthObservation {
+  id String @id @default(cuid())
+
+  profileId String
+
+  category String
+  note String
+  observedAt DateTime @default(now())
+
+  profile Profile @relation(fields: [profileId], references: [id])
+}
+
+model PermissionGrant {
+  id String @id @default(cuid())
+
+  action PermissionAction
+
+  subjectPersonId String
+  granterPersonId String?
+  familyId String?
+  profileId String?
+
+  subjectPerson Person @relation("SubjectPermissions", fields: [subjectPersonId], references: [id])
+  granterPerson Person? @relation("GrantedPermissions", fields: [granterPersonId], references: [id])
+  family FamilyGroup? @relation(fields: [familyId], references: [id])
+  profile Profile? @relation(fields: [profileId], references: [id])
+
+  expiresAt DateTime?
+  createdAt DateTime @default(now())
+
+  @@index([subjectPersonId, action])
+  @@index([familyId])
+  @@index([profileId])
 }
