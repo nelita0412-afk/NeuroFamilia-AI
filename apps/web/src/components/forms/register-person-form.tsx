@@ -17,7 +17,7 @@ const schema = z.object({
   role: z.enum(['MOTHER', 'FATHER', 'TUTOR', 'PROFESSIONAL']).default('TUTOR'),
 });
 
-type FormValues = z.infer<typeof schema>;
+type FormValues = z.input<typeof schema>;
 
 type Props = {
   onSuccess?: () => void;
@@ -29,7 +29,7 @@ export function RegisterPersonForm({ onSuccess }: Props) {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<FormValues>({
+  } = useForm<FormValues, unknown, z.output<typeof schema>>({
     resolver: zodResolver(schema),
     defaultValues: {
       role: 'TUTOR',

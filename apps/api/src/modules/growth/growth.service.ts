@@ -11,7 +11,10 @@ export class GrowthService {
   ) {}
 
   async createObservation(accountId: string, dto: CreateObservationDto) {
-    await this.relationshipPermissionsService.ensureCanWriteGrowth(accountId, dto.profileId);
+    await this.relationshipPermissionsService.ensureCanWriteGrowth(
+      accountId,
+      dto.profileId,
+    );
 
     const profile = await this.db.profile.findUnique({
       where: { id: dto.profileId },
@@ -32,7 +35,10 @@ export class GrowthService {
   }
 
   async getReport(accountId: string, profileId: string) {
-    await this.relationshipPermissionsService.ensureCanReadGrowth(accountId, profileId);
+    await this.relationshipPermissionsService.ensureCanReadGrowth(
+      accountId,
+      profileId,
+    );
 
     const profile = await this.db.profile.findUnique({
       where: { id: profileId },
@@ -55,7 +61,10 @@ export class GrowthService {
       .filter((observation) => observation.category === 'opportunity')
       .map((observation) => observation.note);
 
-    const growthScore = Math.min(100, 40 + strengths.length * 10 + opportunities.length * 5);
+    const growthScore = Math.min(
+      100,
+      40 + strengths.length * 10 + opportunities.length * 5,
+    );
 
     return {
       growthScore,

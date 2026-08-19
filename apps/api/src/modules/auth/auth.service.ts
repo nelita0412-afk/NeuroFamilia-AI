@@ -1,4 +1,8 @@
-import { ConflictException, Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { PersonRole, Prisma } from '@prisma/client';
 import { DatabaseService } from '../../database/database.service';
@@ -40,8 +44,13 @@ export class AuthService {
         message: 'Usuario creado correctamente',
       };
     } catch (error) {
-      if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === 'P2002') {
-        throw new ConflictException('El correo electrónico ya está registrado.');
+      if (
+        error instanceof Prisma.PrismaClientKnownRequestError &&
+        error.code === 'P2002'
+      ) {
+        throw new ConflictException(
+          'El correo electrónico ya está registrado.',
+        );
       }
       throw error;
     }
@@ -56,7 +65,10 @@ export class AuthService {
       throw new UnauthorizedException('Credenciales inválidas.');
     }
 
-    const isPasswordValid = await bcrypt.compare(data.password, account.passwordHash);
+    const isPasswordValid = await bcrypt.compare(
+      data.password,
+      account.passwordHash,
+    );
 
     if (!isPasswordValid) {
       throw new UnauthorizedException('Credenciales inválidas.');

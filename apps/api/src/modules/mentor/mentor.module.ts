@@ -6,7 +6,11 @@ import { RelationshipPermissionsModule } from '../relationship-permissions/relat
 import { ScientificIntelligenceModule } from '../scientific-intelligence/scientific-intelligence.module';
 
 @Module({
-  imports: [DatabaseModule, ScientificIntelligenceModule, RelationshipPermissionsModule],
+  imports: [
+    DatabaseModule,
+    ScientificIntelligenceModule,
+    RelationshipPermissionsModule,
+  ],
   controllers: [MentorController],
   providers: [MentorService],
 })

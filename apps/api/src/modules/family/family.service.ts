@@ -40,7 +40,10 @@ export class FamilyService {
   }
 
   async findAllFamilies(accountId: string) {
-    const allowedFamilyIds = await this.relationshipPermissionsService.listReadableFamilyIds(accountId);
+    const allowedFamilyIds =
+      await this.relationshipPermissionsService.listReadableFamilyIds(
+        accountId,
+      );
 
     return this.db.familyGroup.findMany({
       where: {
@@ -59,7 +62,10 @@ export class FamilyService {
   }
 
   async addMember(accountId: string, id: string, dto: AddFamilyMemberDto) {
-    await this.relationshipPermissionsService.ensureCanWriteFamily(accountId, id);
+    await this.relationshipPermissionsService.ensureCanWriteFamily(
+      accountId,
+      id,
+    );
 
     const family = await this.db.familyGroup.findUnique({
       where: { id },

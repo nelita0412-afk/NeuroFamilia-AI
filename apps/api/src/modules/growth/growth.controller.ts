@@ -8,12 +8,18 @@ export class GrowthController {
   constructor(private readonly growthService: GrowthService) {}
 
   @Post('observations')
-  createObservation(@Req() request: AuthenticatedRequest, @Body() dto: CreateObservationDto) {
+  createObservation(
+    @Req() request: AuthenticatedRequest,
+    @Body() dto: CreateObservationDto,
+  ) {
     return this.growthService.createObservation(request.user.userId, dto);
   }
 
   @Get('profiles/:profileId/report')
-  getReport(@Req() request: AuthenticatedRequest, @Param('profileId') profileId: string) {
+  getReport(
+    @Req() request: AuthenticatedRequest,
+    @Param('profileId') profileId: string,
+  ) {
     return this.growthService.getReport(request.user.userId, profileId);
   }
 }

@@ -11,7 +11,10 @@ export class ProfileService {
   ) {}
 
   async createProfile(accountId: string, dto: CreateProfileDto) {
-    await this.relationshipPermissionsService.ensureCanWriteFamily(accountId, dto.familyId);
+    await this.relationshipPermissionsService.ensureCanWriteFamily(
+      accountId,
+      dto.familyId,
+    );
 
     return this.db.profile.create({
       data: {
@@ -25,13 +28,19 @@ export class ProfileService {
   }
 
   async findAllProfiles(accountId: string) {
-    const where = await this.relationshipPermissionsService.listReadableProfilesFilter(accountId);
+    const where =
+      await this.relationshipPermissionsService.listReadableProfilesFilter(
+        accountId,
+      );
 
     return this.db.profile.findMany({ where });
   }
 
   async findProfileById(accountId: string, id: string) {
-    await this.relationshipPermissionsService.ensureCanReadProfile(accountId, id);
+    await this.relationshipPermissionsService.ensureCanReadProfile(
+      accountId,
+      id,
+    );
 
     const profile = await this.db.profile.findUnique({
       where: { id },

@@ -20,7 +20,11 @@ export interface ScientificIntelligenceGenerationRequest {
 }
 
 export interface ScientificIntelligenceProvider {
-  generateText(request: ScientificIntelligenceGenerationRequest): Promise<string>;
+  generateText(
+    request: ScientificIntelligenceGenerationRequest,
+  ): Promise<string>;
 }
 
-export const SCIENTIFIC_INTELLIGENCE_PROVIDER = Symbol('SCIENTIFIC_INTELLIGENCE_PROVIDER');
+export const SCIENTIFIC_INTELLIGENCE_PROVIDER = Symbol(
+  'SCIENTIFIC_INTELLIGENCE_PROVIDER',
+);

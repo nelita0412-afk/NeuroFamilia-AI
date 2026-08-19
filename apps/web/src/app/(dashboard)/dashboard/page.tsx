@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
 import { NeurofamiliaMasterLayout } from '@/components/layout/neurofamilia-master-layout';
+import { MentorArchipelago } from '@/components/home/mentor-archipelago';
 import { NeuroSurface } from '@/components/ui/neuro-surface';
 import { api } from '@/lib/api';
 import { MENTORS } from '@/lib/constants';
@@ -135,7 +136,7 @@ export default function DashboardPage() {
   const growthStages = ['Diagnostico sensible', 'Ritmo diario compartido', 'Consolidacion y expansion'];
 
   const greeting = `${getTimeGreeting()}, ${greetingName}. Hoy seguimos creciendo juntos.`;
-  const mentorTagline = MENTOR_IDENTITY[recommendedMentor].tagline;
+  const mentorTagline = MENTOR_IDENTITY[recommendedMentor].shortDescription;
 
   return (
     <NeurofamiliaMasterLayout profileName={profileName}>
@@ -223,48 +224,15 @@ export default function DashboardPage() {
       </NeuroSurface>
 
       <section className="mt-10">
-        <div className="mb-6 flex items-end justify-between gap-4">
+        <div className="flex items-end justify-between gap-4">
           <div>
             <h3 className="text-2xl text-[#002A68] [font-family:Nunito,ui-rounded,system-ui,sans-serif] sm:text-3xl">
               Archipiélago de Mentores
             </h3>
-            <p className="mt-2 max-w-xl text-sm text-[#0069B7] sm:text-base">
-              Conoce a tus 8 mentores, cada uno con un superpoder único para acompañarte.
-            </p>
+            <p className="mt-2 max-w-xl text-sm text-[#0069B7] sm:text-base">Ocho islas, ocho formas de acompañarte.</p>
           </div>
-          <p className="hidden shrink-0 rounded-full bg-[#EAF8FE] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.1em] text-[#0069B7] sm:block">
-            8 mentores, infinitas posibilidades
-          </p>
         </div>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {MENTORS.map((mentor) => {
-            const identity = MENTOR_IDENTITY[mentor];
-
-            return (
-              <article
-                key={mentor}
-                className="flex flex-col items-center rounded-[32px] bg-white p-6 text-center shadow-[0_18px_40px_rgba(0,61,120,0.12)] transition-transform duration-200 hover:-translate-y-1"
-              >
-                <div className="relative aspect-[9/16] w-full overflow-hidden rounded-[24px] bg-[#F3FAFE]">
-                  {/* Se muestra solo el lado derecho de la ilustracion (donde vive el personaje), recortando el panel de texto del poster original. */}
-                  <img
-                    src={identity.imageUrl}
-                    alt={`Mentor ${mentor}`}
-                    className="absolute inset-0 h-full w-full object-cover object-right"
-                  />
-                </div>
-                <h4 className="mt-5 text-lg text-[#002A68] [font-family:Nunito,ui-rounded,system-ui,sans-serif]">{mentor}</h4>
-                <p className="mt-1 text-sm text-[#0069B7]">{identity.specialty}</p>
-                <Link
-                  href={`/dashboard/mentores?mentor=${mentor}`}
-                  className="mt-5 inline-flex w-full items-center justify-center rounded-2xl bg-[#0069B7] px-4 py-2.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#003D78]"
-                >
-                  Conversar
-                </Link>
-              </article>
-            );
-          })}
-        </div>
+        <MentorArchipelago recommendedMentor={recommendedMentor} />
       </section>
 
       <section className="mt-10 grid grid-cols-1 gap-4 lg:grid-cols-2">

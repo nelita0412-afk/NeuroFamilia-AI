@@ -9,6 +9,7 @@ import { NeuroSurface } from '@/components/ui/neuro-surface';
 import { api } from '@/lib/api';
 import { MENTORS } from '@/lib/constants';
 import { MENTOR_IDENTITY } from '@/lib/mentor-identity';
+import { MENTOR_COLORS } from '@/lib/mentor-visuals';
 
 function resolvePreselectedMentor(value: string | null) {
   return (MENTORS as readonly string[]).includes(value ?? '') ? (value as string) : 'ALBA';
@@ -102,91 +103,20 @@ function createMessageId() {
   return `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
 }
 
-function mentorSpecialty(mentor: string) {
-  const specialties: Record<string, string> = {
-    ALBA: 'Proyecto de Vida',
-    NIA: 'Adaptabilidad',
-    MAKI: 'Resiliencia',
-    BOBBY: 'Expresion y Conexion',
-    LEO: 'Comunidad y Cuidado',
-    CORA: 'Autoaceptacion',
-    PINGO: 'Curiosidad y Aprendizaje',
-    DARWIN: 'Innovacion',
-  };
+function mentorToneClasses(mentor: string) {
+  const gradient = MENTOR_COLORS[mentor]?.gradient;
 
-  return specialties[mentor] ?? 'No disponible';
-}
-
-function mentorAvatarTone(mentor: string) {
-  const tones: Record<string, string> = {
-    ALBA: 'from-[#00BDEB] to-[#0069B7]',
-    NIA: 'from-[#42C7EE] to-[#1A8CCB]',
-    MAKI: 'from-[#56D5C8] to-[#2E9AA7]',
-    BOBBY: 'from-[#4FB5FF] to-[#2E6ED9]',
-    LEO: 'from-[#66C488] to-[#2E9B63]',
-    CORA: 'from-[#5BC6D2] to-[#2E8F9B]',
-    PINGO: 'from-[#5AA7FF] to-[#3A73D8]',
-    DARWIN: 'from-[#6390FF] to-[#4C57D3]',
-  };
-
-  return tones[mentor] ?? 'from-[#00BDEB] to-[#0069B7]';
+  return `bg-gradient-to-br ${gradient?.from ?? 'from-[#00BDEB]'} ${gradient?.to ?? 'to-[#0069B7]'}`;
 }
 
 function sourceLabel(source?: 'AI' | 'FALLBACK') {
   return source === 'FALLBACK' ? 'Fallback tecnico' : 'IA real';
 }
 
-function mentorSuggestedPrompts(mentor: string) {
-  const prompts: Record<string, string[]> = {
-    ALBA: [
-      '¿Cómo ayudo a mi hijo a descubrir sus intereses?',
-      '¿Qué actividades fortalecen su sentido de propósito?',
-      '¿Cómo hablamos del futuro sin generar presión?',
-    ],
-    NIA: [
-      '¿Cómo apoyo a mi hijo en un cambio de rutina?',
-      '¿Qué señales indican que necesita más contención?',
-      '¿Cómo facilito su adaptación a un entorno nuevo?',
-    ],
-    MAKI: [
-      '¿Cómo fortalezco la resiliencia ante la frustración?',
-      '¿Qué juegos ayudan a tolerar el error?',
-      '¿Cómo celebro sus pequeños logros?',
-    ],
-    BOBBY: [
-      '¿Cómo ayudo a mi hijo a expresar sus emociones?',
-      '¿Qué hago cuando se cierra y no quiere hablar?',
-      '¿Cómo fortalezco nuestra conexión diaria?',
-    ],
-    LEO: [
-      '¿Cómo fomento el cuidado hacia otros en casa?',
-      '¿Qué rutinas fortalecen el sentido de comunidad?',
-      '¿Cómo enseño responsabilidad compartida?',
-    ],
-    CORA: [
-      '¿Cómo fortalezco la autoestima de mi hijo?',
-      '¿Qué digo cuando se compara con otros?',
-      '¿Cómo celebro su forma única de ser?',
-    ],
-    PINGO: [
-      '¿Cómo estimulo la curiosidad científica en casa?',
-      '¿Qué preguntas fomentan el pensamiento crítico?',
-      '¿Cómo convierto un error en aprendizaje?',
-    ],
-    DARWIN: [
-      '¿Cómo fomento la creatividad para resolver problemas?',
-      '¿Qué actividades desarrollan el pensamiento innovador?',
-      '¿Cómo acompaño la experimentación segura?',
-    ],
-  };
-
-  return prompts[mentor] ?? [];
-}
-
 function resolveMentorAvatar(mentor: string) {
   const identity = MENTOR_IDENTITY[mentor];
 
-  return identity?.avatar ?? identity?.imageUrl;
+  return identity?.avatar ?? identity?.image;
 }
 
 type MentorAvatarProps = {
@@ -219,7 +149,7 @@ function MentorAvatar({ mentor, sizeClassName, textClassName }: MentorAvatarProp
 
   return (
     <span
-      className={`inline-grid place-items-center rounded-full bg-gradient-to-br font-semibold text-white ${mentorAvatarTone(mentor)} ${sizeClassName} ${textClassName}`}
+      className={`inline-grid place-items-center rounded-full font-semibold text-white ${mentorToneClasses(mentor)} ${sizeClassName} ${textClassName}`}
     >
       {mentor.slice(0, 2)}
     </span>
@@ -534,14 +464,14 @@ function MentoresPageContent() {
               <div className="border-b border-[#DCEBFA] bg-[linear-gradient(180deg,rgba(255,255,255,0.97),rgba(248,252,255,0.97))] px-4 py-4 sm:px-6">
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex min-w-0 items-center gap-3">
-                    <span className={`relative inline-flex shrink-0 rounded-full bg-gradient-to-br p-[2px] ${mentorAvatarTone(selectedMentor)}`}>
+                    <span className={`relative inline-flex shrink-0 rounded-full bg-gradient-to-br p-[2px] ${mentorToneClasses(selectedMentor)}`}>
                       <MentorAvatar mentor={selectedMentor} sizeClassName="h-12 w-12 sm:h-14 sm:w-14" textClassName="text-base" />
                       <span className="absolute -bottom-0.5 -right-0.5 h-3.5 w-3.5 rounded-full border-2 border-white bg-emerald-400" aria-hidden="true" />
                     </span>
                     <div className="min-w-0">
                       <p className="truncate text-base font-semibold text-[#003D78] sm:text-lg">{selectedMentor}</p>
                       <p className="truncate text-xs text-[#5F8DB5] sm:text-sm">
-                        {MENTOR_IDENTITY[selectedMentor]?.tagline ?? mentorSpecialty(selectedMentor)}
+                        {MENTOR_IDENTITY[selectedMentor]?.shortDescription ?? 'No disponible'}
                       </p>
                     </div>
                   </div>
@@ -571,17 +501,17 @@ function MentoresPageContent() {
                 <div className="mx-auto max-w-2xl">
                   {messages.length === 0 && !isThinking ? (
                     <div className="flex flex-col items-center px-2 py-6 text-center">
-                      <span className={`inline-flex rounded-full bg-gradient-to-br p-[3px] ${mentorAvatarTone(selectedMentor)}`}>
+                      <span className={`inline-flex rounded-full bg-gradient-to-br p-[3px] ${mentorToneClasses(selectedMentor)}`}>
                         <MentorAvatar mentor={selectedMentor} sizeClassName="h-20 w-20" textClassName="text-2xl" />
                       </span>
                       <h2 className="mt-4 text-xl font-semibold text-[#003D78]">Hola, soy {selectedMentor}</h2>
                       <p className="mt-1 max-w-sm text-sm text-[#5F8DB5]">
-                        {MENTOR_IDENTITY[selectedMentor]?.tagline ?? mentorSpecialty(selectedMentor)}. Este historial se conserva
+                        {MENTOR_IDENTITY[selectedMentor]?.shortDescription ?? 'No disponible'}. Este historial se conserva
                         solo durante tu sesion actual del navegador.
                       </p>
 
                       <div className="mt-6 grid w-full gap-2 sm:grid-cols-1">
-                        {mentorSuggestedPrompts(selectedMentor).map((prompt) => (
+                        {(MENTOR_IDENTITY[selectedMentor]?.suggestedPrompts ?? []).map((prompt) => (
                           <button
                             key={prompt}
                             type="button"
@@ -621,7 +551,7 @@ function MentoresPageContent() {
                           ) : (
                             <div className="mb-1 flex items-center gap-2 text-[11px] uppercase tracking-[0.16em] text-[#5F8DB5]">
                               <MentorAvatar mentor={item.mentor} sizeClassName="h-5 w-5" textClassName="text-[8px]" />
-                              <span>{`${item.mentor} · ${mentorSpecialty(item.mentor)}`}</span>
+                              <span>{`${item.mentor} · ${MENTOR_IDENTITY[item.mentor]?.specialty ?? 'No disponible'}`}</span>
                             </div>
                           )}
 

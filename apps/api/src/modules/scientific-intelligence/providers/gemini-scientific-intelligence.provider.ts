@@ -13,7 +13,9 @@ export class GeminiScientificIntelligenceProvider implements ScientificIntellige
 
   constructor(private readonly configService: ConfigService) {}
 
-  async generateText(request: ScientificIntelligenceGenerationRequest): Promise<string> {
+  async generateText(
+    request: ScientificIntelligenceGenerationRequest,
+  ): Promise<string> {
     const response = await this.getClient().models.generateContent({
       model: this.getModel(),
       contents: request.prompt,
@@ -30,7 +32,9 @@ export class GeminiScientificIntelligenceProvider implements ScientificIntellige
     const apiKey = this.configService.get<string>('GEMINI_API_KEY');
 
     if (!apiKey) {
-      throw new InternalServerErrorException('GEMINI_API_KEY no está configurada.');
+      throw new InternalServerErrorException(
+        'GEMINI_API_KEY no está configurada.',
+      );
     }
 
     this.client = new GoogleGenAI({ apiKey });
@@ -46,7 +50,9 @@ export class GeminiScientificIntelligenceProvider implements ScientificIntellige
     const model = this.configService.get<string>('GEMINI_MODEL');
 
     if (!model) {
-      throw new InternalServerErrorException('GEMINI_MODEL no está configurado.');
+      throw new InternalServerErrorException(
+        'GEMINI_MODEL no está configurado.',
+      );
     }
 
     this.model = model;

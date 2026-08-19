@@ -19,7 +19,11 @@ export class FamilyController {
   }
 
   @Post(':id/members')
-  addMember(@Req() request: AuthenticatedRequest, @Param('id') id: string, @Body() dto: AddFamilyMemberDto) {
+  addMember(
+    @Req() request: AuthenticatedRequest,
+    @Param('id') id: string,
+    @Body() dto: AddFamilyMemberDto,
+  ) {
     return this.familyService.addMember(request.user.userId, id, dto);
   }
 }

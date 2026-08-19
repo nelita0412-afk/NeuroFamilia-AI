@@ -1,30 +1,12 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { ALBA_SYSTEM_PROMPT } from './prompts/alba.prompt';
-import { BOBBY_SYSTEM_PROMPT } from './prompts/bobby.prompt';
-import { CORA_SYSTEM_PROMPT } from './prompts/cora.prompt';
-import { DARWIN_SYSTEM_PROMPT } from './prompts/darwin.prompt';
-import { LEO_SYSTEM_PROMPT } from './prompts/leo.prompt';
-import { MAKI_SYSTEM_PROMPT } from './prompts/maki.prompt';
-import { NIA_SYSTEM_PROMPT } from './prompts/nia.prompt';
-import { PINGO_SYSTEM_PROMPT } from './prompts/pingo.prompt';
-import {
-  SCIENTIFIC_INTELLIGENCE_PROVIDER,
-} from './ports/scientific-intelligence-provider.port';
+import { MENTOR_IDENTITY } from '@neurofamilia/shared';
+import { SCIENTIFIC_INTELLIGENCE_PROVIDER } from './ports/scientific-intelligence-provider.port';
 import type {
   MentorResponseContext,
   ScientificIntelligenceProvider,
 } from './ports/scientific-intelligence-provider.port';
 
-const MENTOR_PROMPT_LIBRARY: Record<string, string> = {
-  ALBA: ALBA_SYSTEM_PROMPT,
-  NIA: NIA_SYSTEM_PROMPT,
-  MAKI: MAKI_SYSTEM_PROMPT,
-  BOBBY: BOBBY_SYSTEM_PROMPT,
-  LEO: LEO_SYSTEM_PROMPT,
-  CORA: CORA_SYSTEM_PROMPT,
-  PINGO: PINGO_SYSTEM_PROMPT,
-  DARWIN: DARWIN_SYSTEM_PROMPT,
-};
+const DEFAULT_MENTOR = 'ALBA';
 
 @Injectable()
 export class ScientificIntelligenceService {
@@ -35,7 +17,9 @@ export class ScientificIntelligenceService {
     private readonly provider: ScientificIntelligenceProvider,
   ) {}
 
-  async generateMentorResponse(context: MentorResponseContext): Promise<string> {
+  async generateMentorResponse(
+    context: MentorResponseContext,
+  ): Promise<string> {
     const prompt = this.buildPrompt(context);
 
     let lastError: unknown;
@@ -60,12 +44,16 @@ export class ScientificIntelligenceService {
       }
     }
 
-    throw lastError instanceof Error ? lastError : new Error('MODEL_GENERATION_FAILED');
+    throw lastError instanceof Error
+      ? lastError
+      : new Error('MODEL_GENERATION_FAILED');
   }
 
   // Prompt Library centraliza las identidades del MIF para sumar nuevos mentores sin tocar el proveedor.
   private getSystemPrompt(mentor: string): string {
-    return MENTOR_PROMPT_LIBRARY[mentor.toUpperCase()] ?? ALBA_SYSTEM_PROMPT;
+    const identity = MENTOR_IDENTITY[mentor.toUpperCase()];
+
+    return identity?.basePrompt ?? MENTOR_IDENTITY[DEFAULT_MENTOR].basePrompt;
   }
 
   // El prompt compuesto conserva la estructura actual y deja espacio para NGCM, RAG y memoria conversacional.
@@ -81,7 +69,10 @@ export class ScientificIntelligenceService {
     const conversationHistory = context.conversationHistory.length
       ? context.conversationHistory
           .map((item) => {
-            const roleLabel = item.role === 'mentor' ? `Mentor ${item.mentor ?? context.mentor}` : 'Usuario';
+            const roleLabel =
+              item.role === 'mentor'
+                ? `Mentor ${item.mentor ?? context.mentor}`
+                : 'Usuario';
 
             return `${roleLabel}: ${item.content}`;
           })
@@ -104,18 +95,33 @@ export class ScientificIntelligenceService {
   }
 
   private shouldRetry(error: unknown) {
-    const message = error instanceof Error ? error.message.toLowerCase() : String(error).toLowerCase();
+    const message =
+      error instanceof Error
+        ? error.message.toLowerCase()
+        : String(error).toLowerCase();
 
     // Misconfiguracion no mejora con retry.
-    if (message.includes('gemini_api_key no está configurada') || message.includes('gemini_model no está configurado')) {
+    if (
+      message.includes('gemini_api_key no está configurada') ||
+      message.includes('gemini_model no está configurado')
+    ) {
       return false;
     }
 
-    if (message.includes('429') || message.includes('503') || message.includes('500')) {
+    if (
+      message.includes('429') ||
+      message.includes('503') ||
+      message.includes('500')
+    ) {
       return true;
     }
 
-    if (message.includes('timeout') || message.includes('network') || message.includes('unavailable') || message.includes('empty_model_response')) {
+    if (
+      message.includes('timeout') ||
+      message.includes('network') ||
+      message.includes('unavailable') ||
+      message.includes('empty_model_response')
+    ) {
       return true;
     }
 

@@ -4,3 +4,4 @@ dist
 .next
 coverage
 .prisma.pnpm-store/
+.vercel

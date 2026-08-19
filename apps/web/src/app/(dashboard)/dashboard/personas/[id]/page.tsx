@@ -319,7 +319,7 @@ export default function PersonaProfilePage() {
 
             <p className="text-sm text-[#33618D]">
               Mentor activo: <span className="font-semibold text-[#003D78]">{selectedMentor}</span> ·{' '}
-              {mentorIdentity?.tagline ?? 'No disponible'}
+              {mentorIdentity?.shortDescription ?? 'No disponible'}
             </p>
 
             <form className="mt-4 space-y-4" onSubmit={handleMentorSubmit}>

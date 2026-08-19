@@ -1,78 +1,70 @@
 'use client';
 
-import { motion, useReducedMotion } from 'framer-motion';
-import { cn } from '@/lib/utils';
-import { MENTOR_IDENTITY } from '@/lib/mentor-identity';
+import Link from 'next/link';
+import Image from 'next/image';
 import { MENTORS } from '@/lib/constants';
+import { MENTOR_IDENTITY } from '@/lib/mentor-identity';
 
-// Desplazamientos verticales fijos para que las islas se sientan dispersas, no alineadas en grid.
-const DRIFT_OFFSETS = ['md:mt-0', 'md:mt-9', 'md:-mt-4', 'md:mt-12', 'md:mt-3', 'md:-mt-7', 'md:mt-7', 'md:-mt-2'];
+// Estado futuro del Archipielago Premium: el slot de status de cada tarjeta esta
+// tipado para crecer sin cambiar la estructura. Hoy solo se renderiza 'recommended';
+// 'featured-resources' y 'recent-activity' son estructura lista para su fase.
+export type MentorCardStatus = 'recommended' | 'featured-resources' | 'recent-activity' | undefined;
+
+const STATUS_LABELS: Record<Exclude<MentorCardStatus, undefined>, string> = {
+  recommended: 'Recomendado hoy',
+  'featured-resources': 'Recursos destacados',
+  'recent-activity': 'Actividad reciente',
+};
+
+function renderStatusSlot(status: MentorCardStatus) {
+  if (status !== 'recommended') {
+    return null;
+  }
+
+  return (
+    <span className="rounded-full bg-white/85 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#003D78] shadow-[0_6px_16px_rgba(0,61,120,0.18)] backdrop-blur">
+      {STATUS_LABELS[status]}
+    </span>
+  );
+}
 
 type MentorArchipelagoProps = {
   recommendedMentor: string;
-  onSelectMentor: (mentor: string) => void;
 };
 
-export function MentorArchipelago({ recommendedMentor, onSelectMentor }: MentorArchipelagoProps) {
-  const reduceMotion = useReducedMotion();
-
+export function MentorArchipelago({ recommendedMentor }: MentorArchipelagoProps) {
   return (
-    <section aria-labelledby="archipelago-heading">
-      <div className="max-w-2xl">
-        <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#155e9b]">El archipiélago de mentores</p>
-        <h2 id="archipelago-heading" className="mt-2 text-2xl font-semibold text-[#0d2340] sm:text-3xl">
-          Ocho islas, ocho formas de acompañarte
-        </h2>
-        <p className="mt-3 text-sm text-slate-600">
-          Cada mentor vive en su propia isla dentro de tu ecosistema. Elige una para comenzar una conversación.
-        </p>
-      </div>
+    <ul className="mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 sm:mt-8 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:pb-0 lg:grid-cols-4">
+      {MENTORS.map((mentor) => {
+        const identity = MENTOR_IDENTITY[mentor];
+        const status: MentorCardStatus = mentor === recommendedMentor ? 'recommended' : undefined;
 
-      <ul className="mt-10 flex flex-wrap justify-center gap-x-6 gap-y-12 sm:gap-x-8">
-        {MENTORS.map((mentor, index) => {
-          const identity = MENTOR_IDENTITY[mentor];
-          const Icon = identity.icon;
-          const recommended = mentor === recommendedMentor;
-
-          return (
-            <li key={mentor} className={cn('w-[9.5rem] sm:w-[10.5rem]', DRIFT_OFFSETS[index % DRIFT_OFFSETS.length])}>
-              {/* Flotacion idle independiente por isla para transmitir vida, no mecanica de boton. */}
-              <motion.div
-                animate={reduceMotion ? undefined : { y: [0, -7, 0] }}
-                transition={{ duration: 4.5 + index * 0.3, repeat: Infinity, ease: 'easeInOut', delay: index * 0.15 }}
-              >
-                <button
-                  type="button"
-                  onClick={() => onSelectMentor(mentor)}
-                  aria-label={`Conversar con ${mentor}, ${identity.tagline}`}
-                  className={cn(
-                    'group flex w-full flex-col items-center gap-3 rounded-[2rem] border bg-white/70 px-4 py-6 text-center shadow-[0_16px_36px_rgba(15,76,129,0.1)] backdrop-blur transition hover:-translate-y-1 hover:shadow-[0_22px_44px_rgba(15,76,129,0.18)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#155e9b]',
-                    recommended ? 'border-[#1d88d6]' : 'border-sky-100',
-                  )}
-                >
-                  <span
-                    className={cn(
-                      'grid place-items-center rounded-full text-white shadow-inner',
-                      recommended
-                        ? 'h-16 w-16 bg-gradient-to-br from-[#155e9b] to-[#1d88d6]'
-                        : 'h-14 w-14 bg-gradient-to-br from-[#2a7cc0] to-[#5fb6f0]',
-                    )}
-                  >
-                    <Icon className={recommended ? 'h-7 w-7' : 'h-6 w-6'} aria-hidden />
-                  </span>
-                  <span className="text-sm font-semibold text-[#0d2340]">{mentor}</span>
-                  <span className="text-xs leading-snug text-slate-500">{identity.tagline}</span>
-                  {recommended ? (
-                    <span className="rounded-full bg-[#eaf4ff] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-[#155e9b]">
-                      Recomendado hoy
-                    </span>
-                  ) : null}
-                </button>
-              </motion.div>
-            </li>
-          );
-        })}
-      </ul>
-    </section>
+        return (
+          <li key={mentor} className="w-[72vw] shrink-0 snap-center sm:w-auto">
+            <Link
+              href={`/dashboard/mentores?mentor=${mentor}`}
+              aria-label={`Conversar con ${mentor}, ${identity.shortDescription}`}
+              className="group block overflow-hidden rounded-[26px] bg-white shadow-[0_18px_40px_rgba(0,61,120,0.12)] transition-all duration-200 hover:shadow-[0_22px_44px_rgba(0,61,120,0.18)] sm:hover:-translate-y-1 motion-reduce:transform-none"
+            >
+              <div className="relative aspect-[9/16] overflow-hidden bg-[#F3FAFE]">
+                {/* Se muestra solo el lado derecho de la ilustracion (donde vive el personaje), recortando el panel de texto del poster original. */}
+                <Image
+                  src={identity.image}
+                  alt={`Mentor ${mentor}, ${identity.shortDescription}`}
+                  fill
+                  sizes="(max-width: 640px) 72vw, (max-width: 1024px) 45vw, 22vw"
+                  className="object-cover object-right transition-transform duration-300 group-hover:scale-[1.03] motion-reduce:transform-none"
+                />
+                <div className="absolute left-3 top-3">{renderStatusSlot(status)}</div>
+                <div className="absolute inset-x-3 bottom-3 rounded-2xl bg-white/85 px-3 py-2 shadow-[0_10px_24px_rgba(0,61,120,0.16)] backdrop-blur">
+                  <p className="text-sm font-bold text-[#002A68] [font-family:Nunito,ui-rounded,system-ui,sans-serif]">{mentor}</p>
+                  <p className="mt-0.5 text-[10px] uppercase tracking-[0.14em] text-[#0069B7]">{identity.specialty}</p>
+                </div>
+              </div>
+            </Link>
+          </li>
+        );
+      })}
+    </ul>
   );
 }

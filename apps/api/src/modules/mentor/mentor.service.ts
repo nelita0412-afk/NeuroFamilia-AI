@@ -16,7 +16,10 @@ export class MentorService {
   ) {}
 
   async chat(accountId: string, dto: ChatDto) {
-    await this.relationshipPermissionsService.ensureCanReadGrowth(accountId, dto.profileId);
+    await this.relationshipPermissionsService.ensureCanReadGrowth(
+      accountId,
+      dto.profileId,
+    );
 
     const profile = await this.db.profile.findUnique({
       where: { id: dto.profileId },
@@ -39,7 +42,10 @@ export class MentorService {
       .filter((observation) => observation.category === 'opportunity')
       .map((observation) => observation.note);
 
-    const growthScore = Math.min(100, 40 + strengths.length * 10 + opportunities.length * 5);
+    const growthScore = Math.min(
+      100,
+      40 + strengths.length * 10 + opportunities.length * 5,
+    );
 
     const history = (dto.history ?? []).slice(-12).map((item) => ({
       role: item.role,
@@ -63,10 +69,16 @@ export class MentorService {
     let fallbackReason: string | null = null;
 
     try {
-      response = await this.scientificIntelligenceService.generateMentorResponse(context);
+      response =
+        await this.scientificIntelligenceService.generateMentorResponse(
+          context,
+        );
     } catch (error) {
       // Si el proveedor IA falla (red, cuota, credenciales), devolvemos una guia util sin romper el endpoint.
-      this.logger.error('Fallo en proveedor IA de mentor/chat', error instanceof Error ? error.stack : String(error));
+      this.logger.error(
+        'Fallo en proveedor IA de mentor/chat',
+        error instanceof Error ? error.stack : String(error),
+      );
       response = this.buildFallbackResponse(context);
       responseSource = 'FALLBACK';
       fallbackReason = error instanceof Error ? error.message : String(error);
@@ -84,9 +96,14 @@ export class MentorService {
   }
 
   private buildFallbackResponse(context: MentorResponseContext) {
-    const strengths = context.topStrengths.length > 0 ? context.topStrengths.join(', ') : 'No disponible';
+    const strengths =
+      context.topStrengths.length > 0
+        ? context.topStrengths.join(', ')
+        : 'No disponible';
     const opportunities =
-      context.growthOpportunities.length > 0 ? context.growthOpportunities.join(', ') : 'No disponible';
+      context.growthOpportunities.length > 0
+        ? context.growthOpportunities.join(', ')
+        : 'No disponible';
 
     return [
       `Hoy te acompano como ${context.mentor} con una lectura breve basada en los datos actuales de ${context.name}.`,
