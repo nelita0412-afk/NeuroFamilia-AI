@@ -1,4 +1,5 @@
 FROM node:22-slim AS build
+RUN apt-get update && apt-get install -y openssl && rm -rf /var/lib/apt/lists/*
 RUN corepack enable
 WORKDIR /app
 
@@ -15,9 +16,10 @@ COPY apps/api apps/api
 RUN pnpm install --frozen-lockfile
 RUN pnpm --filter @neurofamilia/shared build
 RUN pnpm --filter @neurofamilia/database exec prisma generate
-RUN pnpm --filter @neurofamilia/api build
+RUN pnpm --filter api build && ls apps/api/dist/main.js
 
 FROM node:22-slim AS runtime
+RUN apt-get update && apt-get install -y openssl && rm -rf /var/lib/apt/lists/*
 RUN corepack enable
 WORKDIR /app
 
