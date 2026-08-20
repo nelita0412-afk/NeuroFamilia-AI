@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Mail, MapPin, Phone } from 'lucide-react';
+import { Mail, Phone } from 'lucide-react';
 import { HeroTurtle } from './svg/hero-turtle';
 
 function InstagramIcon({ className = '' }: { className?: string }) {
@@ -55,6 +55,12 @@ export function LandingFooter() {
         aria-hidden="true"
       />
 
+      {/* VELO INSTITUCIONAL — atenúa el brillo del gradiente tras el cierre */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-[360px] bg-gradient-to-b from-transparent via-[#0B3B82]/25 to-[#0B3B82]/45"
+      />
+
       <div className="relative z-10 mx-auto max-w-7xl px-5 pb-4 pt-3 sm:px-8 lg:px-12">
         <div className="grid gap-6 lg:grid-cols-[1.8fr_1fr_1fr_1fr_1.1fr] lg:gap-5">
           {/* COLUMNA 1 — IDENTIDAD */}
@@ -69,8 +75,8 @@ export function LandingFooter() {
               />
             </Link>
             <p className="max-w-xs text-center text-sm leading-5 text-white/80 lg:text-left">
-              Ciencia, tecnología y acompañamiento humano para el bienestar de las familias de
-              Galápagos.
+              Ciencia, tecnología y acompañamiento humano para el crecimiento de niños,
+              adolescentes y familias.
             </p>
 
             {/* REDES SOCIALES — solo iconos, distribución horizontal */}
@@ -164,10 +170,6 @@ export function LandingFooter() {
                   +593 98 040 6055
                 </a>
               </li>
-              <li className="flex items-center gap-3 text-sm text-white/75">
-                <MapPin className="h-4 w-4 shrink-0 text-white/60" />
-                San Cristóbal, Galápagos – Ecuador
-              </li>
             </ul>
           </div>
         </div>
@@ -181,7 +183,7 @@ export function LandingFooter() {
               Fundación Centro Integral de Bienestar e Innovación Social
             </p>
             <p className="mt-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/60">
-              🌎 Bienestar • Innovación Social • Desarrollo Humano
+              Bienestar • Innovación Social • Desarrollo Humano
             </p>
             <p className="mt-1 text-xs text-white/50">San Cristóbal, Galápagos – Ecuador</p>
           </div>
