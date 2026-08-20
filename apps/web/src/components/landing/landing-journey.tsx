@@ -138,44 +138,50 @@ export function LandingJourney() {
           scrollTrigger: { trigger: '.js-timeline-mobile', start: 'top 80%', end: 'bottom 50%', scrub: 0.4 },
         });
 
-        /* Propósito — tarjetas premium */
+        /* Propósito — tarjetas premium (reveal único, siempre visibles) */
         gsap.timeline({
           scrollTrigger: { trigger: '.js-about-purpose', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
         })
           .from('.js-about-purpose-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
-          .from('.js-about-purpose-title', { y: 30, opacity: 0, duration: 0.6 }, 0.15)
-          .from('.js-purpose-card', {
-            y: 50,
-            opacity: 0,
-            scale: 0.94,
-            duration: 0.7,
-            stagger: 0.14,
-            ease: 'power2.out',
-          }, 0.35);
+          .from('.js-about-purpose-title', { y: 30, opacity: 0, duration: 0.6 }, 0.15);
+        gsap.from('.js-purpose-card', {
+          y: 50,
+          opacity: 0,
+          scale: 0.94,
+          duration: 0.7,
+          stagger: 0.14,
+          ease: 'power2.out',
+          scrollTrigger: { trigger: '.js-about-purpose', start: 'top 85%', once: true },
+          clearProps: 'transform,opacity',
+        });
 
-        /* Equipo — bloques editoriales alternados */
+        /* Equipo — retratos editoriales + información */
         gsap.timeline({
           scrollTrigger: { trigger: '.js-about-founders', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
         })
           .from('.js-about-founders-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
           .from('.js-about-founders-title', { y: 30, opacity: 0, duration: 0.6 }, 0.15);
         gsap.utils.toArray<HTMLElement>('.js-founder-block').forEach((block) => {
-          const photo = block.querySelector('.js-founder-photo');
-          const photoOnRight = block.querySelector('.lg\\:order-2') !== null;
-          gsap.from(photo, {
-            x: photoOnRight ? 60 : -60,
+          gsap.from(block.querySelector('.js-founder-photo'), {
+            y: 40,
             opacity: 0,
             duration: 0.9,
             ease: 'power2.out',
-            scrollTrigger: { trigger: block, start: 'top 70%', end: 'bottom 40%', scrub: 0.5 },
+            scrollTrigger: { trigger: block, start: 'top 80%', once: true },
+            clearProps: 'transform,opacity',
           });
-          gsap.from(block.children[1], {
-            x: photoOnRight ? -60 : 60,
-            opacity: 0,
-            duration: 0.9,
-            ease: 'power2.out',
-            scrollTrigger: { trigger: block, start: 'top 70%', end: 'bottom 40%', scrub: 0.5 },
-          });
+          const info = [...block.children].slice(1);
+          if (info.length) {
+            gsap.from(info, {
+              y: 30,
+              opacity: 0,
+              duration: 0.8,
+              stagger: 0.12,
+              ease: 'power2.out',
+              scrollTrigger: { trigger: block, start: 'top 80%', once: true },
+              clearProps: 'transform,opacity',
+            });
+          }
         });
 
         /* ¿Por qué nace NeuroFamilia? */
@@ -200,19 +206,24 @@ export function LandingJourney() {
           scrollTrigger: { trigger: '.js-about-why', start: 'top 70%', end: 'bottom 40%', scrub: 0.5 },
         });
 
-        /* Valores — banda horizontal */
-        gsap.timeline({
-          scrollTrigger: { trigger: '.js-about-values', start: 'top 75%', end: 'bottom 40%', scrub: 0.5 },
-        })
-          .from('.js-about-values-kicker', { y: 20, opacity: 0, duration: 0.5 }, 0)
-          .from('.js-value-item', {
-            y: 30,
-            opacity: 0,
-            scale: 0.9,
-            duration: 0.5,
-            stagger: 0.08,
-            ease: 'back.out(1.5)',
-          }, 0.2);
+        /* Valores — banda horizontal (reveal único, siempre visibles) */
+        gsap.from('.js-about-values-kicker', {
+          y: 20,
+          opacity: 0,
+          duration: 0.5,
+          scrollTrigger: { trigger: '.js-about-values', start: 'top 85%', once: true },
+          clearProps: 'transform,opacity',
+        });
+        gsap.from('.js-value-item', {
+          y: 30,
+          opacity: 0,
+          scale: 0.9,
+          duration: 0.5,
+          stagger: 0.08,
+          ease: 'back.out(1.5)',
+          scrollTrigger: { trigger: '.js-about-values', start: 'top 85%', once: true },
+          clearProps: 'transform,opacity',
+        });
 
         /* Métricas institucionales */
         gsap.from('.js-metric', {
