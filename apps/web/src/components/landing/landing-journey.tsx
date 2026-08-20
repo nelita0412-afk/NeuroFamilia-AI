@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 
 import { HeroSection } from './sections/hero';
+import { LandingNavbar } from './navbar';
 import { PurposeSection } from './sections/purpose';
 import { ImpactSection } from './sections/impact';
 import { DimensionsSection } from './sections/dimensions';
@@ -39,8 +40,8 @@ export function LandingJourney() {
         /* Overlay azul - entra después de la foto */
         gsap.from('.js-hero-overlay', { opacity: 0, duration: 1.2, delay: 0.4, ease: 'power2.out' });
 
-        /* Header y navegación */
-        gsap.from('.js-hero header', { y: -40, opacity: 0, duration: 1, delay: 0.5, ease: 'power3.out' });
+        /* Franja blanca superior */
+        gsap.from('.js-navbar', { y: -90, opacity: 0, duration: 0.9, delay: 0.3, ease: 'power3.out' });
 
         /* Título + subtítulo + botón - entrada escalonada */
         gsap.from('.js-hero-title', { y: 40, opacity: 0, duration: 1, delay: 0.9, ease: 'power3.out' });
@@ -172,6 +173,7 @@ export function LandingJourney() {
 
   return (
     <div ref={root} className="bg-white font-sans text-[#0B3B82]">
+      <LandingNavbar />
       <HeroSection />
       <PurposeSection />
       <ImpactSection />
