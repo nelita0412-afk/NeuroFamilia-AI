@@ -1,90 +1,85 @@
+import Image from 'next/image';
 import Link from 'next/link';
+
+const NAV_LINKS = [
+  { label: 'Dimensiones', href: '#dimensiones' },
+  { label: 'Mentores', href: '#mentores' },
+  { label: 'Comunidad', href: '#impacto' },
+  { label: 'Plataforma', href: '#plataforma' },
+];
 
 export function HeroSection() {
   return (
     <section
       id="inicio"
-      className="js-hero relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-[#0B3B82]"
+      className="js-hero relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-[#00285A]"
     >
-      {/* VIDEO AÉREO REAL DE GALÁPAGOS — fondo fullscreen */}
+      {/* VIDEO AÉREO REAL DE GALÁPAGOS — protagonista fullscreen, sin marcos */}
       <video
         src="/images/landing/hero.mp4"
         poster="/images/landing/galapagos-aerial.jpg"
+        preload="auto"
         autoPlay
         muted
         loop
         playsInline
         aria-hidden="true"
-        className="js-hero-image h-full w-full object-cover"
+        className="js-hero-image absolute inset-0 h-full w-full object-cover"
       />
 
-      {/* OVERLAY AZUL SUAVE */}
-      <div className="js-hero-overlay absolute inset-0 bg-[#0B3B82]/45" aria-hidden="true" />
+      {/* OVERLAY GRADIENTE INSTITUCIONAL */}
+      <div
+        className="js-hero-overlay absolute inset-0 bg-[linear-gradient(rgba(0,40,90,0.25),rgba(0,40,90,0.35))]"
+        aria-hidden="true"
+      />
 
-      {/* NAVBAR — transparente con blur, logo y menú blancos */}
-      <header className="relative z-20 mx-auto flex w-full max-w-7xl items-center justify-between px-5 pt-6 sm:px-8 lg:px-12">
+      {/* NAVBAR TRANSPARENTE — logo oficial + menú */}
+      <header className="absolute inset-x-0 top-0 z-20 mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-6 sm:px-8 lg:px-12">
         <Link href="/" className="flex items-center gap-3" aria-label="NeuroFamilia Galápagos - Inicio">
-          <span className="text-2xl font-extrabold tracking-tight text-white">
+          <Image
+            src="/images/logo/logo.png"
+            alt=""
+            width={44}
+            height={44}
+            className="h-11 w-11 object-contain"
+          />
+          <span className="text-lg font-extrabold tracking-tight text-white">
             NeuroFamilia Galápagos
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 lg:flex">
-          <Link
-            href="#dimensiones"
-            className="text-sm font-medium text-white transition-colors duration-200 hover:text-[#00B8D9]"
-          >
-            Dimensiones
-          </Link>
-          <Link
-            href="#mentores"
-            className="text-sm font-medium text-white transition-colors duration-200 hover:text-[#00B8D9]"
-          >
-            Mentores
-          </Link>
-          <Link
-            href="#plataforma"
-            className="text-sm font-medium text-white transition-colors duration-200 hover:text-[#00B8D9]"
-          >
-            Plataforma
-          </Link>
-          <Link
-            href="/login"
-            className="inline-flex items-center gap-2 rounded-full bg-[#0066CC] px-6 py-2.5 text-sm font-bold text-white shadow-[0_8px_24px_rgba(0,102,204,0.35)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#0B3B82]"
-          >
-            Conocer NeuroFamilia
-          </Link>
+        <nav className="hidden items-center gap-10 lg:flex" aria-label="Menú principal">
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-sm font-medium tracking-wide text-white/90 transition-colors duration-200 hover:text-white"
+            >
+              {link.label}
+            </Link>
+          ))}
         </nav>
+      </header>
+
+      {/* CONTENIDO PRINCIPAL — centrado */}
+      <main className="js-hero-content relative z-10 flex h-full flex-col items-center justify-center px-5 text-center sm:px-8">
+        <h1 className="js-hero-title text-6xl font-extrabold leading-[0.95] tracking-tight text-white sm:text-7xl lg:text-8xl">
+          NeuroFamilia
+          <br />
+          <span className="text-white">Galápagos</span>
+        </h1>
+
+        <p className="js-hero-subtitle mt-8 max-w-2xl text-base leading-7 text-white/85 sm:text-lg">
+          Plataforma digital para el desarrollo humano, la salud mental y el bienestar comunitario.
+        </p>
 
         <Link
           href="/login"
-          className="inline-flex items-center gap-2 rounded-full bg-[#0066CC] px-5 py-2 text-sm font-bold text-white shadow-[0_8px_24px_rgba(0,102,204,0.35)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#0B3B82] lg:hidden"
+          className="js-hero-cta mt-10 inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-bold text-[#00285A] shadow-[0_12px_32px_rgba(0,40,90,0.35)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#00B8D9] hover:text-white"
         >
           Conocer NeuroFamilia
         </Link>
-      </header>
-
-      {/* MENSAJE CENTRADO — estilo Ola Igualdad */}
-      <main className="js-hero-content relative z-10 flex h-full flex-col items-center justify-center px-5 pb-24 text-center sm:px-8">
-        <p className="js-hero-kicker mb-8 max-w-2xl text-sm font-semibold uppercase tracking-[0.3em] text-[#00B8D9]">
-          Plataforma digital para el desarrollo humano en Galápagos
-        </p>
-
-        <h1 className="js-hero-title text-6xl font-extrabold leading-[0.95] tracking-tight text-white sm:text-7xl lg:text-8xl xl:text-9xl">
-          NeuroFamilia
-          <br />
-          <span className="text-[#00B8D9]">Galápagos</span>
-        </h1>
       </main>
-
-      {/* SCROLL DOWN + INDICADOR DE SLIDE */}
-      <div className="js-hero-scroll absolute inset-x-0 bottom-10 z-20 flex items-center justify-between px-5 sm:px-8 lg:px-12">
-        <div className="flex items-center gap-3 text-white/80">
-          <span className="js-scroll-line block h-10 w-px bg-white/50" />
-          <span className="text-xs font-semibold uppercase tracking-[0.25em]">Scroll Down</span>
-        </div>
-        <span className="text-sm font-bold tracking-[0.3em] text-white/60">01</span>
-      </div>
     </section>
   );
 }

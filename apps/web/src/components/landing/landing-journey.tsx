@@ -42,20 +42,10 @@ export function LandingJourney() {
         /* Header y navegación */
         gsap.from('.js-hero header', { y: -40, opacity: 0, duration: 1, delay: 0.5, ease: 'power3.out' });
 
-        /* Kicker + título de marca - entrada escalonada */
-        gsap.from('.js-hero-kicker', { y: 30, opacity: 0, duration: 0.8, delay: 0.7, ease: 'power2.out' });
+        /* Título + subtítulo + botón - entrada escalonada */
         gsap.from('.js-hero-title', { y: 40, opacity: 0, duration: 1, delay: 0.9, ease: 'power3.out' });
-
-        /* Scroll Down */
-        gsap.from('.js-hero-scroll', { y: 20, opacity: 0, duration: 0.8, delay: 1.4, ease: 'power2.out' });
-        gsap.to('.js-scroll-line', {
-          scaleY: 0.4,
-          transformOrigin: 'top',
-          duration: 1.2,
-          yoyo: true,
-          repeat: -1,
-          ease: 'sine.inOut',
-        });
+        gsap.from('.js-hero-subtitle', { y: 30, opacity: 0, duration: 0.9, delay: 1.2, ease: 'power2.out' });
+        gsap.from('.js-hero-cta', { y: 24, opacity: 0, duration: 0.7, delay: 1.5, ease: 'power2.out' });
 
         /* Parallax al hacer scroll: foto + contenido */
         gsap.to('.js-hero-image', {
