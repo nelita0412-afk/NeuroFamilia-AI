@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { WavesBack, WavesFront } from '../svg/waves';
@@ -20,7 +21,13 @@ export function HeroSection() {
       <WavesBack className="js-hero-waves-back absolute inset-x-0 bottom-16 h-56 w-full opacity-50" />
       <WavesFront className="js-hero-waves-front absolute inset-x-0 bottom-0 h-64 w-full opacity-80" />
 
-      <header className="relative z-10 mx-auto flex w-full max-w-6xl items-center justify-end px-5 pt-6 sm:px-8">
+      <header className="relative z-10 mx-auto flex w-full max-w-6xl items-center justify-between px-5 pt-6 sm:px-8">
+        <Link href="/" className="flex items-center gap-3" aria-label="NeuroFamilia Galápagos">
+          <Image src="/images/logo/logo.png" alt="Logo NeuroFamilia" width={40} height={40} className="h-10 w-10 object-contain" />
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#F8FBFF]/85">
+            NeuroFamilia <span className="text-[#29C7D8]">Galápagos</span>
+          </p>
+        </Link>
         <Link
           href="/login"
           className="inline-flex items-center gap-2 rounded-full bg-[#F8FBFF] px-5 py-2.5 text-sm font-semibold text-[#0A4E9B] shadow-lg transition-transform duration-200 hover:-translate-y-0.5"
