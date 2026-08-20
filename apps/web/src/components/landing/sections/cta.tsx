@@ -6,7 +6,7 @@ export function CtaSection() {
   return (
     <section
       id="cta"
-      className="js-cta relative flex min-h-screen items-center overflow-hidden bg-gradient-to-b from-[#0A4E9B] via-[#1476C6] to-[#29C7D8]"
+      className="js-cta relative flex min-h-screen items-center overflow-hidden bg-gradient-to-b from-[#0B3B82] via-[#0066CC] to-[#00B8D9]"
     >
       <div
         className="js-sun pointer-events-none absolute right-[14%] top-[12%] h-44 w-44 rounded-full bg-[#F8FBFF]/60 blur-2xl"
@@ -20,7 +20,7 @@ export function CtaSection() {
 
         <Link
           href="/login"
-          className="js-cta-button mt-10 inline-flex items-center gap-2 rounded-full bg-[#F8FBFF] px-10 py-4 text-base font-bold text-[#0A4E9B] shadow-[0_22px_60px_rgba(2,32,76,0.55)] transition-transform duration-200 hover:-translate-y-0.5"
+          className="js-cta-button mt-10 inline-flex items-center gap-2 rounded-full bg-[#F8FBFF] px-10 py-4 text-base font-bold text-[#0B3B82] shadow-[0_22px_60px_rgba(2,32,76,0.55)] transition-transform duration-200 hover:-translate-y-0.5"
         >
           Comenzar el recorrido
           <ArrowRight className="h-5 w-5" />

@@ -7,61 +7,50 @@ export function MentorsSection() {
   return (
     <section
       id="mentores"
-      className="js-mentors relative flex min-h-screen items-center overflow-hidden bg-[#0A4E9B]"
+      className="js-mentors relative overflow-hidden bg-[#F0F7FF] py-28"
     >
-      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div className="absolute left-1/2 top-0 h-64 w-[42rem] -translate-x-1/2 rounded-full bg-[#1476C6]/50 blur-3xl" />
-      </div>
-
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-5 py-24 sm:px-8">
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-5 sm:px-8">
         <div className="text-center">
-          <p className="js-mentors-kicker text-xs font-bold uppercase tracking-[0.3em] text-[#29C7D8]">
-            Los NeuroMentores
+          <p className="js-mentors-kicker text-xs font-bold uppercase tracking-[0.3em] text-[#0066CC]">
+            NeuroMentores
           </p>
-          <h2 className="js-mentors-title mt-4 text-3xl font-extrabold leading-tight text-[#F8FBFF] sm:text-5xl">
+          <h2 className="js-mentors-title mt-4 text-3xl font-extrabold leading-tight text-[#0B3B82] sm:text-5xl">
             Ocho guías. Cada uno conoce un camino.
           </h2>
-          <p className="js-mentors-subtitle mx-auto mt-4 max-w-2xl text-base leading-7 text-[#F8FBFF]/75">
+          <p className="js-mentors-subtitle mx-auto mt-4 max-w-2xl text-base leading-7 text-[#0B3B82]/70">
             No son funcionalidades. Son acompañantes vivos del crecimiento, con personalidad,
             metodología y una mirada propia sobre el ser humano.
           </p>
         </div>
 
-        <div className="js-mentors-stage mt-14 [perspective:1400px]">
-          <ul className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-8 lg:gap-3">
-            {MENTOR_NAMES.map((name, i) => {
-              const identity = MENTOR_IDENTITY[name];
-              const color = MENTOR_COLORS[name];
-              return (
-                <li key={name} className={`js-mentor js-mentor-${i + 1}`}>
-                  <div
-                    className="group relative overflow-hidden rounded-3xl bg-white/10 shadow-[0_18px_40px_rgba(2,32,76,0.45)] ring-1 ring-white/15 transition-transform duration-300 hover:-translate-y-1"
-                    style={{ borderTop: `3px solid ${color.primary}` }}
-                  >
-                    <div className="relative aspect-[9/16]">
-                      <Image
-                        src={identity.image}
-                        alt={`Mentor ${name}, ${identity.shortDescription}`}
-                        fill
-                        sizes="(max-width: 640px) 45vw, (max-width: 1024px) 22vw, 11vw"
-                        loading="lazy"
-                        className="object-contain"
-                      />
-                    </div>
-                    <div className="bg-white/95 px-2 py-3 text-center">
-                      <p className="text-sm font-extrabold" style={{ color: color.primary }}>
-                        {name}
-                      </p>
-                      <p className="mt-0.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-[#0A4E9B]/70">
-                        {identity.specialty}
-                      </p>
-                    </div>
+        <ul className="js-mentors-grid mt-16 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
+          {MENTOR_NAMES.map((name) => {
+            const identity = MENTOR_IDENTITY[name];
+            const color = MENTOR_COLORS[name];
+            return (
+              <li key={name} className="js-mentor">
+                <div className="group overflow-hidden rounded-2xl bg-white shadow-[0_8px_30px_rgba(11,59,130,0.08)] ring-1 ring-[#0066CC]/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_48px_rgba(11,59,130,0.16)]">
+                  <div className="relative aspect-[9/16]">
+                    <Image
+                      src={identity.image}
+                      alt={`Mentor ${name}, ${identity.shortDescription}`}
+                      fill
+                      sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 22vw"
+                      loading="lazy"
+                      className="object-contain"
+                    />
                   </div>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+                  <div className="border-t-2 px-4 py-4" style={{ borderColor: color.primary }}>
+                    <p className="text-base font-extrabold text-[#0B3B82]">{name}</p>
+                    <p className="mt-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#0B3B82]/60">
+                      {identity.specialty}
+                    </p>
+                  </div>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </section>
   );

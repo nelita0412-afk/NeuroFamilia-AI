@@ -116,11 +116,11 @@ export function PlatformSection() {
   return (
     <section
       id="plataforma"
-      className="js-platform relative overflow-hidden bg-gradient-to-b from-[#1476C6] to-[#0A4E9B] py-28"
+      className="js-platform relative overflow-hidden bg-gradient-to-b from-[#0066CC] to-[#0B3B82] py-28"
     >
       <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
         <div className="text-center">
-          <p className="js-platform-kicker text-xs font-bold uppercase tracking-[0.3em] text-[#29C7D8]">
+          <p className="js-platform-kicker text-xs font-bold uppercase tracking-[0.3em] text-[#00B8D9]">
             La plataforma
           </p>
           <h2 className="js-platform-title mt-4 text-3xl font-extrabold leading-tight text-[#F8FBFF] sm:text-5xl">
@@ -134,7 +134,7 @@ export function PlatformSection() {
               key={feature.title}
               className="rounded-3xl bg-white/10 p-5 ring-1 ring-white/15 backdrop-blur transition-transform duration-200 hover:-translate-y-1"
             >
-              <feature.icon className="h-6 w-6 text-[#29C7D8]" />
+              <feature.icon className="h-6 w-6 text-[#00B8D9]" />
               <p className="mt-3 text-base font-extrabold text-[#F8FBFF]">{feature.title}</p>
               <p className="mt-1.5 text-xs leading-5 text-[#F8FBFF]/70">{feature.detail}</p>
             </li>
