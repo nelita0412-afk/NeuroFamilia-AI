@@ -46,9 +46,13 @@ export default function Home() {
         <div className="relative z-10 mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
           <header className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="grid h-11 w-11 place-items-center rounded-2xl bg-white/15 text-white backdrop-blur">
-                <Waves className="h-5 w-5" />
-              </div>
+              <Image
+                src="/images/logo/logo.jpg"
+                alt="Logo NeuroFamilia AI"
+                width={44}
+                height={44}
+                className="h-11 w-11 rounded-2xl bg-white object-cover ring-1 ring-white/25"
+              />
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.22em] text-ocean-100">NeuroFamilia AI</p>
                 <p className="text-sm font-semibold text-white/90 [font-family:var(--font-nunito)]">Galapagos</p>

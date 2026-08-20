@@ -32,9 +32,13 @@ export default function LoginPage() {
 
         <div className="relative z-10 px-12 pb-6 pt-14">
           <div className="flex items-center gap-3">
-            <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white/15 text-white backdrop-blur">
-              <Waves className="h-6 w-6" />
-            </div>
+            <Image
+              src="/images/logo/logo.jpg"
+              alt="Logo NeuroFamilia AI"
+              width={48}
+              height={48}
+              className="h-12 w-12 rounded-2xl bg-white object-cover ring-1 ring-white/25"
+            />
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.22em] text-ocean-100">NeuroFamilia AI</p>
               <p className="text-sm font-semibold text-white/90 [font-family:var(--font-nunito)]">Galapagos</p>

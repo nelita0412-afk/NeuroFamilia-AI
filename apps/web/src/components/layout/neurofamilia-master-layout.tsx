@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import type { ReactNode } from 'react';
 
@@ -30,12 +31,13 @@ export function NeurofamiliaMasterLayout({ children, profileName = 'Perfil activ
       <div className="mx-auto w-full max-w-[1180px] px-4 pb-16 pt-5 sm:px-6 sm:pt-6 lg:px-8">
         <header className="flex items-center justify-between rounded-3xl bg-white/90 px-4 py-3 shadow-[0_12px_36px_rgba(0,61,120,0.10)] backdrop-blur md:px-6">
           <div className="flex items-center gap-3">
-            <div
-              aria-hidden="true"
-              className="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-[#00BDEB] to-[#0069B7] text-white shadow-[0_10px_24px_rgba(0,105,183,0.35)]"
-            >
-              <span className="text-base font-bold">NF</span>
-            </div>
+            <Image
+              src="/images/logo/logo.jpg"
+              alt="Logo NeuroFamilia"
+              width={40}
+              height={40}
+              className="h-10 w-10 rounded-2xl object-cover shadow-[0_10px_24px_rgba(0,105,183,0.35)]"
+            />
             <div>
               <p className="text-[10px] uppercase tracking-[0.18em] text-[#008CC7]">NeuroFamilia</p>
               <p className="text-sm font-semibold font-display">Galapagos</p>
