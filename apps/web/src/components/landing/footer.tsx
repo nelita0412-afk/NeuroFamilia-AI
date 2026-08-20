@@ -51,31 +51,31 @@ export function LandingFooter() {
     <footer className="relative overflow-hidden bg-gradient-to-br from-[#0F4AA2] via-[#0A66D4] to-[#12C7E5] text-white">
       {/* MARCA DE AGUA — tortuga NeuroFamilia */}
       <HeroTurtle
-        className="pointer-events-none absolute -right-20 -top-10 h-[420px] w-auto opacity-[0.12]"
+        className="pointer-events-none absolute -right-16 -top-8 h-[300px] w-auto opacity-[0.07]"
         aria-hidden="true"
       />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-5 pb-8 pt-12 sm:px-8 lg:px-12">
-        <div className="grid gap-10 lg:grid-cols-[1.8fr_1fr_1fr_1fr_1.1fr] lg:gap-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 pb-5 pt-8 sm:px-8 lg:px-12">
+        <div className="grid gap-8 lg:grid-cols-[1.8fr_1fr_1fr_1fr_1.1fr] lg:gap-6">
           {/* COLUMNA 1 — IDENTIDAD */}
-          <div className="flex flex-col items-start gap-4">
+          <div className="flex flex-col items-start gap-2.5">
             <Link href="/#inicio" aria-label="Inicio NeuroFamilia Galápagos">
               <Image
                 src="/images/logo/logo-white.png"
                 alt="Logo NeuroFamilia Galápagos"
-                width={285}
-                height={220}
-                className="h-[220px] w-auto object-contain"
+                width={182}
+                height={140}
+                className="h-[140px] w-auto object-contain"
               />
             </Link>
-            <p className="max-w-xs text-sm leading-6 text-white/80">
+            <p className="max-w-xs text-sm leading-5 text-white/80">
               NeuroFamilia integra ciencia, tecnología y acompañamiento humano para fortalecer el
               desarrollo de niños, adolescentes, familias, profesionales e instituciones en
               Galápagos.
             </p>
 
             {/* REDES SOCIALES — solo iconos, distribución horizontal */}
-            <ul className="mt-1 flex items-center gap-3">
+            <ul className="mt-0.5 flex items-center gap-2.5">
               {SOCIAL_LINKS.map(({ label, href, icon: Icon }) => (
                 <li key={label}>
                   <a
@@ -83,9 +83,9 @@ export function LandingFooter() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="grid h-10 w-10 place-items-center rounded-full bg-white/10 text-white/80 ring-1 ring-white/15 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-[#0A66D4] hover:ring-white"
+                    className="grid h-8 w-8 place-items-center rounded-full bg-white/10 text-white/80 ring-1 ring-white/15 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-[#0A66D4] hover:ring-white"
                   >
-                    <Icon className="h-[18px] w-[18px]" />
+                    <Icon className="h-4 w-4" />
                   </a>
                 </li>
               ))}
@@ -95,7 +95,7 @@ export function LandingFooter() {
           {/* COLUMNA 2 — EXPLORAR */}
           <nav aria-label="Explorar">
             <p className="text-sm font-bold uppercase tracking-[0.2em] text-white">Explorar</p>
-            <ul className="mt-6 space-y-3.5">
+            <ul className="mt-3.5 space-y-2">
               {EXPLORE_LINKS.map((link) => (
                 <li key={link.label}>
                   <Link
@@ -112,7 +112,7 @@ export function LandingFooter() {
           {/* COLUMNA 3 — COMUNIDAD */}
           <nav aria-label="Comunidad">
             <p className="text-sm font-bold uppercase tracking-[0.2em] text-white">Comunidad</p>
-            <ul className="mt-6 space-y-3.5">
+            <ul className="mt-3.5 space-y-2">
               {COMMUNITY_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -129,7 +129,7 @@ export function LandingFooter() {
           {/* COLUMNA 4 — RECURSOS */}
           <nav aria-label="Recursos">
             <p className="text-sm font-bold uppercase tracking-[0.2em] text-white">Recursos</p>
-            <ul className="mt-6 space-y-3.5">
+            <ul className="mt-3.5 space-y-2">
               {RESOURCES_LINKS.map((link) => (
                 <li key={link.label}>
                   <Link
@@ -146,7 +146,7 @@ export function LandingFooter() {
           {/* COLUMNA 5 — CONTACTO */}
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.2em] text-white">Contacto</p>
-            <ul className="mt-6 space-y-4">
+            <ul className="mt-3.5 space-y-2.5">
               <li>
                 <a
                   href="mailto:neurofamiliagps@gmail.com"
@@ -174,8 +174,8 @@ export function LandingFooter() {
         </div>
 
         {/* SUBFOOTER */}
-        <div className="mt-10 border-t border-white/15 pt-6">
-          <div className="flex flex-col items-center gap-4 text-center lg:flex-row lg:justify-between lg:text-left">
+        <div className="mt-6 border-t border-white/15 pt-4">
+          <div className="flex flex-col items-center gap-3 text-center lg:flex-row lg:justify-between lg:text-left">
             <p className="text-xs text-white/60">
               © 2026 NeuroFamilia Galápagos. Todos los derechos reservados.
             </p>
