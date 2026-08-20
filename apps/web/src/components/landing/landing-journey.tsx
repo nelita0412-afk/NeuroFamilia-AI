@@ -29,8 +29,8 @@ export function LandingJourney() {
            S1 — HERO INSTITUCIONAL FULLSCREEN (video Galápagos)
            ═══════════════════════════════════════════════════════ */
 
-        /* Video aéreo - revelación cinematográfica */
-        gsap.from('.js-hero-video', {
+        /* Fotografía aérea - revelación cinematográfica */
+        gsap.from('.js-hero-image', {
           scale: 1.08,
           opacity: 0,
           duration: 1.8,
@@ -60,7 +60,7 @@ export function LandingJourney() {
         });
 
         /* Parallax al hacer scroll: video + contenido + banda */
-        gsap.to('.js-hero-video', {
+        gsap.to('.js-hero-image', {
           scale: 1.12,
           ease: 'none',
           scrollTrigger: { trigger: '.js-hero', start: 'top top', end: 'bottom top', scrub: 1 },
