@@ -173,26 +173,19 @@ export function LandingFooter() {
           </div>
         </div>
 
-        {/* SUBFOOTER */}
-        <div className="mt-6 border-t border-white/15 pt-4">
-          <div className="flex flex-col items-center gap-3 text-center lg:flex-row lg:justify-between lg:text-left">
-            <p className="text-xs text-white/60">
-              © 2026 NeuroFamilia Galápagos. Todos los derechos reservados.
+        {/* SUBFOOTER — estructura institucional */}
+        <div className="mt-6 border-t border-white/15 pt-6">
+          <div className="flex flex-col items-center justify-center gap-1 text-center">
+            <p className="text-base font-extrabold text-white">NeuroFamilia © 2026</p>
+            <p className="text-sm leading-6 text-white/80">
+              Impulsado por la{' '}
+              <span className="font-bold text-white">
+                Fundación Centro Integral de Bienestar e Innovación Social
+              </span>
             </p>
-            <div className="flex items-center gap-6">
-              <Link
-                href="/privacy"
-                className="text-xs text-white/60 transition-colors duration-300 hover:text-white"
-              >
-                Política de Privacidad
-              </Link>
-              <Link
-                href="/terms"
-                className="text-xs text-white/60 transition-colors duration-300 hover:text-white"
-              >
-                Términos y Condiciones
-              </Link>
-            </div>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
+              🌎 Bienestar • Innovación Social • Desarrollo Humano
+            </p>
           </div>
         </div>
       </div>
