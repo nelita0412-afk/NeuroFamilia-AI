@@ -5,3 +5,4 @@ dist
 coverage
 .prisma.pnpm-store/
 .vercel
+/hero.MP4

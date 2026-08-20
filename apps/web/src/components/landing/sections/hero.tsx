@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 
 export function HeroSection() {
@@ -7,14 +6,16 @@ export function HeroSection() {
       id="inicio"
       className="js-hero relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-[#0B3B82]"
     >
-      {/* FOTOGRAFÍA AÉREA REAL DE GALÁPAGOS — fondo fullscreen */}
-      <Image
-        src="/images/landing/galapagos-aerial.jpg"
-        alt="Vista aérea de la costa de Galápagos: aguas turquesa y acantilados rocosos"
-        fill
-        priority
-        sizes="100vw"
-        className="js-hero-image object-cover"
+      {/* VIDEO AÉREO REAL DE GALÁPAGOS — fondo fullscreen */}
+      <video
+        src="/images/landing/hero.mp4"
+        poster="/images/landing/galapagos-aerial.jpg"
+        autoPlay
+        muted
+        loop
+        playsInline
+        aria-hidden="true"
+        className="js-hero-image h-full w-full object-cover"
       />
 
       {/* OVERLAY AZUL SUAVE */}
