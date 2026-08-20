@@ -27,11 +27,10 @@ export const IMPACT_METRICS: ImpactMetric[] = [
   {
     id: 'acompanamiento',
     icon: MessageCircleHeart,
-    value: 500,
-    suffix: '+',
-    label: 'Espacios de Acompañamiento',
+    value: 1751,
+    label: 'Chats en vivo de Primeros Auxilios Psicológicos (PAP)',
     description:
-      'Interacciones, orientaciones y espacios de escucha activa y apoyo psicosocial.',
+      'Interacciones de orientación, escucha activa, apoyo emocional y acompañamiento psicosocial brindadas a personas que requirieron atención y contención oportuna.',
   },
   {
     id: 'personas',

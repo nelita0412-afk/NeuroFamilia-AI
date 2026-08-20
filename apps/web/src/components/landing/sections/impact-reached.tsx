@@ -51,7 +51,7 @@ export function ImpactReachedSection() {
 
               {/* Número + flecha ascendente */}
               <p className="relative mt-6 flex items-baseline gap-2 text-5xl font-extrabold tracking-tight text-[#0B3B82]">
-                <Counter target={value} />
+                <Counter target={value} thousandSeparator />
                 {suffix && <span className="text-3xl text-[#0066CC]">{suffix}</span>}
                 <TrendingUp
                   className="h-5 w-5 self-center text-[#00B8D9]"
