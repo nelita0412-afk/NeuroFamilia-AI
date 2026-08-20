@@ -6,5 +6,8 @@
   "scripts": {
     "dev": "pnpm --filter shared build && pnpm --filter api start:dev",
     "build": "pnpm -r build"
+  },
+  "devDependencies": {
+    "vercel": "^59.1.4"
   }
 }

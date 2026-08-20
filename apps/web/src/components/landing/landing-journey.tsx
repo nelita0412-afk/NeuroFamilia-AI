@@ -7,7 +7,7 @@ import { useGSAP } from '@gsap/react';
 
 import { HeroSection } from './sections/hero';
 import { LandingNavbar } from './navbar';
-import { PurposeSection } from './sections/purpose';
+import { AboutSection } from './sections/about';
 import { ImpactSection } from './sections/impact';
 import { DimensionsSection } from './sections/dimensions';
 import { MentorsSection } from './sections/mentors';
@@ -62,17 +62,71 @@ export function LandingJourney() {
           scrollTrigger: { trigger: '.js-hero', start: 'top top', end: 'bottom top', scrub: 1 },
         });
 
-        /* ═══════════════════════════════════════════════════════
-           S2 — PROPÓSITO: Revelación serena
+/* ═══════════════════════════════════════════════════════
+           S2 — ACERCA DE: Quiénes Somos, Historia, Propósito,
+                Equipo, Valores y Cierre
            ══════════════════════════════════════════════════════ */
         gsap.timeline({
-          scrollTrigger: { trigger: '.js-purpose', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
+          scrollTrigger: { trigger: '.js-about', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
         })
-          .from('.js-purpose-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
-          .from('.js-purpose-title', { y: 30, opacity: 0, duration: 0.7 }, 0.15)
-          .from('.js-purpose-body', { y: 24, opacity: 0, duration: 0.7 }, 0.4)
-          .from('.js-purpose-cta', { y: 16, opacity: 0, duration: 0.5 }, 0.55)
-          .from('.js-purpose-pillars li', { y: 20, opacity: 0, duration: 0.5, stagger: 0.06 }, 0.7);
+          .from('.js-about-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
+          .from('.js-about-title', { y: 30, opacity: 0, duration: 0.7 }, 0.15)
+          .from('.js-about-body', { y: 24, opacity: 0, duration: 0.7 }, 0.4)
+          .from('.js-about-pillars li', { y: 20, opacity: 0, duration: 0.5, stagger: 0.06 }, 0.7);
+
+        gsap.timeline({
+          scrollTrigger: { trigger: '.js-about-history', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
+        })
+          .from('.js-about-history-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
+          .from('.js-about-history-title', { y: 30, opacity: 0, duration: 0.6 }, 0.15)
+          .from('.js-about-history-body', { y: 24, opacity: 0, duration: 0.7 }, 0.3)
+          .from('.js-about-timeline-card', { y: 40, opacity: 0, duration: 0.7 }, 0.4);
+
+        gsap.timeline({
+          scrollTrigger: { trigger: '.js-about-purpose', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
+        })
+          .from('.js-about-purpose-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
+          .from('.js-about-purpose-title', { y: 30, opacity: 0, duration: 0.6 }, 0.15)
+          .from('.js-about-purpose-grid li', {
+            y: 40,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.12,
+            ease: 'power2.out',
+          }, 0.35);
+
+        gsap.timeline({
+          scrollTrigger: { trigger: '.js-about-founders', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
+        })
+          .from('.js-about-founders-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
+          .from('.js-about-founders-title', { y: 30, opacity: 0, duration: 0.6 }, 0.15)
+          .from('.js-about-founders-grid li', {
+            y: 40,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.12,
+            ease: 'power2.out',
+          }, 0.35);
+
+        gsap.timeline({
+          scrollTrigger: { trigger: '.js-about-values', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
+        })
+          .from('.js-about-values-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
+          .from('.js-about-values-title', { y: 30, opacity: 0, duration: 0.6 }, 0.15)
+          .from('.js-about-values-grid li', {
+            y: 40,
+            opacity: 0,
+            duration: 0.5,
+            stagger: 0.08,
+            ease: 'power2.out',
+          }, 0.35);
+
+        gsap.timeline({
+          scrollTrigger: { trigger: '.js-about-closing', start: 'top 70%', end: 'bottom 30%', scrub: 0.4 },
+        })
+          .from('.js-about-closing-title', { y: 30, opacity: 0, duration: 0.6 }, 0)
+          .from('.js-about-closing-body', { y: 24, opacity: 0, duration: 0.6 }, 0.2)
+          .from('.js-about-closing-cta', { y: 20, opacity: 0, duration: 0.5 }, 0.4);
 
         /* ═══════════════════════════════════════════════════════
            S3 — IMPACTO: Las cifras entran en escena
@@ -175,7 +229,7 @@ export function LandingJourney() {
     <div ref={root} className="bg-white font-sans text-[#0B3B82]">
       <LandingNavbar />
       <HeroSection />
-      <PurposeSection />
+      <AboutSection />
       <ImpactSection />
       <DimensionsSection />
       <MentorsSection />
