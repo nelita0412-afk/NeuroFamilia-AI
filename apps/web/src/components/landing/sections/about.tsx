@@ -374,37 +374,37 @@ export function AboutSection() {
       </section>
 
       {/* ── 4. EQUIPO FUNDADOR · Layout editorial ────────────── */}
-      <section className="js-about-founders relative overflow-hidden bg-[#F0F7FF] py-28">
+      <section className="js-about-founders relative overflow-hidden bg-[#F0F7FF] py-16">
         <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
           <div className="text-center">
             <p className="js-about-founders-kicker text-xs font-bold uppercase tracking-[0.3em] text-[#0066CC]">
               Nuestro Equipo
             </p>
-            <h2 className="js-about-founders-title mt-4 text-3xl font-extrabold leading-tight text-[#0B3B82] sm:text-5xl">
+            <h2 className="js-about-founders-title mt-4 text-3xl font-extrabold leading-tight text-[#0B3B82] sm:text-4xl">
               Equipo Fundador
             </h2>
           </div>
 
-          <div className="mt-20 space-y-24">
+          <div className="mt-12 space-y-14">
             {FOUNDERS.map((founder, i) => {
               const reversed = i % 2 === 1;
               return (
                 <div
                   key={founder.name}
-                  className="js-founder-block grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
+                  className="js-founder-block grid items-center gap-8 lg:grid-cols-2 lg:gap-12"
                 >
                   {/* Fotografía / panel visual */}
                   <div className={reversed ? 'lg:order-2' : ''}>
-                    <div className="js-founder-photo group relative overflow-hidden rounded-[28px] bg-gradient-to-br shadow-[0_32px_72px_rgba(11,59,130,0.25)]">
+                    <div className="js-founder-photo group relative overflow-hidden rounded-[24px] bg-gradient-to-br shadow-[0_24px_56px_rgba(11,59,130,0.22)]">
                       <div className={`absolute inset-0 bg-gradient-to-br ${founder.gradient}`} />
-                      <div className="pointer-events-none absolute -left-10 -top-10 h-48 w-48 rounded-full bg-white/15 blur-3xl" />
-                      <div className="pointer-events-none absolute -bottom-16 -right-10 h-56 w-56 rounded-full bg-[#00B8D9]/30 blur-3xl" />
-                      <div className="relative flex aspect-[4/5] flex-col items-center justify-center">
-                        <span className="text-7xl font-extrabold tracking-tight text-white/95 sm:text-8xl">
+                      <div className="pointer-events-none absolute -left-10 -top-10 h-40 w-40 rounded-full bg-white/15 blur-3xl" />
+                      <div className="pointer-events-none absolute -bottom-16 -right-10 h-48 w-48 rounded-full bg-[#00B8D9]/30 blur-3xl" />
+                      <div className="relative flex aspect-[16/10] flex-col items-center justify-center">
+                        <span className="text-6xl font-extrabold tracking-tight text-white/95 sm:text-7xl">
                           {founder.initials}
                         </span>
-                        <span className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/20 px-5 py-2 text-xs font-bold uppercase tracking-[0.2em] text-white backdrop-blur-sm">
-                          <HeartHandshake className="h-4 w-4" />
+                        <span className="mt-3 inline-flex items-center gap-2 rounded-full bg-white/20 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-white backdrop-blur-sm">
+                          <HeartHandshake className="h-3.5 w-3.5" />
                           NeuroFamilia Galápagos
                         </span>
                       </div>
@@ -416,14 +416,14 @@ export function AboutSection() {
                     <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#00B8D9]">
                       {founder.role}
                     </p>
-                    <h3 className="mt-3 text-3xl font-extrabold leading-tight text-[#0B3B82] sm:text-4xl">
+                    <h3 className="mt-2 text-2xl font-extrabold leading-tight text-[#0B3B82] sm:text-3xl">
                       {founder.name}
                     </h3>
-                    <div className="mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-[#0066CC] to-[#00B8D9]" />
-                    <p className="mt-5 text-sm font-bold leading-6 text-[#0066CC]">
+                    <div className="mt-3 h-1 w-14 rounded-full bg-gradient-to-r from-[#0066CC] to-[#00B8D9]" />
+                    <p className="mt-4 text-sm font-bold leading-6 text-[#0066CC]">
                       {founder.credentials}
                     </p>
-                    <p className="mt-4 text-base leading-8 text-[#0B3B82]/70">{founder.bio}</p>
+                    <p className="mt-3 text-[15px] leading-7 text-[#0B3B82]/70">{founder.bio}</p>
                   </div>
                 </div>
               );
