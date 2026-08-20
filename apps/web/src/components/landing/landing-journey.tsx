@@ -27,7 +27,6 @@ export function LandingJourney() {
       mm.add('(prefers-reduced-motion: no-preference)', () => {
         /* S1 — Hero: emergencia de la tortuga y parallax */
         gsap.from('.js-hero-turtle', { y: 90, opacity: 0, duration: 1.6, ease: 'power3.out' });
-        gsap.from('.js-hero-kicker', { y: 30, opacity: 0, duration: 0.8, delay: 0.9, ease: 'power2.out' });
         gsap.from('.js-hero-title', { y: 40, opacity: 0, duration: 0.9, delay: 1.1, ease: 'power2.out' });
         gsap.from('.js-hero-subtitle', { y: 30, opacity: 0, duration: 0.9, delay: 1.35, ease: 'power2.out' });
         gsap.to('.js-hero-turtle', {
@@ -35,6 +34,32 @@ export function LandingJourney() {
           duration: 3.2,
           yoyo: true,
           repeat: -1,
+          ease: 'sine.inOut',
+        });
+        gsap.to('.js-hero-node-line', {
+          opacity: 1,
+          duration: 1.8,
+          yoyo: true,
+          repeat: -1,
+          stagger: 0.15,
+          ease: 'sine.inOut',
+        });
+        gsap.to('.js-hero-node', {
+          attr: { r: '+=1.8' },
+          opacity: 0.8,
+          duration: 1.1,
+          yoyo: true,
+          repeat: -1,
+          stagger: 0.2,
+          ease: 'sine.inOut',
+        });
+        gsap.to('.js-hero-node-halo', {
+          attr: { r: '+=4' },
+          opacity: 0.28,
+          duration: 1.4,
+          yoyo: true,
+          repeat: -1,
+          stagger: 0.22,
           ease: 'sine.inOut',
         });
         gsap.to('.js-hero-content', {
