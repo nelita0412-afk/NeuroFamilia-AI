@@ -44,21 +44,26 @@ function EcosystemVisual() {
         className="js-eco-lines absolute inset-0 h-full w-full"
         aria-hidden="true"
       >
-        {ECOSYSTEM_LINES.map((d, i) => (
-          <line
-            key={i}
-            x1={d.split(' ')[0].replace('M', '')}
-            y1={d.split(' ')[1]}
-            x2={d.split(' ')[2].replace('L', '')}
-            y2={d.split(' ')[3]}
-            stroke="#00B8D9"
-            strokeWidth="0.35"
-            strokeDasharray="2 1.5"
-            strokeLinecap="round"
-            className="js-eco-line"
-            opacity="0.5"
-          />
-        ))}
+        {ECOSYSTEM_LINES.map((d, i) => {
+          const [p1, p2] = d.split(' ');
+          const [x1, y1] = p1.replace('M', '').split(',');
+          const [x2, y2] = p2.replace('L', '').split(',');
+          return (
+            <line
+              key={i}
+              x1={x1}
+              y1={y1}
+              x2={x2}
+              y2={y2}
+              stroke="#00B8D9"
+              strokeWidth="0.35"
+              strokeDasharray="2 1.5"
+              strokeLinecap="round"
+              className="js-eco-line"
+              opacity="0.5"
+            />
+          );
+        })}
       </svg>
 
       {/* Nodo central */}
