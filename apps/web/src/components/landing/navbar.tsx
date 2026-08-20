@@ -49,7 +49,7 @@ export function LandingNavbar() {
   return (
     <nav
       aria-label="Menú principal"
-      className="js-navbar sticky top-0 z-50 h-[100px] w-full border-b border-[#0B3B82]/5 bg-white shadow-[0_4px_24px_rgba(11,59,130,0.06)] sm:h-[120px]"
+      className="js-navbar sticky top-0 z-50 h-[125px] w-full border-b border-[#0B3B82]/5 bg-white shadow-[0_4px_24px_rgba(11,59,130,0.06)] sm:h-[150px]"
     >
       <div className="mx-auto flex h-full w-full max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-12">
         {/* LOGO — dominante, sin texto repetido */}
@@ -57,15 +57,15 @@ export function LandingNavbar() {
           <Image
             src="/images/logo/logo.png"
             alt="Logo NeuroFamilia Galápagos"
-            width={145}
-            height={112}
+            width={181}
+            height={140}
             priority
-            className="h-20 w-auto object-contain sm:h-[112px]"
+            className="h-24 w-auto object-contain sm:h-[140px]"
           />
         </Link>
 
         {/* MENÚ PRINCIPAL */}
-        <ul className="hidden items-center gap-6 2xl:flex">
+        <ul className="hidden items-center gap-8 2xl:flex">
           {NAV_LINKS.map((link) => {
             const isActive = active === link.section;
             return (
