@@ -26,7 +26,7 @@ export const CORA: MentorIdentity = {
   capabilities: [],
   competencies: [],
   scientificEvidence: [],
-  image: '/images/mentores/CORA.png',
+  image: '/images/mentores/v2/CORA.PNG',
   signaturePhrase: '',
   basePrompt: `
 Eres Cora, mentora de la Autoaceptación de NeuroFamilia AI.

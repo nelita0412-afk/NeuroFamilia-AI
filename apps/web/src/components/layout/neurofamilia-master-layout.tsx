@@ -38,7 +38,7 @@ export function NeurofamiliaMasterLayout({ children, profileName = 'Perfil activ
             </div>
             <div>
               <p className="text-[10px] uppercase tracking-[0.18em] text-[#008CC7]">NeuroFamilia</p>
-              <p className="text-sm font-semibold [font-family:Nunito,ui-rounded,system-ui,sans-serif]">Galapagos</p>
+              <p className="text-sm font-semibold font-display">Galapagos</p>
             </div>
           </div>
 

@@ -126,32 +126,52 @@ type MentorAvatarProps = {
 };
 
 function MentorAvatar({ mentor, sizeClassName, textClassName }: MentorAvatarProps) {
-  const [hasImageError, setHasImageError] = useState(false);
   const avatarSrc = resolveMentorAvatar(mentor);
-  const showImage = Boolean(avatarSrc) && !hasImageError;
 
-  useEffect(() => {
-    setHasImageError(false);
-  }, [avatarSrc, mentor]);
-
-  if (showImage) {
+  if (!avatarSrc) {
     return (
-      <span className={`relative inline-flex overflow-hidden rounded-full ring-1 ring-white/70 ${sizeClassName}`}>
-        <img
-          src={avatarSrc}
-          alt={`Avatar de ${mentor}`}
-          className="h-full w-full object-cover object-right"
-          onError={() => setHasImageError(true)}
-        />
+      <span
+        className={`inline-grid place-items-center rounded-full font-semibold text-white ${mentorToneClasses(mentor)} ${sizeClassName} ${textClassName}`}
+      >
+        {mentor.slice(0, 2)}
+      </span>
+    );
+  }
+
+  return <MentorAvatarImage src={avatarSrc} mentor={mentor} sizeClassName={sizeClassName} textClassName={textClassName} />;
+}
+
+function MentorAvatarImage({
+  src,
+  mentor,
+  sizeClassName,
+  textClassName,
+}: {
+  src: string;
+  mentor: string;
+  sizeClassName: string;
+  textClassName: string;
+}) {
+  const [hasImageError, setHasImageError] = useState(false);
+
+  if (hasImageError) {
+    return (
+      <span
+        className={`inline-grid place-items-center rounded-full font-semibold text-white ${mentorToneClasses(mentor)} ${sizeClassName} ${textClassName}`}
+      >
+        {mentor.slice(0, 2)}
       </span>
     );
   }
 
   return (
-    <span
-      className={`inline-grid place-items-center rounded-full font-semibold text-white ${mentorToneClasses(mentor)} ${sizeClassName} ${textClassName}`}
-    >
-      {mentor.slice(0, 2)}
+    <span className={`relative inline-flex overflow-hidden rounded-full ring-1 ring-white/70 ${sizeClassName}`}>
+      <img
+        src={src}
+        alt={`Avatar de ${mentor}`}
+        className="h-full w-full object-cover object-top"
+        onError={() => setHasImageError(true)}
+      />
     </span>
   );
 }
@@ -168,20 +188,24 @@ function MentoresPageContent() {
   const composerRef = useRef<HTMLTextAreaElement | null>(null);
 
   useEffect(() => {
-    setIsHydrated(true);
+    const frame = requestAnimationFrame(() => {
+      setIsHydrated(true);
 
-    try {
-      const raw = window.sessionStorage.getItem(SESSION_STORAGE_KEY);
+      try {
+        const raw = window.sessionStorage.getItem(SESSION_STORAGE_KEY);
 
-      if (!raw) {
-        return;
+        if (!raw) {
+          return;
+        }
+
+        const parsed = JSON.parse(raw) as SessionState;
+        setThreads(parsed);
+      } catch {
+        setThreads({});
       }
+    });
 
-      const parsed = JSON.parse(raw) as SessionState;
-      setThreads(parsed);
-    } catch {
-      setThreads({});
-    }
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   useEffect(() => {

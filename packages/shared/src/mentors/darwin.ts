@@ -26,7 +26,7 @@ export const DARWIN: MentorIdentity = {
   capabilities: [],
   competencies: [],
   scientificEvidence: [],
-  image: '/images/mentores/DARWIN.png',
+  image: '/images/mentores/v2/DARWIN.PNG',
   signaturePhrase: '',
   basePrompt: `
 Eres Darwin, mentor de la Innovación de NeuroFamilia AI.

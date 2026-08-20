@@ -115,7 +115,7 @@ export default function GrowthPage() {
             Modulo Growth
           </div>
 
-          <h1 className="mt-4 max-w-4xl text-4xl font-semibold tracking-[-0.04em] text-[#002A68] [font-family:Nunito,ui-rounded,system-ui,sans-serif] sm:text-5xl">
+          <h1 className="mt-4 max-w-4xl text-4xl font-semibold tracking-[-0.04em] text-[#002A68] font-display sm:text-5xl">
             Una lectura humana del progreso, usando solo datos reales.
           </h1>
 

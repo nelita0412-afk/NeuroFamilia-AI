@@ -117,7 +117,7 @@ export default function ExpedientesPage() {
             Modulo Expedientes
           </div>
 
-          <h1 className="mt-4 max-w-4xl text-4xl font-semibold tracking-[-0.04em] text-[#002A68] [font-family:Nunito,ui-rounded,system-ui,sans-serif] sm:text-5xl">
+          <h1 className="mt-4 max-w-4xl text-4xl font-semibold tracking-[-0.04em] text-[#002A68] font-display sm:text-5xl">
             Seguimiento personal con datos vivos del backend.
           </h1>
 
@@ -219,7 +219,7 @@ export default function ExpedientesPage() {
 
         <NeuroSurface>
           <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
-            <h2 className="text-2xl font-semibold tracking-[-0.03em] text-[#002A68] [font-family:Nunito,ui-rounded,system-ui,sans-serif]">
+            <h2 className="text-2xl font-semibold tracking-[-0.03em] text-[#002A68] font-display">
               Listado de expedientes
             </h2>
             {profilesQuery.isLoading ? <p className="text-sm text-[#5F8DB5]">Cargando...</p> : null}
@@ -245,7 +245,7 @@ export default function ExpedientesPage() {
                 href={`/dashboard/expedientes/${profile.id}`}
                 className="rounded-3xl border border-[#DBEBF8] bg-[#FAFDFF] p-5 transition hover:border-[#00BDEB] hover:bg-white"
               >
-                <p className="text-xl font-semibold text-[#003D78] [font-family:Nunito,ui-rounded,system-ui,sans-serif]">
+                <p className="text-xl font-semibold text-[#003D78] font-display">
                   {profile.fullName}
                 </p>
                 <p className="mt-2 text-sm text-[#5F8DB5]">{stageLabelFromValue(profile.developmentStage)}</p>

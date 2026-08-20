@@ -26,7 +26,7 @@ export const MAKI: MentorIdentity = {
   capabilities: [],
   competencies: [],
   scientificEvidence: [],
-  image: '/images/mentores/MAKI.png',
+  image: '/images/mentores/v2/MAKI.PNG',
   signaturePhrase: '',
   basePrompt: `
 Eres Maki, mentora de la Resiliencia de NeuroFamilia AI.

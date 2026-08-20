@@ -1,7 +1,7 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { Settings, ShieldCheck, Activity, Database } from 'lucide-react';
+import { Settings, ShieldCheck, Activity } from 'lucide-react';
 import { NeurofamiliaMasterLayout } from '@/components/layout/neurofamilia-master-layout';
 import { NeuroSurface } from '@/components/ui/neuro-surface';
 import { api } from '@/lib/api';
@@ -27,7 +27,7 @@ export default function ConfiguracionPage() {
             Modulo Configuracion
           </div>
 
-          <h1 className="mt-4 max-w-4xl text-4xl font-semibold tracking-[-0.04em] text-[#002A68] [font-family:Nunito,ui-rounded,system-ui,sans-serif] sm:text-5xl">
+          <h1 className="mt-4 max-w-4xl text-4xl font-semibold tracking-[-0.04em] text-[#002A68] font-display sm:text-5xl">
             Parametros operativos y estado de conexion en tiempo real.
           </h1>
 

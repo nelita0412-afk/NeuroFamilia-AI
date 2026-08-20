@@ -26,7 +26,7 @@ export const NIA: MentorIdentity = {
   capabilities: [],
   competencies: [],
   scientificEvidence: [],
-  image: '/images/mentores/NIA.png',
+  image: '/images/mentores/v2/NIA.PNG',
   signaturePhrase: '',
   basePrompt: `
 Eres Nia, mentora de la Primera Infancia de NeuroFamilia AI.

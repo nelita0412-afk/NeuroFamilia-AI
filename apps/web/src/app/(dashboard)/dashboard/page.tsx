@@ -142,7 +142,7 @@ export default function DashboardPage() {
     <NeurofamiliaMasterLayout profileName={profileName}>
       <section className="mt-8 sm:mt-10">
         <p className="text-xs uppercase tracking-[0.16em] text-[#008CC7]">{getTodayLabel()}</p>
-        <h1 className="mt-3 max-w-3xl text-3xl leading-tight text-[#002A68] [font-family:Nunito,ui-rounded,system-ui,sans-serif] sm:text-4xl lg:text-[42px]">
+        <h1 className="mt-3 max-w-3xl text-3xl leading-tight text-[#002A68] font-display sm:text-4xl lg:text-[42px]">
           {greeting}
         </h1>
         <p className="mt-3 max-w-2xl text-base text-[#0069B7] sm:text-lg">
@@ -153,7 +153,7 @@ export default function DashboardPage() {
       <section className="mt-8 grid grid-cols-1 gap-4 lg:mt-10 lg:grid-cols-3">
         <article className="relative overflow-hidden rounded-[30px] bg-gradient-to-br from-[#008CC7] via-[#0069B7] to-[#003D78] p-6 text-white shadow-[0_24px_52px_rgba(0,61,120,0.32)] sm:p-8 lg:col-span-2">
           <p className="text-xs uppercase tracking-[0.15em] text-[#DDF5FC]">Mentor {recommendedMentor}</p>
-          <h2 className="mt-3 max-w-xl text-2xl leading-tight [font-family:Nunito,ui-rounded,system-ui,sans-serif] sm:text-3xl">
+          <h2 className="mt-3 max-w-xl text-2xl leading-tight font-display sm:text-3xl">
             {mentorTagline}
           </h2>
           <p className="mt-3 max-w-xl text-sm text-[#DDF5FC] sm:text-base">
@@ -178,7 +178,7 @@ export default function DashboardPage() {
 
         <aside className="rounded-[26px] bg-white p-6 shadow-[0_18px_40px_rgba(0,61,120,0.12)] transition-transform duration-200 hover:-translate-y-0.5 sm:p-7">
           <p className="text-xs uppercase tracking-[0.14em] text-[#008CC7]">Ritmo diario</p>
-          <h3 className="mt-3 text-xl text-[#002A68] [font-family:Nunito,ui-rounded,system-ui,sans-serif]">Tu compas de hoy</h3>
+          <h3 className="mt-3 text-xl text-[#002A68] font-display">Tu compas de hoy</h3>
           <ul className="mt-4 space-y-3 text-sm text-[#0069B7]">
             <li className="flex items-center justify-between rounded-xl bg-[#F7FBFD] px-3 py-2">
               <span>Chequeo emocional</span>
@@ -197,7 +197,7 @@ export default function DashboardPage() {
       </section>
 
       <NeuroSurface className="mt-10 rounded-[28px] shadow-[0_18px_38px_rgba(0,61,120,0.10)]">
-        <h3 className="text-xl text-[#002A68] [font-family:Nunito,ui-rounded,system-ui,sans-serif]">Ruta de crecimiento</h3>
+        <h3 className="text-xl text-[#002A68] font-display">Ruta de crecimiento</h3>
         <ol className="mt-5 hidden items-center gap-3 md:flex">
           {growthStages.map((stage, index) => (
             <li key={stage} className="flex flex-1 items-center gap-3">
@@ -226,7 +226,7 @@ export default function DashboardPage() {
       <section className="mt-10">
         <div className="flex items-end justify-between gap-4">
           <div>
-            <h3 className="text-2xl text-[#002A68] [font-family:Nunito,ui-rounded,system-ui,sans-serif] sm:text-3xl">
+            <h3 className="text-2xl text-[#002A68] font-display sm:text-3xl">
               Archipiélago de Mentores
             </h3>
             <p className="mt-2 max-w-xl text-sm text-[#0069B7] sm:text-base">Ocho islas, ocho formas de acompañarte.</p>
@@ -237,7 +237,7 @@ export default function DashboardPage() {
 
       <section className="mt-10 grid grid-cols-1 gap-4 lg:grid-cols-2">
         <NeuroSurface>
-          <h3 className="text-xl text-[#002A68] [font-family:Nunito,ui-rounded,system-ui,sans-serif]">Recursos recomendados</h3>
+          <h3 className="text-xl text-[#002A68] font-display">Recursos recomendados</h3>
           <ul className="mt-4 space-y-3">
             {resources.map((item) => (
               <li key={item.title} className="rounded-2xl bg-[#F7FBFD] px-4 py-3">
@@ -251,7 +251,7 @@ export default function DashboardPage() {
         </NeuroSurface>
 
         <NeuroSurface>
-          <h3 className="text-xl text-[#002A68] [font-family:Nunito,ui-rounded,system-ui,sans-serif]">Actividad reciente</h3>
+          <h3 className="text-xl text-[#002A68] font-display">Actividad reciente</h3>
           <ul className="mt-4 space-y-3">
             {activity.map((item) => (
               <li key={item.title} className="rounded-2xl bg-[#F7FBFD] px-4 py-3">
@@ -265,7 +265,7 @@ export default function DashboardPage() {
       </section>
 
       <section className="mt-10">
-        <h3 className="text-xl text-[#002A68] [font-family:Nunito,ui-rounded,system-ui,sans-serif]">Accesos rapidos</h3>
+        <h3 className="text-xl text-[#002A68] font-display">Accesos rapidos</h3>
         <div className="mt-4 grid grid-cols-2 gap-4 lg:grid-cols-4">
           {quickLinks.map((item) => (
             <Link

@@ -26,7 +26,7 @@ export const PINGO: MentorIdentity = {
   capabilities: [],
   competencies: [],
   scientificEvidence: [],
-  image: '/images/mentores/PINGO.png',
+  image: '/images/mentores/v2/PINGO.PNG',
   signaturePhrase: '',
   basePrompt: `
 Eres Pingo, mentora de la Curiosidad y el Aprendizaje de NeuroFamilia AI.

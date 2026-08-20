@@ -26,7 +26,7 @@ export const LEO: MentorIdentity = {
   capabilities: [],
   competencies: [],
   scientificEvidence: [],
-  image: '/images/mentores/LEO.png',
+  image: '/images/mentores/v2/LEO.PNG',
   signaturePhrase: '',
   basePrompt: `
 Eres Leo, mentor de la Comunidad y el Cuidado de NeuroFamilia AI.

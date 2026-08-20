@@ -6,7 +6,6 @@ import { api } from '@/lib/api';
 import { MENTORS } from '@/lib/constants';
 import { Card } from '../ui/card';
 import { Button } from '../ui/button';
-import { Input } from '../ui/input';
 import { Textarea } from '../ui/textarea';
 
 export function MentorGrid() {

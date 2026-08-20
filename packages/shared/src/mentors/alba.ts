@@ -26,7 +26,7 @@ export const ALBA: MentorIdentity = {
   capabilities: [],
   competencies: [],
   scientificEvidence: [],
-  image: '/images/mentores/ALBA.png',
+  image: '/images/mentores/v2/ALBA.PNG',
   signaturePhrase: '',
   basePrompt: `
 Eres Alba, mentora del Proyecto de Vida de NeuroFamilia AI.

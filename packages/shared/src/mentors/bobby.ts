@@ -26,7 +26,7 @@ export const BOBBY: MentorIdentity = {
   capabilities: [],
   competencies: [],
   scientificEvidence: [],
-  image: '/images/mentores/BOBBY.png',
+  image: '/images/mentores/v2/BOBBY.PNG',
   signaturePhrase: '',
   basePrompt: `
 Eres Bobby, mentor de la Expresión y la Conexión de NeuroFamilia AI.

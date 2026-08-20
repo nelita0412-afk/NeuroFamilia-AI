@@ -112,13 +112,9 @@ export default function PersonaProfilePage() {
 
   const mentorIdentity = MENTOR_IDENTITY[selectedMentor];
   const canAskMentor = Boolean(person?.profileId) && mentorMessage.trim().length > 1 && !mentorChatMutation.isPending;
-  const mentorResponse = useMemo(() => {
-    if (!mentorChatMutation.data?.response) {
-      return 'No disponible';
-    }
-
-    return normalizeMentorResponse(mentorChatMutation.data.response);
-  }, [mentorChatMutation.data?.response]);
+  const mentorResponse = mentorChatMutation.data?.response
+    ? normalizeMentorResponse(mentorChatMutation.data.response)
+    : 'No disponible';
 
   const familiesError = familiesQuery.isError ? resolveErrorMessage(familiesQuery.error) : null;
   const profilesError = profilesQuery.isError ? resolveErrorMessage(profilesQuery.error) : null;
@@ -152,7 +148,7 @@ export default function PersonaProfilePage() {
         <div className="pt-8 sm:pt-10">
           <NeuroSurface className="rounded-[32px] p-8 sm:p-10">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#5F8DB5]">Persona no encontrada</p>
-            <h1 className="mt-3 max-w-3xl text-4xl font-semibold tracking-[-0.04em] text-[#002A68] [font-family:Nunito,ui-rounded,system-ui,sans-serif]">
+            <h1 className="mt-3 max-w-3xl text-4xl font-semibold tracking-[-0.04em] text-[#002A68] font-display">
               Esta presencia no aparece dentro del ecosistema visible.
             </h1>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-[#33618D]">
@@ -180,7 +176,7 @@ export default function PersonaProfilePage() {
             Detalle de persona
           </div>
 
-          <h1 className="mt-4 max-w-4xl text-4xl font-semibold tracking-[-0.04em] text-[#002A68] [font-family:Nunito,ui-rounded,system-ui,sans-serif] sm:text-5xl">
+          <h1 className="mt-4 max-w-4xl text-4xl font-semibold tracking-[-0.04em] text-[#002A68] font-display sm:text-5xl">
             {person?.fullName ?? 'No disponible'}
           </h1>
 

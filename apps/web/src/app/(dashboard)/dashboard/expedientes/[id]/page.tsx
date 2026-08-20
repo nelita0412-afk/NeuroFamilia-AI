@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useParams } from 'next/navigation';
-import { ArrowLeft, FileText, Sparkles } from 'lucide-react';
+import { ArrowLeft, FileText } from 'lucide-react';
 import { NeurofamiliaMasterLayout } from '@/components/layout/neurofamilia-master-layout';
 import { NeuroSurface } from '@/components/ui/neuro-surface';
 import { api } from '@/lib/api';
@@ -205,6 +205,7 @@ export default function ExpedienteDetailPage() {
     canSubmitObservation,
     createObservationMutation.isPending,
     growthQuery.data,
+    handleCreateObservation,
     observationCategory,
     observationError,
     observationNote,
@@ -223,7 +224,7 @@ export default function ExpedienteDetailPage() {
                 Detalle de expediente
               </div>
 
-              <h1 className="mt-4 max-w-4xl text-4xl font-semibold tracking-[-0.04em] text-[#002A68] [font-family:Nunito,ui-rounded,system-ui,sans-serif] sm:text-5xl">
+              <h1 className="mt-4 max-w-4xl text-4xl font-semibold tracking-[-0.04em] text-[#002A68] font-display sm:text-5xl">
                 {profileQuery.data?.fullName ?? 'No disponible'}
               </h1>
 

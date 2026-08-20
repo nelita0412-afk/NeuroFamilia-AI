@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Plus_Jakarta_Sans, Space_Grotesk } from 'next/font/google';
+import { Nunito, Plus_Jakarta_Sans } from 'next/font/google';
 import { QueryProvider } from '@/components/providers/query-provider';
 import './globals.css';
 
@@ -8,8 +8,8 @@ const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
 });
 
-const space = Space_Grotesk({
-  variable: '--font-space',
+const nunito = Nunito({
+  variable: '--font-nunito',
   subsets: ['latin'],
 });
 
@@ -22,9 +22,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="es"
-      className={`${jakarta.variable} ${space.variable} h-full antialiased`}
+      className={`${jakarta.variable} ${nunito.variable} h-full antialiased`}
     >
-      <body className="min-h-full font-sans text-slate-900">
+      <body className="min-h-full font-sans text-ink">
         <QueryProvider>{children}</QueryProvider>
       </body>
     </html>

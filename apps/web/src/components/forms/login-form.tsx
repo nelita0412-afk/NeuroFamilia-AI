@@ -42,13 +42,13 @@ export function LoginForm() {
   return (
     <form onSubmit={onSubmit} className="space-y-4">
       <div>
-        <label className="mb-1 block text-sm font-medium text-slate-700">Correo</label>
+        <label className="mb-1 block text-sm font-medium text-ocean-800">Correo</label>
         <Input type="email" placeholder="madre@familia.ai" {...register('email')} />
         {errors.email ? <p className="mt-1 text-xs text-rose-600">{errors.email.message}</p> : null}
       </div>
 
       <div>
-        <label className="mb-1 block text-sm font-medium text-slate-700">Clave</label>
+        <label className="mb-1 block text-sm font-medium text-ocean-800">Clave</label>
         <Input type="password" placeholder="********" {...register('password')} />
         {errors.password ? <p className="mt-1 text-xs text-rose-600">{errors.password.message}</p> : null}
       </div>

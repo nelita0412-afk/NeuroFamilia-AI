@@ -145,7 +145,7 @@ export default function FamiliasPage() {
             Modulo Familias
           </div>
 
-          <h1 className="mt-4 max-w-4xl text-4xl font-semibold tracking-[-0.04em] text-[#002A68] [font-family:Nunito,ui-rounded,system-ui,sans-serif] sm:text-5xl">
+          <h1 className="mt-4 max-w-4xl text-4xl font-semibold tracking-[-0.04em] text-[#002A68] font-display sm:text-5xl">
             Vinculos familiares reales, en una lectura clara y accionable.
           </h1>
 
@@ -272,7 +272,7 @@ export default function FamiliasPage() {
 
         <NeuroSurface>
           <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
-            <h2 className="text-2xl font-semibold tracking-[-0.03em] text-[#002A68] [font-family:Nunito,ui-rounded,system-ui,sans-serif]">
+            <h2 className="text-2xl font-semibold tracking-[-0.03em] text-[#002A68] font-display">
               Familias registradas
             </h2>
             {familiesQuery.isLoading ? <p className="text-sm text-[#5F8DB5]">Cargando...</p> : null}
@@ -296,7 +296,7 @@ export default function FamiliasPage() {
               <article key={family.id} className="rounded-3xl border border-[#DBEBF8] bg-[#FAFDFF] p-5">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <h3 className="text-xl font-semibold text-[#003D78] [font-family:Nunito,ui-rounded,system-ui,sans-serif]">{family.name}</h3>
+                    <h3 className="text-xl font-semibold text-[#003D78] font-display">{family.name}</h3>
                     <p className="mt-1 text-xs text-[#5F8DB5]">ID: {family.id}</p>
                   </div>
                   <span className="rounded-full bg-[#E7F6FD] px-3 py-1 text-xs font-semibold text-[#0069B7]">

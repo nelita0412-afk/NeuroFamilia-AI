@@ -47,17 +47,17 @@ export function MentorArchipelago({ recommendedMentor }: MentorArchipelagoProps)
               className="group block overflow-hidden rounded-[26px] bg-white shadow-[0_18px_40px_rgba(0,61,120,0.12)] transition-all duration-200 hover:shadow-[0_22px_44px_rgba(0,61,120,0.18)] sm:hover:-translate-y-1 motion-reduce:transform-none"
             >
               <div className="relative aspect-[9/16] overflow-hidden bg-[#F3FAFE]">
-                {/* Se muestra solo el lado derecho de la ilustracion (donde vive el personaje), recortando el panel de texto del poster original. */}
+                {/* Ilustraciones v2: personajes completos con fondo transparente; object-contain evita recortes. */}
                 <Image
                   src={identity.image}
                   alt={`Mentor ${mentor}, ${identity.shortDescription}`}
                   fill
                   sizes="(max-width: 640px) 72vw, (max-width: 1024px) 45vw, 22vw"
-                  className="object-cover object-right transition-transform duration-300 group-hover:scale-[1.03] motion-reduce:transform-none"
+                  className="object-contain transition-transform duration-300 group-hover:scale-[1.03] motion-reduce:transform-none"
                 />
                 <div className="absolute left-3 top-3">{renderStatusSlot(status)}</div>
                 <div className="absolute inset-x-3 bottom-3 rounded-2xl bg-white/85 px-3 py-2 shadow-[0_10px_24px_rgba(0,61,120,0.16)] backdrop-blur">
-                  <p className="text-sm font-bold text-[#002A68] [font-family:Nunito,ui-rounded,system-ui,sans-serif]">{mentor}</p>
+                  <p className="text-sm font-bold text-[#002A68] font-display">{mentor}</p>
                   <p className="mt-0.5 text-[10px] uppercase tracking-[0.14em] text-[#0069B7]">{identity.specialty}</p>
                 </div>
               </div>
