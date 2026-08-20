@@ -64,69 +64,174 @@ export function LandingJourney() {
 
 /* ═══════════════════════════════════════════════════════
            S2 — ACERCA DE: Quiénes Somos, Historia, Propósito,
-                Equipo, Valores y Cierre
+                Equipo, Origen, Valores, Métricas y Cierre
            ══════════════════════════════════════════════════════ */
         gsap.timeline({
           scrollTrigger: { trigger: '.js-about', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
         })
           .from('.js-about-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
           .from('.js-about-title', { y: 30, opacity: 0, duration: 0.7 }, 0.15)
-          .from('.js-about-body', { y: 24, opacity: 0, duration: 0.7 }, 0.4)
-          .from('.js-about-pillars li', { y: 20, opacity: 0, duration: 0.5, stagger: 0.06 }, 0.7);
+          .from('.js-about-body', { y: 24, opacity: 0, duration: 0.7 }, 0.4);
 
+        /* Ecosistema — nodos conectados */
+        const ecoTl = gsap.timeline({
+          scrollTrigger: { trigger: '.js-eco', start: 'top 75%', end: 'bottom 40%', scrub: 0.5 },
+        });
+        ecoTl
+          .from('.js-eco-hub', { scale: 0, opacity: 0, duration: 0.7, ease: 'back.out(1.6)' }, 0)
+          .from('.js-eco-line', {
+            strokeDashoffset: 100,
+            opacity: 0,
+            duration: 0.9,
+            stagger: 0.1,
+            ease: 'power1.inOut',
+          }, 0.2)
+          .from('.js-eco-node', {
+            scale: 0.4,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.12,
+            ease: 'back.out(1.6)',
+          }, 0.5);
+        gsap.to('.js-eco-pulse', {
+          scale: 1.35,
+          opacity: 0.4,
+          duration: 2.2,
+          yoyo: true,
+          repeat: -1,
+          ease: 'sine.inOut',
+        });
+        gsap.from('.js-eco-mobile-node', {
+          y: 24,
+          opacity: 0,
+          duration: 0.6,
+          stagger: 0.1,
+          scrollTrigger: { trigger: '.js-eco-mobile', start: 'top 80%', end: 'bottom 50%', scrub: 0.4 },
+        });
+
+        /* Historia — línea de tiempo horizontal */
         gsap.timeline({
           scrollTrigger: { trigger: '.js-about-history', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
         })
           .from('.js-about-history-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
           .from('.js-about-history-title', { y: 30, opacity: 0, duration: 0.6 }, 0.15)
-          .from('.js-about-history-body', { y: 24, opacity: 0, duration: 0.7 }, 0.3)
-          .from('.js-about-timeline-card', { y: 40, opacity: 0, duration: 0.7 }, 0.4);
+          .from('.js-about-history-body', { y: 24, opacity: 0, duration: 0.7 }, 0.3);
+        gsap.from('.js-timeline-line', {
+          scaleX: 0,
+          transformOrigin: 'left center',
+          duration: 1.2,
+          scrollTrigger: { trigger: '.js-timeline', start: 'top 75%', end: 'bottom 45%', scrub: 0.5 },
+        });
+        gsap.from('.js-timeline-item', {
+          y: 40,
+          opacity: 0,
+          duration: 0.7,
+          stagger: 0.12,
+          ease: 'power2.out',
+          scrollTrigger: { trigger: '.js-timeline', start: 'top 75%', end: 'bottom 45%', scrub: 0.5 },
+        });
+        gsap.from('.js-timeline-mobile li', {
+          y: 30,
+          opacity: 0,
+          duration: 0.6,
+          stagger: 0.12,
+          scrollTrigger: { trigger: '.js-timeline-mobile', start: 'top 80%', end: 'bottom 50%', scrub: 0.4 },
+        });
 
+        /* Propósito — tarjetas premium */
         gsap.timeline({
           scrollTrigger: { trigger: '.js-about-purpose', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
         })
           .from('.js-about-purpose-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
           .from('.js-about-purpose-title', { y: 30, opacity: 0, duration: 0.6 }, 0.15)
-          .from('.js-about-purpose-grid li', {
-            y: 40,
+          .from('.js-purpose-card', {
+            y: 50,
             opacity: 0,
-            duration: 0.6,
-            stagger: 0.12,
+            scale: 0.94,
+            duration: 0.7,
+            stagger: 0.14,
             ease: 'power2.out',
           }, 0.35);
 
+        /* Equipo — bloques editoriales alternados */
         gsap.timeline({
           scrollTrigger: { trigger: '.js-about-founders', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
         })
           .from('.js-about-founders-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
-          .from('.js-about-founders-title', { y: 30, opacity: 0, duration: 0.6 }, 0.15)
-          .from('.js-about-founders-grid li', {
-            y: 40,
+          .from('.js-about-founders-title', { y: 30, opacity: 0, duration: 0.6 }, 0.15);
+        gsap.utils.toArray<HTMLElement>('.js-founder-block').forEach((block) => {
+          const photo = block.querySelector('.js-founder-photo');
+          const photoOnRight = block.querySelector('.lg\\:order-2') !== null;
+          gsap.from(photo, {
+            x: photoOnRight ? 60 : -60,
+            opacity: 0,
+            duration: 0.9,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: block, start: 'top 70%', end: 'bottom 40%', scrub: 0.5 },
+          });
+          gsap.from(block.children[1], {
+            x: photoOnRight ? -60 : 60,
+            opacity: 0,
+            duration: 0.9,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: block, start: 'top 70%', end: 'bottom 40%', scrub: 0.5 },
+          });
+        });
+
+        /* ¿Por qué nace NeuroFamilia? */
+        gsap.timeline({
+          scrollTrigger: { trigger: '.js-about-why', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
+        })
+          .from('.js-about-why-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
+          .from('.js-about-why-title', { y: 30, opacity: 0, duration: 0.6 }, 0.15)
+          .from('.js-about-why-lead', { y: 24, opacity: 0, duration: 0.7 }, 0.3)
+          .from('.js-why-item', {
+            y: 30,
             opacity: 0,
             duration: 0.6,
             stagger: 0.12,
             ease: 'power2.out',
-          }, 0.35);
+          }, 0.5);
+        gsap.from('.js-why-photo', {
+          x: -60,
+          opacity: 0,
+          duration: 1,
+          ease: 'power2.out',
+          scrollTrigger: { trigger: '.js-about-why', start: 'top 70%', end: 'bottom 40%', scrub: 0.5 },
+        });
 
+        /* Valores — banda horizontal */
         gsap.timeline({
-          scrollTrigger: { trigger: '.js-about-values', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
+          scrollTrigger: { trigger: '.js-about-values', start: 'top 75%', end: 'bottom 40%', scrub: 0.5 },
         })
-          .from('.js-about-values-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
-          .from('.js-about-values-title', { y: 30, opacity: 0, duration: 0.6 }, 0.15)
-          .from('.js-about-values-grid li', {
-            y: 40,
+          .from('.js-about-values-kicker', { y: 20, opacity: 0, duration: 0.5 }, 0)
+          .from('.js-value-item', {
+            y: 30,
             opacity: 0,
+            scale: 0.9,
             duration: 0.5,
             stagger: 0.08,
-            ease: 'power2.out',
-          }, 0.35);
+            ease: 'back.out(1.5)',
+          }, 0.2);
 
+        /* Métricas institucionales */
+        gsap.from('.js-metric', {
+          y: 40,
+          opacity: 0,
+          duration: 0.7,
+          stagger: 0.12,
+          ease: 'power2.out',
+          scrollTrigger: { trigger: '.js-about-metrics', start: 'top 75%', end: 'bottom 45%', scrub: 0.5 },
+        });
+
+        /* Cierre inspirador */
         gsap.timeline({
           scrollTrigger: { trigger: '.js-about-closing', start: 'top 70%', end: 'bottom 30%', scrub: 0.4 },
         })
-          .from('.js-about-closing-title', { y: 30, opacity: 0, duration: 0.6 }, 0)
-          .from('.js-about-closing-body', { y: 24, opacity: 0, duration: 0.6 }, 0.2)
-          .from('.js-about-closing-cta', { y: 20, opacity: 0, duration: 0.5 }, 0.4);
+          .from('.js-about-closing-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
+          .from('.js-about-closing-title', { y: 30, opacity: 0, duration: 0.7 }, 0.15)
+          .from('.js-about-closing-body', { y: 24, opacity: 0, duration: 0.6 }, 0.35)
+          .from('.js-about-closing-cta', { y: 20, opacity: 0, duration: 0.5 }, 0.55);
 
         /* ═══════════════════════════════════════════════════════
            S3 — IMPACTO: Las cifras entran en escena
