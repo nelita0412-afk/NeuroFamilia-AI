@@ -1,8 +1,9 @@
 const GROUPS: Array<{ label: string; x: number; y: number }> = [
-  { label: 'Niños', x: 150, y: 160 },
-  { label: 'Adolescentes', x: 660, y: 130 },
-  { label: 'Familias', x: 130, y: 400 },
-  { label: 'Profesionales', x: 680, y: 410 },
+  { label: 'Niños', x: 175, y: 140 },
+  { label: 'Adolescentes', x: 645, y: 130 },
+  { label: 'Familias', x: 130, y: 385 },
+  { label: 'Profesionales', x: 690, y: 390 },
+  { label: 'Instituciones', x: 410, y: 60 },
 ];
 
 export function CommunityOrbit({ className = '' }: { className?: string }) {
@@ -15,13 +16,13 @@ export function CommunityOrbit({ className = '' }: { className?: string }) {
         </radialGradient>
       </defs>
 
-      <circle cx="400" cy="255" r="190" fill="url(#comm-glow)" opacity="0.6" />
+      <circle cx="400" cy="260" r="195" fill="url(#comm-glow)" opacity="0.6" />
 
       {GROUPS.map((g, i) => (
         <path
           key={i}
           className="js-comm-line"
-          d={`M400,255 L${g.x},${g.y}`}
+          d={`M400,260 L${g.x},${g.y}`}
           stroke="#29C7D8"
           strokeWidth="1.8"
           strokeLinecap="round"
@@ -32,9 +33,9 @@ export function CommunityOrbit({ className = '' }: { className?: string }) {
       ))}
 
       <g className="js-comm-core">
-        <circle cx="400" cy="255" r="46" fill="#1476C6" />
-        <circle cx="400" cy="255" r="46" fill="none" stroke="#29C7D8" strokeWidth="2" opacity="0.8" />
-        <circle cx="400" cy="255" r="8" fill="#F8FBFF" />
+        <circle cx="400" cy="260" r="46" fill="#1476C6" />
+        <circle cx="400" cy="260" r="46" fill="none" stroke="#29C7D8" strokeWidth="2" opacity="0.8" />
+        <circle cx="400" cy="260" r="8" fill="#F8FBFF" />
       </g>
 
       {GROUPS.map((g, i) => (
@@ -47,9 +48,9 @@ export function CommunityOrbit({ className = '' }: { className?: string }) {
             y={g.y + 4}
             textAnchor="middle"
             fill="#F8FBFF"
-            fontSize="19"
+            fontSize="18"
             fontWeight="700"
-            letterSpacing="0.1em"
+            letterSpacing="0.08em"
           >
             {g.label.toUpperCase()}
           </text>

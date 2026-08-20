@@ -1,20 +1,19 @@
 export type Island = {
   id: string;
   label: string;
-  mentor: string;
   x: number;
   y: number;
 };
 
 export const ISLANDS: Island[] = [
-  { id: 'proposito', label: 'Propósito', mentor: 'ALBA', x: 250, y: 185 },
-  { id: 'emociones', label: 'Emociones', mentor: 'BOBBY', x: 480, y: 120 },
-  { id: 'aprendizaje', label: 'Aprendizaje', mentor: 'PINGO', x: 700, y: 145 },
-  { id: 'resiliencia', label: 'Resiliencia', mentor: 'MAKI', x: 920, y: 225 },
-  { id: 'familia', label: 'Familia', mentor: 'CORA', x: 1010, y: 425 },
-  { id: 'liderazgo', label: 'Liderazgo', mentor: 'LEO', x: 855, y: 565 },
-  { id: 'creatividad', label: 'Creatividad', mentor: 'NIA', x: 615, y: 625 },
-  { id: 'tecnologia', label: 'Tecnología', mentor: 'DARWIN', x: 355, y: 565 },
+  { id: 'proposito', label: 'Propósito', x: 250, y: 185 },
+  { id: 'emociones', label: 'Emociones', x: 480, y: 120 },
+  { id: 'aprendizaje', label: 'Aprendizaje', x: 700, y: 145 },
+  { id: 'resiliencia', label: 'Resiliencia', x: 920, y: 225 },
+  { id: 'familia', label: 'Familia', x: 1010, y: 425 },
+  { id: 'liderazgo', label: 'Liderazgo', x: 855, y: 565 },
+  { id: 'creatividad', label: 'Creatividad', x: 615, y: 625 },
+  { id: 'tecnologia', label: 'Tecnología', x: 355, y: 565 },
 ];
 
 const ROUTES: Array<[number, number]> = [
@@ -37,6 +36,10 @@ function islandPath(x: number, y: number) {
 export function ArchipelagoMap({ className = '' }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 1200 700" fill="none" aria-hidden="true">
+      <style>{`
+        .js-isle { cursor: pointer; transform-box: fill-box; transform-origin: center; transition: transform .35s ease, filter .35s ease; }
+        .js-isle:hover { transform: scale(1.12); filter: drop-shadow(0 0 18px rgba(41,199,216,0.8)); }
+      `}</style>
       <defs>
         <radialGradient id="arch-glow" cx="50%" cy="50%" r="50%">
           <stop offset="0%" stopColor="#29C7D8" stopOpacity="0.5" />
@@ -86,9 +89,6 @@ export function ArchipelagoMap({ className = '' }: { className?: string }) {
             letterSpacing="0.12em"
           >
             {isl.label.toUpperCase()}
-          </text>
-          <text x={isl.x} y={isl.y + 70} textAnchor="middle" fill="#29C7D8" fontSize="13" fontWeight="600">
-            {isl.mentor}
           </text>
         </g>
       ))}
