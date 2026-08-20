@@ -2,20 +2,20 @@ import type { Metadata } from 'next';
 
 import { LandingPage } from '@/components/landing/landing-page';
 import { LandingNavbar } from '@/components/landing/navbar';
-import { HeroSection } from '@/components/landing/sections/hero';
+import { PlatformSection } from '@/components/landing/sections/platform';
 import { LandingFooter } from '@/components/landing/footer';
 
 export const metadata: Metadata = {
-  title: 'NeuroFamilia Galápagos — Desarrollo humano y bienestar comunitario',
+  title: 'Plataforma · NeuroFamilia Galápagos',
   description:
-    'Plataforma digital para el desarrollo humano, la salud mental y el bienestar comunitario en Galápagos.',
+    'Tecnología al servicio del desarrollo humano: seguimiento, Archipiélago, mentoría con IA, recursos y comunidad.',
 };
 
-export default function Home() {
+export default function PlataformaPage() {
   return (
-    <LandingPage page="inicio">
+    <LandingPage page="plataforma">
       <LandingNavbar />
-      <HeroSection />
+      <PlatformSection />
       <LandingFooter />
     </LandingPage>
   );

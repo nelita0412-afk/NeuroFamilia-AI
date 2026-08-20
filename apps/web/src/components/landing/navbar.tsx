@@ -1,45 +1,29 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 
 const NAV_LINKS = [
-  { label: 'Inicio', href: '#inicio', section: 'inicio' },
-  { label: 'Acerca de', href: '#proposito', section: 'proposito' },
-  { label: 'Historia', href: '#impacto', section: 'impacto' },
-  { label: 'Teoría de Cambio', href: '#dimensiones', section: 'dimensiones' },
-  { label: 'NeuroMentores', href: '#mentores', section: 'mentores' },
-  { label: 'Servicios', href: '#cta', section: 'cta' },
-  { label: 'Plataforma', href: '#plataforma', section: 'plataforma' },
+  { label: 'Inicio', href: '/' },
+  { label: 'Acerca de', href: '/acerca' },
+  { label: 'Historia', href: '/historia' },
+  { label: 'Teoría de Cambio', href: '/teoria-de-cambio' },
+  { label: 'NeuroMentores', href: '/neuromentores' },
+  { label: 'Servicios', href: '/servicios' },
+  { label: 'Plataforma', href: '/plataforma' },
 ];
 
 type Locale = 'es' | 'en';
 
 export function LandingNavbar() {
-  const [active, setActive] = useState('inicio');
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [locale, setLocale] = useState<Locale>('es');
 
-  useEffect(() => {
-    const sections = NAV_LINKS.map((l) => l.section);
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActive(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: '-40% 0px -55% 0px' }
-    );
-    sections.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
-  }, []);
+  const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname === href);
 
   return (
     <nav
@@ -48,7 +32,7 @@ export function LandingNavbar() {
     >
       <div className="mx-auto grid h-full w-full max-w-[1500px] grid-cols-[auto_1fr_auto] items-center px-6 sm:px-10 lg:grid-cols-[22%_1fr_12%] lg:px-12">
         {/* LOGO — protagonista, sin texto adicional */}
-        <Link href="/#inicio" className="flex items-center justify-self-start" aria-label="Inicio NeuroFamilia Galápagos">
+        <Link href="/" className="flex items-center justify-self-start" aria-label="Inicio NeuroFamilia Galápagos">
           <Image
             src="/images/logo/logo.png"
             alt="Logo NeuroFamilia Galápagos"
@@ -62,20 +46,19 @@ export function LandingNavbar() {
         {/* MENÚ PRINCIPAL — centrado entre logo y botón EN */}
         <ul className="hidden items-center gap-9 lg:flex">
           {NAV_LINKS.map((link) => {
-            const isActive = active === link.section;
+            const isActiveLink = isActive(link.href);
             return (
               <li key={link.label} className="relative">
                 <Link
                   href={link.href}
-                  onClick={() => setActive(link.section)}
                   className={`relative whitespace-nowrap py-2 text-lg font-semibold transition-colors duration-300 ${
-                    isActive ? 'text-[#0066CC]' : 'text-[#111827]'
+                    isActiveLink ? 'text-[#0066CC]' : 'text-[#111827]'
                   } hover:text-[#0066CC]`}
                 >
                   {link.label}
                   <span
                     className={`absolute inset-x-0 -bottom-0.5 h-0.5 rounded-full bg-[#0066CC] transition-transform duration-300 ${
-                      isActive ? 'scale-x-100' : 'scale-x-0'
+                      isActiveLink ? 'scale-x-100' : 'scale-x-0'
                     }`}
                   />
                 </Link>
@@ -118,17 +101,14 @@ export function LandingNavbar() {
       >
         <ul className="flex flex-col gap-1 border-t border-[#0B3B82]/5 px-5 py-4 sm:px-8">
           {NAV_LINKS.map((link) => {
-            const isActive = active === link.section;
+            const isActiveLink = isActive(link.href);
             return (
               <li key={link.label}>
                 <Link
                   href={link.href}
-                  onClick={() => {
-                    setActive(link.section);
-                    setOpen(false);
-                  }}
+                  onClick={() => setOpen(false)}
                   className={`block py-2.5 text-sm font-semibold transition-colors duration-300 ${
-                    isActive ? 'text-[#0066CC]' : 'text-[#111827]'
+                    isActiveLink ? 'text-[#0066CC]' : 'text-[#111827]'
                   } hover:text-[#0066CC]`}
                 >
                   {link.label}

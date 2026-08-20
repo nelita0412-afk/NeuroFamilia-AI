@@ -38,7 +38,7 @@ export function HeroSection() {
         </p>
 
         <Link
-          href="/login"
+          href="/acerca"
           className="js-hero-cta mt-10 inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-bold text-[#00285A] shadow-[0_12px_32px_rgba(0,40,90,0.35)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#00B8D9] hover:text-white"
         >
           Conocer NeuroFamilia

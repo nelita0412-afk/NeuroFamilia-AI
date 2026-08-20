@@ -22,10 +22,10 @@ function FacebookIcon({ className = '' }: { className?: string }) {
 }
 
 const EXPLORE_LINKS = [
-  { label: 'Inicio', href: '#inicio' },
-  { label: 'Acerca de', href: '#proposito' },
-  { label: 'Historia', href: '#impacto' },
-  { label: 'Teoría de Cambio', href: '#dimensiones' },
+  { label: 'Inicio', href: '/' },
+  { label: 'Acerca de', href: '/acerca' },
+  { label: 'Historia', href: '/historia' },
+  { label: 'Teoría de Cambio', href: '/teoria-de-cambio' },
 ];
 
 const COMMUNITY_LINKS = [
@@ -36,9 +36,9 @@ const COMMUNITY_LINKS = [
 ];
 
 const RESOURCES_LINKS = [
-  { label: 'NeuroMentores', href: '#mentores' },
-  { label: 'Plataforma', href: '#plataforma' },
-  { label: 'Recursos', href: '#plataforma' },
+  { label: 'NeuroMentores', href: '/neuromentores' },
+  { label: 'Plataforma', href: '/plataforma' },
+  { label: 'Servicios', href: '/servicios' },
 ];
 
 const SOCIAL_LINKS = [
@@ -59,7 +59,7 @@ export function LandingFooter() {
         <div className="grid gap-8 lg:grid-cols-[1.8fr_1fr_1fr_1fr_1.1fr] lg:gap-6">
           {/* COLUMNA 1 — IDENTIDAD */}
           <div className="flex flex-col items-center gap-2.5 lg:items-start">
-            <Link href="/#inicio" aria-label="Inicio NeuroFamilia Galápagos" className="lg:self-center">
+            <Link href="/" aria-label="Inicio NeuroFamilia Galápagos" className="lg:self-center">
               <Image
                 src="/images/logo/logo-white.png"
                 alt="Logo NeuroFamilia Galápagos"

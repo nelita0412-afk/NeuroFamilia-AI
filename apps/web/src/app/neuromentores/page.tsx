@@ -2,20 +2,20 @@ import type { Metadata } from 'next';
 
 import { LandingPage } from '@/components/landing/landing-page';
 import { LandingNavbar } from '@/components/landing/navbar';
-import { HeroSection } from '@/components/landing/sections/hero';
+import { MentorsSection } from '@/components/landing/sections/mentors';
 import { LandingFooter } from '@/components/landing/footer';
 
 export const metadata: Metadata = {
-  title: 'NeuroFamilia Galápagos — Desarrollo humano y bienestar comunitario',
+  title: 'NeuroMentores · NeuroFamilia Galápagos',
   description:
-    'Plataforma digital para el desarrollo humano, la salud mental y el bienestar comunitario en Galápagos.',
+    'Ocho guías con personalidad, metodología y una mirada propia sobre el ser humano. Acompañantes vivos del crecimiento.',
 };
 
-export default function Home() {
+export default function NeuroMentoresPage() {
   return (
-    <LandingPage page="inicio">
+    <LandingPage page="neuromentores">
       <LandingNavbar />
-      <HeroSection />
+      <MentorsSection />
       <LandingFooter />
     </LandingPage>
   );

@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 const STATS = [
   { value: '8', label: 'Dimensiones del desarrollo humano' },
   { value: '8', label: 'NeuroMentores con identidad propia' },
@@ -30,12 +32,12 @@ export function ImpactSection() {
         </dl>
 
         <div className="mt-14 text-center">
-          <a
-            href="#dimensiones"
+          <Link
+            href="/teoria-de-cambio"
             className="inline-flex items-center gap-2 border-b-2 border-[#0066CC] pb-1 text-sm font-bold uppercase tracking-[0.2em] text-[#0066CC] transition-colors duration-200 hover:border-[#00B8D9] hover:text-[#00B8D9]"
           >
             Explorar las dimensiones
-          </a>
+          </Link>
         </div>
       </div>
     </section>
