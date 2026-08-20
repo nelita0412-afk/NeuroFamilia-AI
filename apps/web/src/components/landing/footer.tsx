@@ -55,8 +55,8 @@ export function LandingFooter() {
         aria-hidden="true"
       />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-5 pb-5 pt-8 sm:px-8 lg:px-12">
-        <div className="grid gap-8 lg:grid-cols-[1.8fr_1fr_1fr_1fr_1.1fr] lg:gap-6">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 pb-4 pt-3 sm:px-8 lg:px-12">
+        <div className="grid gap-6 lg:grid-cols-[1.8fr_1fr_1fr_1fr_1.1fr] lg:gap-5">
           {/* COLUMNA 1 — IDENTIDAD */}
           <div className="flex flex-col items-center gap-2.5 lg:items-start">
             <Link href="/" aria-label="Inicio NeuroFamilia Galápagos" className="lg:self-center">
@@ -65,17 +65,16 @@ export function LandingFooter() {
                 alt="Logo NeuroFamilia Galápagos"
                 width={247}
                 height={190}
-                className="h-[190px] w-auto object-contain"
+                className="h-[120px] w-auto object-contain"
               />
             </Link>
             <p className="max-w-xs text-center text-sm leading-5 text-white/80 lg:text-left">
-              NeuroFamilia integra ciencia, tecnología y acompañamiento humano para fortalecer el
-              desarrollo de niños, adolescentes, familias, profesionales e instituciones en
+              Ciencia, tecnología y acompañamiento humano para el bienestar de las familias de
               Galápagos.
             </p>
 
             {/* REDES SOCIALES — solo iconos, distribución horizontal */}
-            <ul className="mt-0.5 flex items-center gap-2.5 lg:self-center">
+            <ul className="flex items-center gap-2.5 lg:self-center">
               {SOCIAL_LINKS.map(({ label, href, icon: Icon }) => (
                 <li key={label}>
                   <a
@@ -83,9 +82,9 @@ export function LandingFooter() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="grid h-8 w-8 place-items-center rounded-full bg-white/10 text-white/80 ring-1 ring-white/15 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-[#0A66D4] hover:ring-white"
+                    className="grid h-7 w-7 place-items-center rounded-full bg-white/10 text-white/80 ring-1 ring-white/15 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-[#0A66D4] hover:ring-white"
                   >
-                    <Icon className="h-4 w-4" />
+                    <Icon className="h-3.5 w-3.5" />
                   </a>
                 </li>
               ))}
@@ -173,19 +172,18 @@ export function LandingFooter() {
           </div>
         </div>
 
-        {/* SUBFOOTER — estructura institucional */}
-        <div className="mt-6 border-t border-white/15 pt-6">
+        {/* CIERRE INSTITUCIONAL — estilo académico, sin cajas ni fondos */}
+        <div className="mt-5 border-t border-white/15 pt-5 pb-4">
           <div className="flex flex-col items-center justify-center gap-1 text-center">
-            <p className="text-base font-extrabold text-white">NeuroFamilia © 2026</p>
-            <p className="text-sm leading-6 text-white/80">
-              Impulsado por la{' '}
-              <span className="font-bold text-white">
-                Fundación Centro Integral de Bienestar e Innovación Social
-              </span>
+            <p className="text-sm font-semibold tracking-wide text-white/90">NeuroFamilia © 2026</p>
+            <p className="text-sm text-white/70">Impulsado por la</p>
+            <p className="mt-1.5 max-w-2xl text-[22px] font-bold leading-tight text-white">
+              Fundación Centro Integral de Bienestar e Innovación Social
             </p>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
+            <p className="mt-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/60">
               🌎 Bienestar • Innovación Social • Desarrollo Humano
             </p>
+            <p className="mt-1 text-xs text-white/50">San Cristóbal, Galápagos – Ecuador</p>
           </div>
         </div>
       </div>
