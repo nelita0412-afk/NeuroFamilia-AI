@@ -4,6 +4,7 @@ import { LandingPage } from '@/components/landing/landing-page';
 import { LandingNavbar } from '@/components/landing/navbar';
 import { HeroSection } from '@/components/landing/sections/hero';
 import { ImpactReachedSection } from '@/components/landing/sections/impact-reached';
+import { FoundationSection } from '@/components/landing/sections/foundation';
 import { LandingFooter } from '@/components/landing/footer';
 
 export const metadata: Metadata = {
@@ -18,6 +19,7 @@ export default function Home() {
       <LandingNavbar />
       <HeroSection />
       <ImpactReachedSection />
+      <FoundationSection />
       <LandingFooter />
     </LandingPage>
   );

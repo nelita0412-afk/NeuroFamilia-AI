@@ -71,6 +71,24 @@ export function LandingPage({ page, children }: { page: LandingPageKey; children
             scrollTrigger: { trigger: '.js-impact-reached', start: 'top 80%', once: true },
             clearProps: 'transform,opacity',
           });
+
+          /* Fundación — tarjetas premium 01/02/03 (reveal único) */
+          gsap.timeline({
+            scrollTrigger: { trigger: '.js-foundation', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
+          })
+            .from('.js-foundation-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
+            .from('.js-foundation-title', { y: 30, opacity: 0, duration: 0.6 }, 0.15)
+            .from('.js-foundation-body', { y: 24, opacity: 0, duration: 0.7 }, 0.3);
+          gsap.from('.js-foundation-card', {
+            y: 50,
+            opacity: 0,
+            scale: 0.95,
+            duration: 0.7,
+            stagger: 0.14,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: '.js-foundation', start: 'top 80%', once: true },
+            clearProps: 'transform,opacity',
+          });
         }
 
         if (page === 'acerca') {
