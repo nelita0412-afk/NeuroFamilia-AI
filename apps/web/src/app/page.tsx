@@ -47,11 +47,11 @@ export default function Home() {
           <header className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <Image
-                src="/images/logo/logo.jpg"
+                src="/images/logo/logo.png"
                 alt="Logo NeuroFamilia AI"
                 width={44}
                 height={44}
-                className="h-11 w-11 rounded-2xl bg-white object-cover ring-1 ring-white/25"
+                className="h-11 w-11 object-contain"
               />
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.22em] text-ocean-100">NeuroFamilia AI</p>

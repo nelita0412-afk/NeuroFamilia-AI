@@ -32,11 +32,11 @@ export function NeurofamiliaMasterLayout({ children, profileName = 'Perfil activ
         <header className="flex items-center justify-between rounded-3xl bg-white/90 px-4 py-3 shadow-[0_12px_36px_rgba(0,61,120,0.10)] backdrop-blur md:px-6">
           <div className="flex items-center gap-3">
             <Image
-              src="/images/logo/logo.jpg"
+              src="/images/logo/logo.png"
               alt="Logo NeuroFamilia"
               width={40}
               height={40}
-              className="h-10 w-10 rounded-2xl object-cover shadow-[0_10px_24px_rgba(0,105,183,0.35)]"
+              className="h-10 w-10 object-contain"
             />
             <div>
               <p className="text-[10px] uppercase tracking-[0.18em] text-[#008CC7]">NeuroFamilia</p>
