@@ -51,27 +51,27 @@ export function LandingFooter() {
     <footer className="relative overflow-hidden bg-gradient-to-br from-[#0F4AA2] via-[#0A66D4] to-[#12C7E5] text-white">
       {/* MARCA DE AGUA — tortuga NeuroFamilia */}
       <HeroTurtle
-        className="pointer-events-none absolute -right-24 -top-16 h-[560px] w-auto opacity-[0.13]"
+        className="pointer-events-none absolute -right-20 -top-10 h-[420px] w-auto opacity-[0.12]"
         aria-hidden="true"
       />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-5 pb-10 pt-20 sm:px-8 lg:px-12">
-        <div className="grid gap-14 lg:grid-cols-[2.2fr_1fr_1fr_1fr_1.2fr] lg:gap-10">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 pb-8 pt-12 sm:px-8 lg:px-12">
+        <div className="grid gap-10 lg:grid-cols-[1.8fr_1fr_1fr_1fr_1.1fr] lg:gap-8">
           {/* COLUMNA 1 — IDENTIDAD */}
-          <div className="flex flex-col items-start gap-6">
+          <div className="flex flex-col items-start gap-4">
             <Link href="/#inicio" aria-label="Inicio NeuroFamilia Galápagos">
               <Image
                 src="/images/logo/logo-white.png"
                 alt="Logo NeuroFamilia Galápagos"
-                width={389}
-                height={300}
-                className="h-[300px] w-auto object-contain"
+                width={285}
+                height={220}
+                className="h-[220px] w-auto object-contain"
               />
             </Link>
-            <p className="max-w-md text-sm leading-7 text-white/80">
+            <p className="max-w-xs text-sm leading-6 text-white/80">
               NeuroFamilia integra ciencia, tecnología y acompañamiento humano para fortalecer el
               desarrollo de niños, adolescentes, familias, profesionales e instituciones en
-              Galápagos, promoviendo bienestar, innovación social y crecimiento comunitario.
+              Galápagos.
             </p>
 
             {/* REDES SOCIALES — solo iconos, distribución horizontal */}
@@ -174,13 +174,10 @@ export function LandingFooter() {
         </div>
 
         {/* SUBFOOTER */}
-        <div className="mt-16 border-t border-white/15 pt-8">
+        <div className="mt-10 border-t border-white/15 pt-6">
           <div className="flex flex-col items-center gap-4 text-center lg:flex-row lg:justify-between lg:text-left">
             <p className="text-xs text-white/60">
               © 2026 NeuroFamilia Galápagos. Todos los derechos reservados.
-            </p>
-            <p className="text-xs text-white/60">
-              Desarrollo humano, ciencia y tecnología para transformar vidas.
             </p>
             <div className="flex items-center gap-6">
               <Link
