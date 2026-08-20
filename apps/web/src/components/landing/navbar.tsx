@@ -13,15 +13,9 @@ const NAV_LINKS = [
   { label: 'NeuroMentores', href: '#mentores', section: 'mentores' },
   { label: 'Servicios', href: '#cta', section: 'cta' },
   { label: 'Plataforma', href: '#plataforma', section: 'plataforma' },
-  { label: 'Recursos', href: '#plataforma', section: 'plataforma' },
 ];
 
-const LOCALES = [
-  { code: 'es', label: 'ES' },
-  { code: 'en', label: 'EN' },
-] as const;
-
-type Locale = (typeof LOCALES)[number]['code'];
+type Locale = 'es' | 'en';
 
 export function LandingNavbar() {
   const [active, setActive] = useState('inicio');
@@ -50,23 +44,23 @@ export function LandingNavbar() {
   return (
     <nav
       aria-label="Menú principal"
-      className="js-navbar sticky top-0 z-50 h-[88px] w-full border-b border-[#0B3B82]/5 bg-white shadow-[0_4px_24px_rgba(11,59,130,0.06)]"
+      className="js-navbar sticky top-0 z-50 h-[115px] w-full border-b border-[#0B3B82]/5 bg-white shadow-[0_4px_24px_rgba(11,59,130,0.06)]"
     >
-      <div className="mx-auto flex h-full w-full max-w-7xl items-center justify-between gap-6 px-5 sm:px-8 lg:px-10">
-        {/* LOGO — dominante, sin texto repetido */}
-        <Link href="/#inicio" className="flex shrink-0 items-center" aria-label="Inicio NeuroFamilia Galápagos">
+      <div className="mx-auto grid h-full w-full max-w-[1400px] grid-cols-[1fr_auto_1fr] items-center px-6 sm:px-10">
+        {/* LOGO — protagonista, sin texto adicional */}
+        <Link href="/#inicio" className="flex items-center justify-self-start" aria-label="Inicio NeuroFamilia Galápagos">
           <Image
             src="/images/logo/logo.png"
             alt="Logo NeuroFamilia Galápagos"
-            width={88}
-            height={68}
+            width={130}
+            height={100}
             priority
-            className="h-16 w-auto object-contain lg:h-[68px]"
+            className="h-[100px] w-auto object-contain"
           />
         </Link>
 
-        {/* MENÚ PRINCIPAL — siempre visible en desktop */}
-        <ul className="hidden items-center gap-6 lg:flex">
+        {/* MENÚ PRINCIPAL — centrado entre logo y botón EN */}
+        <ul className="hidden items-center gap-5 lg:flex">
           {NAV_LINKS.map((link) => {
             const isActive = active === link.section;
             return (
@@ -74,7 +68,7 @@ export function LandingNavbar() {
                 <Link
                   href={link.href}
                   onClick={() => setActive(link.section)}
-                  className={`relative whitespace-nowrap py-2 text-[15px] font-semibold transition-colors duration-300 ${
+                  className={`relative whitespace-nowrap py-2 text-lg font-semibold transition-colors duration-300 ${
                     isActive ? 'text-[#0066CC]' : 'text-[#111827]'
                   } hover:text-[#0066CC]`}
                 >
@@ -90,24 +84,19 @@ export function LandingNavbar() {
           })}
         </ul>
 
-        {/* SELECTOR DE IDIOMA — solo texto, sin banderas */}
-        <div className="hidden items-center gap-1 rounded-full border border-[#0B3B82]/15 bg-[#F0F7FF] p-1 lg:flex" role="group" aria-label="Selector de idioma">
-          {LOCALES.map((l) => (
-            <button
-              key={l.code}
-              type="button"
-              onClick={() => setLocale(l.code)}
-              aria-pressed={locale === l.code}
-              className={`rounded-full px-3.5 py-1.5 text-xs font-bold tracking-wide transition-colors duration-300 ${
-                locale === l.code
-                  ? 'bg-[#0066CC] text-white'
-                  : 'text-[#111827] hover:text-[#0066CC]'
-              }`}
-            >
-              {l.label}
-            </button>
-          ))}
-        </div>
+        {/* BOTÓN EN — extremo derecho */}
+        <button
+          type="button"
+          onClick={() => setLocale('en')}
+          aria-label="Cambiar idioma a inglés"
+          className={`hidden justify-self-end rounded-lg border-2 px-4 py-1.5 text-sm font-bold transition-colors duration-300 lg:block ${
+            locale === 'en'
+              ? 'border-[#0066CC] bg-[#0066CC] text-white'
+              : 'border-[#0066CC] text-[#0066CC] hover:bg-[#0066CC] hover:text-white'
+          }`}
+        >
+          EN
+        </button>
 
         {/* BOTÓN MENÚ MÓVIL — solo móvil y tablet (≤1024px) */}
         <button
@@ -115,7 +104,7 @@ export function LandingNavbar() {
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-label="Abrir menú"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-[#111827] transition-colors duration-300 hover:text-[#0066CC] lg:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center justify-self-end rounded-lg text-[#111827] transition-colors duration-300 hover:text-[#0066CC] lg:hidden"
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
@@ -147,22 +136,19 @@ export function LandingNavbar() {
               </li>
             );
           })}
-          <li className="mt-3 flex items-center gap-1">
-            {LOCALES.map((l) => (
-              <button
-                key={l.code}
-                type="button"
-                onClick={() => setLocale(l.code)}
-                aria-pressed={locale === l.code}
-                className={`rounded-full px-3.5 py-1.5 text-xs font-bold tracking-wide transition-colors duration-300 ${
-                  locale === l.code
-                    ? 'bg-[#0066CC] text-white'
-                    : 'text-[#111827] hover:text-[#0066CC]'
-                }`}
-              >
-                {l.label}
-              </button>
-            ))}
+          <li className="mt-3">
+            <button
+              type="button"
+              onClick={() => setLocale('en')}
+              aria-label="Cambiar idioma a inglés"
+              className={`rounded-lg border-2 px-4 py-1.5 text-sm font-bold transition-colors duration-300 ${
+                locale === 'en'
+                  ? 'border-[#0066CC] bg-[#0066CC] text-white'
+                  : 'border-[#0066CC] text-[#0066CC] hover:bg-[#0066CC] hover:text-white'
+              }`}
+            >
+              EN
+            </button>
           </li>
         </ul>
       </div>
