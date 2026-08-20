@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
+import { Mail, MapPin, Phone } from 'lucide-react';
 import { HeroTurtle } from './svg/hero-turtle';
 
 function InstagramIcon({ className = '' }: { className?: string }) {
@@ -26,16 +26,19 @@ const EXPLORE_LINKS = [
   { label: 'Acerca de', href: '#proposito' },
   { label: 'Historia', href: '#impacto' },
   { label: 'Teoría de Cambio', href: '#dimensiones' },
-  { label: 'NeuroMentores', href: '#mentores' },
-  { label: 'Plataforma', href: '#plataforma' },
-  { label: 'Recursos', href: '#plataforma' },
 ];
 
-const PLATFORM_LINKS = [
+const COMMUNITY_LINKS = [
   { label: 'Familias', href: '/caminos/familia' },
   { label: 'Adolescentes', href: '/caminos/adolescente' },
   { label: 'Profesionales', href: '/caminos/profesional' },
   { label: 'Instituciones', href: '/caminos/institucion' },
+];
+
+const RESOURCES_LINKS = [
+  { label: 'NeuroMentores', href: '#mentores' },
+  { label: 'Plataforma', href: '#plataforma' },
+  { label: 'Recursos', href: '#plataforma' },
 ];
 
 const SOCIAL_LINKS = [
@@ -46,42 +49,52 @@ const SOCIAL_LINKS = [
 export function LandingFooter() {
   return (
     <footer className="relative overflow-hidden bg-gradient-to-br from-[#0F4AA2] via-[#0A66D4] to-[#12C7E5] text-white">
-      {/* MARCA DE AGUA — tortuga NeuroFamilia visible como marca de agua elegante */}
+      {/* MARCA DE AGUA — tortuga NeuroFamilia */}
       <HeroTurtle
-        className="pointer-events-none absolute -right-24 -top-16 h-[560px] w-auto opacity-10"
+        className="pointer-events-none absolute -right-24 -top-16 h-[560px] w-auto opacity-[0.13]"
         aria-hidden="true"
       />
 
       <div className="relative z-10 mx-auto max-w-7xl px-5 pb-10 pt-20 sm:px-8 lg:px-12">
-        <div className="grid gap-14 lg:grid-cols-[1.5fr_1fr_1fr_1.2fr_1fr] lg:gap-10">
+        <div className="grid gap-14 lg:grid-cols-[2.2fr_1fr_1fr_1fr_1.2fr] lg:gap-10">
           {/* COLUMNA 1 — IDENTIDAD */}
-          <div className="flex flex-col items-start gap-5">
+          <div className="flex flex-col items-start gap-6">
             <Link href="/#inicio" aria-label="Inicio NeuroFamilia Galápagos">
               <Image
                 src="/images/logo/logo-white.png"
                 alt="Logo NeuroFamilia Galápagos"
-                width={228}
-                height={176}
-                className="h-[176px] w-auto object-contain"
+                width={389}
+                height={300}
+                className="h-[300px] w-auto object-contain"
               />
             </Link>
-            <p className="text-sm leading-7 text-white/80">
-              NeuroFamilia es una iniciativa de la Fundación Centro Integral de Bienestar e
-              Innovación Social que impulsa el desarrollo humano, la salud mental, la innovación
-              social y el fortalecimiento de familias, adolescentes, profesionales e instituciones
-              en Galápagos.
+            <p className="max-w-md text-sm leading-7 text-white/80">
+              NeuroFamilia integra ciencia, tecnología y acompañamiento humano para fortalecer el
+              desarrollo de niños, adolescentes, familias, profesionales e instituciones en
+              Galápagos, promoviendo bienestar, innovación social y crecimiento comunitario.
             </p>
-            <p className="flex items-center gap-2 text-sm font-medium text-[#00B8D9]">
-              <MapPin className="h-4 w-4" />
-              San Cristóbal, Galápagos – Ecuador
-            </p>
+
+            {/* REDES SOCIALES — solo iconos, distribución horizontal */}
+            <ul className="mt-1 flex items-center gap-3">
+              {SOCIAL_LINKS.map(({ label, href, icon: Icon }) => (
+                <li key={label}>
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="grid h-10 w-10 place-items-center rounded-full bg-white/10 text-white/80 ring-1 ring-white/15 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-[#0A66D4] hover:ring-white"
+                  >
+                    <Icon className="h-[18px] w-[18px]" />
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* COLUMNA 2 — EXPLORAR */}
           <nav aria-label="Explorar">
-            <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#00B8D9]">
-              Explorar
-            </p>
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-white">Explorar</p>
             <ul className="mt-6 space-y-3.5">
               {EXPLORE_LINKS.map((link) => (
                 <li key={link.label}>
@@ -96,13 +109,11 @@ export function LandingFooter() {
             </ul>
           </nav>
 
-          {/* COLUMNA 3 — PLATAFORMA */}
-          <nav aria-label="Plataforma">
-            <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#00B8D9]">
-              Plataforma
-            </p>
+          {/* COLUMNA 3 — COMUNIDAD */}
+          <nav aria-label="Comunidad">
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-white">Comunidad</p>
             <ul className="mt-6 space-y-3.5">
-              {PLATFORM_LINKS.map((link) => (
+              {COMMUNITY_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -115,18 +126,33 @@ export function LandingFooter() {
             </ul>
           </nav>
 
-          {/* COLUMNA 4 — CONTACTO */}
+          {/* COLUMNA 4 — RECURSOS */}
+          <nav aria-label="Recursos">
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-white">Recursos</p>
+            <ul className="mt-6 space-y-3.5">
+              {RESOURCES_LINKS.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-white/75 transition-colors duration-300 hover:text-white"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* COLUMNA 5 — CONTACTO */}
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#00B8D9]">
-              Contacto
-            </p>
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-white">Contacto</p>
             <ul className="mt-6 space-y-4">
               <li>
                 <a
                   href="mailto:neurofamiliagps@gmail.com"
                   className="group flex items-center gap-3 text-sm text-white/75 transition-colors duration-300 hover:text-white"
                 >
-                  <Mail className="h-4 w-4 shrink-0 text-[#00B8D9] transition-transform duration-300 group-hover:scale-110" />
+                  <Mail className="h-4 w-4 shrink-0 text-white/60 transition-colors duration-300 group-hover:text-white" />
                   neurofamiliagps@gmail.com
                 </a>
               </li>
@@ -135,43 +161,14 @@ export function LandingFooter() {
                   href="tel:+593980406055"
                   className="group flex items-center gap-3 text-sm text-white/75 transition-colors duration-300 hover:text-white"
                 >
-                  <Phone className="h-4 w-4 shrink-0 text-[#00B8D9] transition-transform duration-300 group-hover:scale-110" />
+                  <Phone className="h-4 w-4 shrink-0 text-white/60 transition-colors duration-300 group-hover:text-white" />
                   +593 98 040 6055
                 </a>
               </li>
-            </ul>
-            <a
-              href="https://wa.me/593980406055"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-bold text-white shadow-[0_12px_28px_rgba(37,211,102,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1fb959]"
-            >
-              <MessageCircle className="h-4 w-4" />
-              Escríbenos por WhatsApp
-            </a>
-          </div>
-
-          {/* COLUMNA 5 — REDES SOCIALES */}
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#00B8D9]">
-              Síguenos
-            </p>
-            <ul className="mt-6 space-y-3.5">
-              {SOCIAL_LINKS.map(({ label, href, icon: Icon }) => (
-                <li key={label}>
-                  <a
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-3 text-sm text-white/75 transition-colors duration-300 hover:text-white"
-                  >
-                    <span className="grid h-9 w-9 place-items-center rounded-full bg-white/10 ring-1 ring-white/15 transition-all duration-300 group-hover:bg-[#0066CC] group-hover:ring-[#0066CC]">
-                      <Icon className="h-4 w-4" />
-                    </span>
-                    {label}
-                  </a>
-                </li>
-              ))}
+              <li className="flex items-center gap-3 text-sm text-white/75">
+                <MapPin className="h-4 w-4 shrink-0 text-white/60" />
+                San Cristóbal, Galápagos – Ecuador
+              </li>
             </ul>
           </div>
         </div>
@@ -179,20 +176,22 @@ export function LandingFooter() {
         {/* SUBFOOTER */}
         <div className="mt-16 border-t border-white/15 pt-8">
           <div className="flex flex-col items-center gap-4 text-center lg:flex-row lg:justify-between lg:text-left">
-            <p className="text-xs text-white/60">© 2026 NeuroFamilia Galápagos.</p>
+            <p className="text-xs text-white/60">
+              © 2026 NeuroFamilia Galápagos. Todos los derechos reservados.
+            </p>
             <p className="text-xs text-white/60">
               Desarrollo humano, ciencia y tecnología para transformar vidas.
             </p>
             <div className="flex items-center gap-6">
               <Link
                 href="/privacy"
-                className="text-xs text-white/60 transition-colors duration-300 hover:text-[#00B8D9]"
+                className="text-xs text-white/60 transition-colors duration-300 hover:text-white"
               >
                 Política de Privacidad
               </Link>
               <Link
                 href="/terms"
-                className="text-xs text-white/60 transition-colors duration-300 hover:text-[#00B8D9]"
+                className="text-xs text-white/60 transition-colors duration-300 hover:text-white"
               >
                 Términos y Condiciones
               </Link>
