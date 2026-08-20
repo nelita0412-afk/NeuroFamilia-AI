@@ -25,63 +25,284 @@ export function LandingJourney() {
       const mm = gsap.matchMedia();
 
       mm.add('(prefers-reduced-motion: no-preference)', () => {
-        /* S1 — Hero: emergencia de Hero y parallax */
-        gsap.from('.js-hero-turtle', { y: 90, opacity: 0, duration: 1.6, ease: 'power3.out' });
-        gsap.from('.js-hero-kicker', { y: 30, opacity: 0, duration: 0.8, delay: 0.5, ease: 'power2.out' });
-        gsap.from('.js-hero-title', { y: 40, opacity: 0, duration: 0.9, delay: 0.7, ease: 'power2.out' });
-        gsap.from('.js-hero-subtitle', { y: 30, opacity: 0, duration: 0.9, delay: 0.95, ease: 'power2.out' });
-        gsap.from('.js-hero-cta a', { y: 24, opacity: 0, duration: 0.7, delay: 1.15, stagger: 0.12, ease: 'power2.out' });
+        /* ═══════════════════════════════════════════════════════
+           S1 — HERO CINEMATOGRÁFICO
+           ═══════════════════════════════════════════════════════ */
+        
+        /* Header y navegación */
+        gsap.from('.js-hero header', { y: -40, opacity: 0, duration: 1, ease: 'power3.out' });
+        
+        /* Contenido izquierdo - entrada escalonada */
+        gsap.from('.js-hero-kicker', { y: 30, opacity: 0, duration: 0.8, delay: 0.3, ease: 'power2.out' });
+        gsap.from('.js-hero-title', { y: 40, opacity: 0, duration: 1, delay: 0.5, ease: 'power3.out' });
+        gsap.from('.js-hero-subtitle', { y: 30, opacity: 0, duration: 0.9, delay: 0.8, ease: 'power2.out' });
+        gsap.from('.js-hero-cta a', { y: 24, opacity: 0, duration: 0.7, delay: 1.1, stagger: 0.15, ease: 'power2.out' });
+        
+        /* 4 Pilares - entrada escalonada */
+        gsap.from('.js-four-pillars .js-pillar', {
+          y: 40,
+          opacity: 0,
+          duration: 0.7,
+          delay: 1.4,
+          stagger: 0.1,
+          ease: 'power2.out'
+        });
+        
+        /* Indicador de scroll */
+        gsap.from('.js-scroll-indicator', { y: 20, opacity: 0, duration: 0.6, delay: 2.2, ease: 'power2.out' });
+        
+        /* Tortuga Hero - entrada épica desde el océano */
+        gsap.from('.js-hero-turtle', { 
+          y: 120, 
+          opacity: 0, 
+          scale: 0.85, 
+          duration: 1.8, 
+          delay: 0.4, 
+          ease: 'power3.out' 
+        });
+        
+        /* Respiración sutil de la tortuga */
         gsap.to('.js-hero-turtle', {
-          y: -14,
-          duration: 3.2,
+          y: -8,
+          scale: 1.005,
+          duration: 4,
           yoyo: true,
           repeat: -1,
-          ease: 'sine.inOut',
+          ease: 'sine.inOut'
         });
-        gsap.to('.js-hero-node-line', {
+        
+        /* Respiración del halo detrás de Hero */
+        gsap.to('.js-hero-turtle-wrap::before', {
+          scale: 1.05,
+          opacity: 0.4,
+          duration: 4,
+          yoyo: true,
+          repeat: -1,
+          ease: 'sine.inOut'
+        });
+        
+        /* Brillo neuronal pulsante en el caparazón */
+        gsap.to('.hero-neural-network .neural-node', {
+          scale: 1.15,
           opacity: 1,
           duration: 1.8,
           yoyo: true,
           repeat: -1,
           stagger: 0.15,
-          ease: 'sine.inOut',
+          ease: 'sine.inOut'
         });
-        gsap.to('.js-hero-node', {
-          attr: { r: '+=1.8' },
+        
+        gsap.to('.hero-neural-network .neural-halo', {
+          scale: 1.3,
+          opacity: 0.35,
+          duration: 2.2,
+          yoyo: true,
+          repeat: -1,
+          stagger: 0.12,
+          ease: 'sine.inOut'
+        });
+        
+        gsap.to('.hero-neural-network .neural-core', {
+          scale: 1.1,
+          opacity: 1,
+          duration: 1.5,
+          yoyo: true,
+          repeat: -1,
+          ease: 'sine.inOut'
+        });
+        
+        gsap.to('.hero-neural-network .neural-core-inner', {
+          scale: 1.15,
+          duration: 1.2,
+          yoyo: true,
+          repeat: -1,
+          ease: 'sine.inOut'
+        });
+        
+        gsap.to('.neural-heart', {
+          scale: 1.2,
           opacity: 0.8,
-          duration: 1.1,
+          duration: 1,
           yoyo: true,
           repeat: -1,
-          stagger: 0.2,
-          ease: 'sine.inOut',
+          ease: 'sine.inOut'
         });
-        gsap.to('.js-hero-node-halo', {
-          attr: { r: '+=4' },
-          opacity: 0.28,
-          duration: 1.4,
+        
+        /* Conexiones neuronales - flujo de energía */
+        gsap.to('.hero-neural-connections path', {
+          strokeDashoffset: 0,
+          duration: 3,
+          ease: 'power1.inOut',
+          repeat: -1,
+          yoyo: true,
+          stagger: 0.2
+        });
+        
+        // Inicializar stroke-dashoffset para las conexiones
+        gsap.set('.hero-neural-connections path', {
+          attr: { strokeDasharray: 1, strokeDashoffset: 1 }
+        });
+        
+        /* Reflejo en el suelo - respiración */
+        gsap.to('.js-hero-floor-reflection', {
+          scaleX: 1.1,
+          opacity: 0.18,
+          duration: 4,
           yoyo: true,
           repeat: -1,
-          stagger: 0.22,
-          ease: 'sine.inOut',
+          ease: 'sine.inOut'
         });
-        gsap.to('.js-hero-content', {
-          yPercent: -14,
+        
+        /* Partículas de agua - animación orgánica */
+        gsap.to('.js-water-particle', {
+          y: (i: number) => -20 - (i % 5) * 15,
+          x: (i: number) => (i % 3 === 0 ? 15 : -10),
+          opacity: (i: number) => 0.3 + (i % 3) * 0.2,
+          duration: (i: number) => 6 + (i % 4) * 2,
+          yoyo: true,
+          repeat: -1,
+          stagger: 0.3,
+          ease: 'sine.inOut'
+        });
+        
+        /* Partículas en el aire */
+        gsap.to('.js-air-particle', {
+          y: (i: number) => -30 - (i % 4) * 20,
+          x: (i: number) => (i % 2 === 0 ? 20 : -15),
+          opacity: (i: number) => 0.5 + (i % 3) * 0.15,
+          duration: (i: number) => 8 + (i % 5) * 2,
+          yoyo: true,
+          repeat: -1,
+          stagger: 0.4,
+          ease: 'sine.inOut'
+        });
+        
+        /* Sol/horizonte - pulso sutil */
+        gsap.to('.js-sun-glow', {
+          scale: 1.08,
+          opacity: 0.45,
+          duration: 6,
+          yoyo: true,
+          repeat: -1,
+          ease: 'sine.inOut'
+        });
+        
+        gsap.to('.js-horizon-reflection', {
+          scaleX: 1.15,
+          opacity: 0.35,
+          duration: 4,
+          yoyo: true,
+          repeat: -1,
+          ease: 'sine.inOut'
+        });
+        
+        /* Ondas de superficie */
+        gsap.to('.js-surface-waves path', {
+          x: (i: number) => i % 2 === 0 ? 30 : -25,
+          duration: (i: number) => 10 + i * 2,
+          yoyo: true,
+          repeat: -1,
+          ease: 'sine.inOut'
+        });
+        
+        gsap.to('.js-deep-waves path', {
+          x: (i: number) => i % 2 === 0 ? -20 : 15,
+          duration: (i: number) => 15 + i * 3,
+          yoyo: true,
+          repeat: -1,
+          ease: 'sine.inOut'
+        });
+        
+        /* Caustics - rayos de luz */
+        gsap.to('.js-caustics path', {
+          y: -40,
+          opacity: (i: number) => 0.2 + (i % 3) * 0.1,
+          duration: (i: number) => 8 + i * 1.5,
+          yoyo: true,
+          repeat: -1,
+          ease: 'sine.inOut'
+        });
+        
+        /* Partículas de agua */
+        gsap.to('.js-water-particle', {
+          y: (i: number) => -50 - (i % 5) * 30,
+          x: (i: number) => (i % 4 === 0 ? 40 : -30),
+          opacity: (i: number) => 0.2 + (i % 4) * 0.15,
+          duration: (i: number) => 10 + (i % 5) * 3,
+          yoyo: true,
+          repeat: -1,
+          stagger: 0.5,
+          ease: 'sine.inOut'
+        });
+        
+        /* Partículas en el aire */
+        gsap.to('.js-air-particle', {
+          y: (i: number) => -40 - (i % 4) * 25,
+          x: (i: number) => (i % 3 === 0 ? 30 : -20),
+          opacity: (i: number) => 0.4 + (i % 3) * 0.1,
+          duration: (i: number) => 12 + (i % 4) * 3,
+          yoyo: true,
+          repeat: -1,
+          stagger: 0.6,
+          ease: 'sine.inOut'
+        });
+        
+        /* Reflejo del sol en el agua */
+        gsap.to('.js-sun-reflection-water ellipse', {
+          scaleX: 1.2,
           opacity: 0.5,
-          ease: 'none',
-          scrollTrigger: { trigger: '.js-hero', start: 'top top', end: 'bottom top', scrub: true },
+          duration: 5,
+          yoyo: true,
+          repeat: -1,
+          stagger: 0.3,
+          ease: 'sine.inOut'
         });
+        
+        /* Scroll parallax para el fondo inmersivo */
         gsap.to('.js-hero-waves-back', {
-          xPercent: 10,
+          xPercent: 8,
+          yPercent: 5,
           ease: 'none',
-          scrollTrigger: { trigger: '.js-hero', start: 'top top', end: 'bottom top', scrub: true },
+          scrollTrigger: { trigger: '.js-hero', start: 'top top', end: 'bottom top', scrub: 1 }
         });
+        
         gsap.to('.js-hero-waves-front', {
-          xPercent: -14,
+          xPercent: -10,
+          yPercent: -8,
           ease: 'none',
-          scrollTrigger: { trigger: '.js-hero', start: 'top top', end: 'bottom top', scrub: true },
+          scrollTrigger: { trigger: '.js-hero', start: 'top top', end: 'bottom top', scrub: 1 }
+        });
+        
+        /* Paralaje del contenido al hacer scroll */
+        gsap.to('.js-hero-content', {
+          yPercent: -20,
+          opacity: 0.3,
+          ease: 'none',
+          scrollTrigger: { trigger: '.js-hero', start: 'top top', end: 'bottom top', scrub: 1 }
+        });
+        
+        gsap.to('.js-hero-turtle-side', {
+          yPercent: 15,
+          ease: 'none',
+          scrollTrigger: { trigger: '.js-hero', start: 'top top', end: 'bottom top', scrub: 1 }
+        });
+        
+        /* Paralaje del fondo inmersivo */
+        gsap.to('.js-sun-glow', {
+          yPercent: 30,
+          ease: 'none',
+          scrollTrigger: { trigger: '.js-hero', start: 'top top', end: 'bottom top', scrub: 1 }
+        });
+        
+        gsap.to('.js-horizon-line', {
+          yPercent: 20,
+          ease: 'none',
+          scrollTrigger: { trigger: '.js-hero', start: 'top top', end: 'bottom top', scrub: 1 }
         });
 
-        /* S2 — Propósito: revelación serena */
+        /* ═══════════════════════════════════════════════════════
+           S2 — PROPÓSITO: Revelación serena
+           ══════════════════════════════════════════════════════ */
         gsap.timeline({
           scrollTrigger: { trigger: '.js-purpose', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
         })
@@ -89,7 +310,9 @@ export function LandingJourney() {
           .from('.js-purpose-title', { y: 30, opacity: 0, duration: 0.7 }, 0.15)
           .from('.js-purpose-body', { y: 24, opacity: 0, duration: 0.7 }, 0.4);
 
-        /* S3 — Archipiélago: el océano se abre */
+        /* ═══════════════════════════════════════════════════════
+           S3 — ARCHIPIÉLAGO: El océano se abre
+           ══════════════════════════════════════════════════════ */
         gsap.set('.js-route', { attr: { strokeDasharray: 1, strokeDashoffset: 1 } });
         const archTl = gsap.timeline({
           scrollTrigger: {
@@ -129,7 +352,9 @@ export function LandingJourney() {
           ease: 'sine.inOut',
         });
 
-        /* S4 — NeuroMentores: emergen como guías */
+        /* ═══════════════════════════════════════════════════════
+           S4 — NEUROMENTORES: Emergen como guías
+           ══════════════════════════════════════════════════════ */
         gsap.timeline({
           scrollTrigger: {
             trigger: '.js-mentors',
@@ -153,7 +378,9 @@ export function LandingJourney() {
             ease: 'power2.out',
           }, 0.35);
 
-        /* S5 — Hero guardián */
+        /* ═══════════════════════════════════════════════════════
+           S5 — HERO GUARDIÁN
+           ══════════════════════════════════════════════════════ */
         gsap.timeline({
           scrollTrigger: { trigger: '.js-guardian', start: 'top 65%', end: 'bottom 50%', scrub: 0.4 },
         })
@@ -169,7 +396,9 @@ export function LandingJourney() {
           ease: 'sine.inOut',
         });
 
-        /* S6 — Comunidad: red neuronal viva */
+        /* ═══════════════════════════════════════════════════════
+           S6 — COMUNIDAD: Red neuronal viva
+           ══════════════════════════════════════════════════════ */
         gsap.set('.js-comm-line', { attr: { pathLength: 1, strokeDasharray: 1, strokeDashoffset: 1 } });
         const commTl = gsap.timeline({
           scrollTrigger: { trigger: '.js-community', start: 'top 65%', end: 'bottom 50%', scrub: 0.5 },
@@ -179,10 +408,12 @@ export function LandingJourney() {
           .from('.js-comm-node', { scale: 0.5, opacity: 0, transformOrigin: 'center', duration: 0.6, stagger: 0.12, ease: 'back.out(1.7)' }, 0.2)
           .from('.js-community-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0.3)
           .from('.js-community-title', { y: 30, opacity: 0, duration: 0.6 }, 0.45)
-          .from('.js-community-body', { y: 20, opacity: 0, duration: 0.6 }, 0.6);
+          .from('.js-community-body', { y: 20, opacity: 0, duration: 0.6 }, 0.75);
         gsap.to('.js-comm-core', { scale: 1.08, transformOrigin: 'center', duration: 1.6, yoyo: true, repeat: -1, ease: 'sine.inOut' });
 
-        /* S7 — Plataforma: la herramienta entra en escena */
+        /* ═══════════════════════════════════════════════════════
+           S7 — PLATAFORMA: La herramienta entra en escena
+           ══════════════════════════════════════════════════════ */
         const platformTl = gsap.timeline({
           scrollTrigger: { trigger: '.js-platform', start: 'top 65%', end: 'bottom 55%', scrub: 0.5 },
         });
@@ -204,7 +435,9 @@ export function LandingJourney() {
           scrollTrigger: { trigger: '.js-platform', start: 'top top', end: 'bottom top', scrub: 0.4 },
         });
 
-        /* S8 — CTA: atardecer y el viaje comienza */
+        /* ═══════════════════════════════════════════════════════
+           S8 — CTA: Atardecer y el viaje comienza
+           ══════════════════════════════════════════════════════ */
         const ctaTl = gsap.timeline({
           scrollTrigger: { trigger: '.js-cta', start: 'top 70%', end: 'bottom 30%', scrub: 0.4 },
         });
@@ -227,7 +460,7 @@ export function LandingJourney() {
   );
 
   return (
-    <div ref={root} className="bg-[#0A4E9B] font-sans text-[#F8FBFF]">
+    <div ref={root} className="bg-[#061A3A] font-sans text-[#F8FBFF]">
       <HeroSection />
       <PurposeSection />
       <ArchipelagoSection />
