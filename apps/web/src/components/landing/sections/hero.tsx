@@ -1,125 +1,150 @@
-import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
-import { ImmersiveOcean } from '../svg/immersive-ocean';
 import { HeroTurtlePremium } from '../svg/hero-turtle-premium';
-import { NeuralParticles } from '../svg/neural-particles';
-import { FourPillars } from './four-pillars';
+import { GalapagosScene } from '../svg/galapagos-scene';
+
+const BOTTOM_ITEMS = [
+  {
+    icon: '🏝️',
+    label: 'Archipiélago',
+    desc: '8 dimensiones del desarrollo humano',
+    href: '#archipielago',
+  },
+  {
+    icon: '🤖',
+    label: 'ALBA',
+    desc: 'Mentora IA para acompañamiento familiar',
+    href: '#mentores',
+  },
+  {
+    icon: '📚',
+    label: 'Recursos',
+    desc: 'Guías y herramientas',
+    href: '#recursos',
+  },
+  {
+    icon: '👨‍👩‍👧‍👦',
+    label: 'Comunidad',
+    desc: 'Familias, jóvenes y profesionales',
+    href: '#comunidad',
+  },
+  {
+    icon: '📈',
+    label: 'Seguimiento',
+    desc: 'Visualización del crecimiento',
+    href: '#seguimiento',
+  },
+];
 
 export function HeroSection() {
   return (
     <section
       id="inicio"
       className="js-hero relative flex min-h-screen flex-col overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #061A3A 0%, #0A2E5A 35%, #0A4E9B 60%, #1476C6 85%, #0A4E9B 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #0A1F44 0%, #0E3060 25%, #144A7A 50%, #1A6BA5 70%, #1E7BB8 100%)' }}
     >
-      {/* Fondo inmersivo: océano cinematográfico */}
-      <ImmersiveOcean className="absolute inset-0 w-full h-full -z-10" />
-      
-      {/* Partículas neuronales flotando en toda la pantalla */}
-      <NeuralParticles count={40} className="absolute inset-0 pointer-events-none -z-10" />
+      {/* Fondo Galápagos inmersivo */}
+      <GalapagosScene className="absolute inset-0 w-full h-full -z-10" />
 
-      <header className="relative z-20 mx-auto flex w-full max-w-7xl items-center justify-between px-5 pt-8 sm:px-8 lg:px-12">
-        <Link href="/" className="flex items-center gap-4" aria-label="NeuroFamilia Galápagos - Inicio">
-          <Image
-            src="/images/logo/logo.png"
-            alt="Logo NeuroFamilia Galápagos"
-            width={60}
-            height={60}
-            className="h-16 w-16 object-contain drop-shadow-[0_8px_32px_rgba(2,32,76,0.5)]"
-            priority
-          />
-          <div className="hidden lg:block">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#F8FBFF]/80">Ecosistema de crecimiento humano</p>
-            <p className="text-xl font-extrabold text-[#F8FBFF] leading-tight">NeuroFamilia <span className="text-[#29C7D8]">Galápagos</span></p>
-          </div>
+      <header className="relative z-20 mx-auto flex w-full max-w-7xl items-center justify-between px-5 pt-6 sm:px-8 lg:px-12">
+        <Link href="/" className="flex items-center gap-3" aria-label="NeuroFamilia Galápagos - Inicio">
+          <span className="text-2xl font-extrabold text-[#F8FBFF] tracking-tight">
+            NeuroFamilia <span className="text-[#FFD700]">Galápagos</span>
+          </span>
         </Link>
         
-        <div className="flex items-center gap-4">
+        <nav className="hidden lg:flex items-center gap-8">
           <Link
-            href="/caminos"
-            className="hidden lg:inline-flex items-center gap-2 text-sm font-medium text-[#F8FBFF]/80 hover:text-[#29C7D8] transition-colors duration-200"
+            href="#archipielago"
+            className="text-sm font-medium text-[#F8FBFF]/80 hover:text-[#FFD700] transition-colors duration-200"
           >
-            Caminos
+            Archipiélago
+          </Link>
+          <Link
+            href="#mentores"
+            className="text-sm font-medium text-[#F8FBFF]/80 hover:text-[#FFD700] transition-colors duration-200"
+          >
+            Mentores
+          </Link>
+          <Link
+            href="#recursos"
+            className="text-sm font-medium text-[#F8FBFF]/80 hover:text-[#FFD700] transition-colors duration-200"
+          >
+            Recursos
+          </Link>
+          <Link
+            href="#comunidad"
+            className="text-sm font-medium text-[#F8FBFF]/80 hover:text-[#FFD700] transition-colors duration-200"
+          >
+            Comunidad
           </Link>
           <Link
             href="/login"
-            className="inline-flex items-center gap-2 rounded-full bg-[#F8FBFF] px-6 py-3 text-sm font-bold text-[#0A4E9B] shadow-[0_12px_32px_rgba(248,251,255,0.3)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_20px_48px_rgba(248,251,255,0.4)]"
+            className="inline-flex items-center gap-2 rounded-full bg-[#FFD700] px-6 py-2.5 text-sm font-bold text-[#0A1F44] shadow-[0_8px_24px_rgba(255,215,0,0.4)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_16px_32px_rgba(255,215,0,0.5)]"
           >
             Conocer NeuroFamilia
-            <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
           </Link>
-        </div>
+        </nav>
+        
+        <Link
+          href="/login"
+          className="lg:hidden inline-flex items-center gap-2 rounded-full bg-[#FFD700] px-5 py-2 text-sm font-bold text-[#0A1F44] shadow-[0_8px_24px_rgba(255,215,0,0.4)] transition-all duration-200 hover:-translate-y-0.5"
+        >
+          Conocer NeuroFamilia
+        </Link>
       </header>
 
       <main className="relative z-10 flex-1 flex items-center">
-        <div className="mx-auto w-full max-w-7xl px-5 pb-24 pt-10 sm:px-8 lg:px-12">
-          <div className="js-hero-layout grid lg:grid-cols-[40fr_60fr] gap-12 lg:gap-16 items-center min-h-[calc(100vh-16rem)]">
+        <div className="mx-auto w-full max-w-7xl px-5 pb-20 pt-8 sm:px-8 lg:px-12">
+          <div className="js-hero-layout grid lg:grid-cols-2 gap-10 lg:gap-16 items-center min-h-[calc(100vh-14rem)]">
             
-            {/* LADO IZQUIERDO - CONTENIDO (40%) */}
-            <div className="js-hero-content relative z-10 text-center lg:text-left">
-              <p className="js-hero-kicker text-xs font-bold uppercase tracking-[0.35em] text-[#29C7D8] mb-4">
-                Ecosistema de crecimiento humano
+            {/* LADO IZQUIERDO - CONTENIDO (50%) */}
+            <div className="js-hero-content relative z-10">
+              <p className="js-hero-kicker text-xs font-bold uppercase tracking-[0.35em] text-[#FFD700] mb-5">
+                Ecosistema humano y digital
               </p>
               
-              <h1 className="js-hero-title text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.02] text-[#F8FBFF] mb-6 lg:pr-8">
-                Cada historia
+              <h1 className="js-hero-title text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.02] text-[#FFFFFF] mb-7 lg:pr-10">
+                Cada persona tiene un
                 <br />
-                <span className="text-[#29C7D8]">merece un camino</span>
-                <br />
-                <span className="text-[#F8FBFF]">para crecer.</span>
+                <span className="text-[#FFD700]">potencial extraordinario</span>
               </h1>
               
-              <p className="js-hero-subtitle text-lg sm:text-xl text-[#F8FBFF]/85 max-w-lg lg:max-w-xl mb-10 leading-relaxed">
-                NeuroFamilia es un ecosistema humano y digital que acompaña a niños, adolescentes, 
-                familias y profesionales en su desarrollo integral.
+              <p className="js-hero-subtitle text-lg sm:text-xl text-[#F8FBFF]/85 max-w-xl lg:max-w-2xl mb-10 leading-relaxed">
+                NeuroFamilia es un ecosistema humano y digital que integra ciencia, tecnología y comunidad para acompañar el desarrollo humano a lo largo de la vida.
               </p>
               
               {/* CTAs */}
               <div className="js-hero-cta flex flex-col sm:flex-row items-center gap-4 mb-14">
                 <a
                   href="#proposito"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 rounded-full bg-[#F8FBFF] px-8 py-4 text-base font-bold text-[#0A4E9B] shadow-[0_16px_40px_rgba(248,251,255,0.35)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_56px_rgba(248,251,255,0.45)]"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 rounded-full bg-[#FFD700] px-8 py-4 text-base font-bold text-[#0A1F44] shadow-[0_12px_32px_rgba(255,215,0,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(255,215,0,0.5)]"
                 >
-                  <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M9 12l2 2 4-4" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
                   Conocer NeuroFamilia
                 </a>
                 <a
                   href="#archipielago"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 rounded-full border-2 border-[#29C7D8]/60 bg-[#29C7D8]/10 px-8 py-4 text-base font-bold text-[#F8FBFF] backdrop-blur transition-all duration-300 hover:bg-[#29C7D8]/20 hover:border-[#29C7D8] hover:-translate-y-1"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 rounded-full border-2 border-[#FFD700]/60 bg-transparent px-8 py-4 text-base font-bold text-[#FFD700] backdrop-blur transition-all duration-300 hover:bg-[#FFD700]/10 hover:-translate-y-1"
                 >
-                  <svg className="h-5 w-5 text-[#29C7D8]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
-                    <circle cx="12" cy="12" r="10" strokeWidth="2.5" />
-                    <path d="M12 2v20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" strokeWidth="2" />
-                  </svg>
                   Explorar el Archipiélago
                 </a>
               </div>
               
-              {/* 4 Pilares visibles inmediatamente */}
-              <FourPillars />
-              
               {/* Indicador de scroll */}
-              <div className="js-scroll-indicator mt-10 flex items-center justify-center lg:justify-start gap-2 text-[#F8FBFF]/50 text-xs font-medium uppercase tracking-[0.3em]">
+              <div className="js-scroll-indicator flex items-center justify-center gap-2 text-[#F8FBFF]/50 text-xs font-medium uppercase tracking-[0.3em]">
                 <svg className="js-scroll-mouse h-6 w-6 animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
                   <rect x="3" y="3" width="18" height="18" rx="6" strokeWidth="1.5" />
                   <circle cx="12" cy="9" r="1" fill="currentColor" />
                 </svg>
-                <span className="hidden sm:inline">Explorar el viaje</span>
+                <span className="hidden sm:inline">Descubre el ecosistema</span>
               </div>
             </div>
             
-            {/* LADO DERECHO - HERO TORTUGA (60%) */}
-            <div className="js-hero-turtle-side relative z-10 flex items-end justify-center lg:justify-center">
-              <div className="js-hero-turtle-wrap relative w-full max-w-lg lg:max-w-2xl mx-auto">
-                {/* Halo de luz cinematográfico detrás de Hero */}
+            {/* LADO DERECHO - ILUSTRACIÓN HERO (50%) */}
+            <div className="js-hero-turtle-side relative z-10 flex items-end justify-center">
+              <div className="js-hero-turtle-wrap relative w-full max-w-lg lg:max-w-xl mx-auto">
+                {/* Halo protector suave */}
                 <div
-                  className="absolute left-1/2 bottom-0 -translate-x-1/2 h-72 w-72 rounded-full bg-gradient-to-t from-[#29C7D8]/30 via-[#1476C6]/15 to-transparent blur-3xl"
+                  className="absolute left-1/2 bottom-0 -translate-x-1/2 h-64 w-64 -translate-y-1/2 rounded-full bg-gradient-to-t from-[#FFD700]/25 via-[#FFA500]/10 to-transparent blur-3xl"
                   aria-hidden="true"
                 />
                 {/* Reflejo en el suelo */}
@@ -128,15 +153,15 @@ export function HeroSection() {
                   cx="50%"
                   cy="100%"
                   rx="55%"
-                  ry="8%"
-                  fill="#29C7D8"
-                  opacity="0.12"
+                  ry="7%"
+                  fill="#FFD700"
+                  opacity="0.08"
                   style={{ filter: 'blur(40px)' }}
                 />
                 
                 {/* Hero Tortuga Premium */}
                 <HeroTurtlePremium 
-                  className="js-hero-turtle relative w-full drop-shadow-[0_40px_80px_rgba(2,32,76,0.7)]" 
+                  className="js-hero-turtle relative w-full drop-shadow-[0_32px_64px_rgba(30,123,184,0.5)]" 
                   scale={1}
                 />
               </div>
@@ -145,20 +170,41 @@ export function HeroSection() {
         </div>
       </main>
 
-      {/* Onda decorativa en la base del hero */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none">
-        <svg viewBox="0 0 1440 128" fill="none" className="w-full h-full" preserveAspectRatio="none">
+      {/* BARRA INFERIOR DEL HERO - 5 pilares del ecosistema */}
+      <div className="js-hero-bottom-bar relative z-10 mx-auto max-w-7xl px-5 pb-8 sm:px-8 lg:px-12">
+        <div className="rounded-3xl bg-gradient-to-r from-[#0A1F44] via-[#0E3060] to-[#0A1F44] p-4 sm:p-6 ring-1 ring-[#FFD700]/20 backdrop-blur-xl">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
+            {BOTTOM_ITEMS.map((item, i) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                className="group relative flex flex-col items-center gap-2 p-3 rounded-2xl transition-all duration-300 hover:bg-[#FFD700]/5 hover:scale-[1.02]"
+                style={{ animationDelay: `${i * 0.08}s` }}
+              >
+                <span className="text-2xl sm:text-3xl" aria-hidden="true">
+                  {item.icon}
+                </span>
+                <p className="text-sm font-bold text-[#FFFFFF] group-hover:text-[#FFD700] transition-colors">
+                  {item.label}
+                </p>
+                <p className="text-[11px] text-[#F8FBFF]/60 text-center group-hover:text-[#FFD700]/80 transition-colors max-w-xs">
+                  {item.desc}
+                </p>
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-[#FFD700] rounded-full transition-all duration-300 group-hover:w-full" />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Onda decorativa suave en la base */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none">
+        <svg viewBox="0 0 1440 96" fill="none" className="w-full h-full" preserveAspectRatio="none">
           <path
-            d="M0,80 Q360,100 720,80 Q1080,60 1440,80 L1440,128 L0,128 Z"
-            fill="url(#wave-gradient)"
-            opacity="0.4"
+            d="M0,60 Q360,40 720,60 Q1080,80 1440,60 L1440,96 L0,96 Z"
+            fill="#0A1F44"
+            opacity="0.6"
           />
-          <defs>
-            <linearGradient id="wave-gradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#29C7D8" stopOpacity="0" />
-              <stop offset="100%" stopColor="#29C7D8" stopOpacity="0.25" />
-            </linearGradient>
-          </defs>
         </svg>
       </div>
     </section>
