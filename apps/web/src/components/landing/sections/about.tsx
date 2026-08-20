@@ -18,25 +18,26 @@ import {
 
 /* ── 1. QUIÉNES SOMOS · Ecosistema ─────────────────────────── */
 
+/* Nodos distribuidos en pentágono alrededor del centro (50,50) */
 const NODES = [
-  { icon: Brain, label: 'Salud Mental', position: 'lg:left-[8%] lg:top-[6%]' },
-  { icon: Users, label: 'Familias', position: 'lg:left-[78%] lg:top-[6%]' },
-  { icon: MonitorSmartphone, label: 'Tecnología', position: 'lg:left-[82%] lg:top-[62%]' },
-  { icon: Globe, label: 'Comunidad', position: 'lg:left-[14%] lg:top-[62%]' },
-  { icon: Lightbulb, label: 'Innovación Social', position: 'lg:left-[42%] lg:top-[78%]' },
+  { icon: Brain, label: 'Salud Mental', position: 'lg:left-[50%] lg:top-[14%]' },
+  { icon: Users, label: 'Familias', position: 'lg:left-[85%] lg:top-[32%]' },
+  { icon: MonitorSmartphone, label: 'Tecnología', position: 'lg:left-[72%] lg:top-[79%]' },
+  { icon: Globe, label: 'Comunidad', position: 'lg:left-[28%] lg:top-[79%]' },
+  { icon: Lightbulb, label: 'Innovación Social', position: 'lg:left-[15%] lg:top-[32%]' },
 ];
 
 const ECOSYSTEM_LINES = [
-  'M50,50 L14,22',
-  'M50,50 L84,22',
-  'M50,50 L88,66',
-  'M50,50 L22,66',
-  'M50,50 L50,84',
+  'M50,50 L50,14',
+  'M50,50 L85,32',
+  'M50,50 L72,79',
+  'M50,50 L28,79',
+  'M50,50 L15,32',
 ];
 
 function EcosystemVisual() {
   return (
-    <div className="js-eco relative mx-auto mt-16 hidden max-w-3xl lg:block">
+    <div className="js-eco relative mx-auto mt-8 hidden h-[420px] w-full max-w-[620px] lg:block">
       {/* Líneas de conexión */}
       <svg
         viewBox="0 0 100 100"
@@ -257,32 +258,20 @@ export function AboutSection() {
   return (
     <>
       {/* ── 1. QUIÉNES SOMOS ─────────────────────────────────── */}
-      <section id="proposito" className="js-about relative overflow-hidden bg-white py-28">
+      <section id="proposito" className="js-about relative overflow-hidden bg-white py-12">
         <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <p className="js-about-kicker text-xs font-bold uppercase tracking-[0.3em] text-[#0066CC]">
-              Acerca de
-            </p>
-            <h2 className="js-about-title mt-4 text-3xl font-extrabold leading-tight text-[#0B3B82] sm:text-5xl">
               Quiénes Somos
+            </p>
+            <h2 className="js-about-title mt-4 text-3xl font-extrabold leading-tight text-[#0B3B82] sm:text-4xl">
+              Ciencia, tecnología y acompañamiento humano para el bienestar de las familias
             </h2>
-            <div className="js-about-body mt-8 space-y-5 text-left sm:text-center">
-              <p className="text-base leading-8 text-[#0B3B82]/75 sm:text-lg">
-                NeuroFamilia Galápagos es una iniciativa de innovación social creada en septiembre
-                de 2025 para fortalecer el bienestar, la salud mental y el desarrollo humano en
-                contextos insulares.
-              </p>
-              <p className="text-base leading-8 text-[#0B3B82]/75 sm:text-lg">
-                Integramos ciencia, tecnología y acompañamiento humano para generar soluciones
-                accesibles que apoyen a niños, adolescentes, familias, profesionales e
-                instituciones en Galápagos.
-              </p>
-              <p className="text-base leading-8 text-[#0B3B82]/75 sm:text-lg">
-                Nuestro enfoque combina trabajo social, psicología clínica, salud digital e
-                innovación social para construir una red de apoyo colaborativa orientada al
-                bienestar comunitario.
-              </p>
-            </div>
+            <p className="js-about-body mx-auto mt-5 max-w-2xl text-base leading-7 text-[#0B3B82]/75 sm:text-lg">
+              NeuroFamilia Galápagos integra trabajo social, psicología clínica, salud digital e
+              innovación social para fortalecer el bienestar de niños, adolescentes, familias e
+              instituciones.
+            </p>
           </div>
 
           {/* Ecosistema visual */}
