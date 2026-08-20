@@ -11,8 +11,9 @@ const NAV_LINKS = [
   { label: 'Historia', href: '#impacto', section: 'impacto' },
   { label: 'Teoría de Cambio', href: '#dimensiones', section: 'dimensiones' },
   { label: 'NeuroMentores', href: '#mentores', section: 'mentores' },
-  { label: 'Recursos', href: '#plataforma', section: 'plataforma' },
+  { label: 'Servicios', href: '#cta', section: 'cta' },
   { label: 'Plataforma', href: '#plataforma', section: 'plataforma' },
+  { label: 'Recursos', href: '#plataforma', section: 'plataforma' },
 ];
 
 const LOCALES = [
@@ -49,23 +50,23 @@ export function LandingNavbar() {
   return (
     <nav
       aria-label="Menú principal"
-      className="js-navbar sticky top-0 z-50 h-[125px] w-full border-b border-[#0B3B82]/5 bg-white shadow-[0_4px_24px_rgba(11,59,130,0.06)] sm:h-[150px]"
+      className="js-navbar sticky top-0 z-50 h-[88px] w-full border-b border-[#0B3B82]/5 bg-white shadow-[0_4px_24px_rgba(11,59,130,0.06)]"
     >
-      <div className="mx-auto flex h-full w-full max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-12">
+      <div className="mx-auto flex h-full w-full max-w-7xl items-center justify-between gap-6 px-5 sm:px-8 lg:px-10">
         {/* LOGO — dominante, sin texto repetido */}
         <Link href="/#inicio" className="flex shrink-0 items-center" aria-label="Inicio NeuroFamilia Galápagos">
           <Image
             src="/images/logo/logo.png"
             alt="Logo NeuroFamilia Galápagos"
-            width={181}
-            height={140}
+            width={88}
+            height={68}
             priority
-            className="h-24 w-auto object-contain sm:h-[140px]"
+            className="h-16 w-auto object-contain lg:h-[68px]"
           />
         </Link>
 
-        {/* MENÚ PRINCIPAL */}
-        <ul className="hidden items-center gap-8 2xl:flex">
+        {/* MENÚ PRINCIPAL — siempre visible en desktop */}
+        <ul className="hidden items-center gap-6 lg:flex">
           {NAV_LINKS.map((link) => {
             const isActive = active === link.section;
             return (
@@ -73,7 +74,7 @@ export function LandingNavbar() {
                 <Link
                   href={link.href}
                   onClick={() => setActive(link.section)}
-                  className={`relative py-2 text-sm font-semibold whitespace-nowrap transition-colors duration-300 ${
+                  className={`relative whitespace-nowrap py-2 text-[15px] font-semibold transition-colors duration-300 ${
                     isActive ? 'text-[#0066CC]' : 'text-[#111827]'
                   } hover:text-[#0066CC]`}
                 >
@@ -90,7 +91,7 @@ export function LandingNavbar() {
         </ul>
 
         {/* SELECTOR DE IDIOMA — solo texto, sin banderas */}
-        <div className="hidden items-center gap-1 rounded-full border border-[#0B3B82]/15 bg-[#F0F7FF] p-1 2xl:flex" role="group" aria-label="Selector de idioma">
+        <div className="hidden items-center gap-1 rounded-full border border-[#0B3B82]/15 bg-[#F0F7FF] p-1 lg:flex" role="group" aria-label="Selector de idioma">
           {LOCALES.map((l) => (
             <button
               key={l.code}
@@ -108,21 +109,21 @@ export function LandingNavbar() {
           ))}
         </div>
 
-        {/* BOTÓN MENÚ MÓVIL */}
+        {/* BOTÓN MENÚ MÓVIL — solo móvil y tablet (≤1024px) */}
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-label="Abrir menú"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-[#111827] transition-colors duration-300 hover:text-[#0066CC] 2xl:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-[#111827] transition-colors duration-300 hover:text-[#0066CC] lg:hidden"
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
 
-      {/* MENÚ MÓVIL DESPLEGABLE */}
+      {/* PANEL MÓVIL — solo dispositivos móviles y tablet (≤1024px) */}
       <div
-        className={`2xl:hidden ${
+        className={`lg:hidden ${
           open ? 'max-h-[520px] opacity-100' : 'max-h-0 opacity-0'
         } overflow-hidden bg-white transition-all duration-300`}
       >
