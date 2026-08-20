@@ -58,24 +58,24 @@ export function LandingFooter() {
       <div className="relative z-10 mx-auto max-w-7xl px-5 pb-5 pt-8 sm:px-8 lg:px-12">
         <div className="grid gap-8 lg:grid-cols-[1.8fr_1fr_1fr_1fr_1.1fr] lg:gap-6">
           {/* COLUMNA 1 — IDENTIDAD */}
-          <div className="flex flex-col items-start gap-2.5">
-            <Link href="/#inicio" aria-label="Inicio NeuroFamilia Galápagos">
+          <div className="flex flex-col items-center gap-2.5 lg:items-start">
+            <Link href="/#inicio" aria-label="Inicio NeuroFamilia Galápagos" className="lg:self-center">
               <Image
                 src="/images/logo/logo-white.png"
                 alt="Logo NeuroFamilia Galápagos"
-                width={182}
-                height={140}
-                className="h-[140px] w-auto object-contain"
+                width={208}
+                height={160}
+                className="h-[160px] w-auto object-contain"
               />
             </Link>
-            <p className="max-w-xs text-sm leading-5 text-white/80">
+            <p className="max-w-xs text-center text-sm leading-5 text-white/80 lg:text-left">
               NeuroFamilia integra ciencia, tecnología y acompañamiento humano para fortalecer el
               desarrollo de niños, adolescentes, familias, profesionales e instituciones en
               Galápagos.
             </p>
 
             {/* REDES SOCIALES — solo iconos, distribución horizontal */}
-            <ul className="mt-0.5 flex items-center gap-2.5">
+            <ul className="mt-0.5 flex items-center gap-2.5 lg:self-center">
               {SOCIAL_LINKS.map(({ label, href, icon: Icon }) => (
                 <li key={label}>
                   <a
