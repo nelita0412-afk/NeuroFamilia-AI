@@ -63,9 +63,9 @@ export function LandingFooter() {
               <Image
                 src="/images/logo/logo-white.png"
                 alt="Logo NeuroFamilia Galápagos"
-                width={208}
-                height={160}
-                className="h-[160px] w-auto object-contain"
+                width={247}
+                height={190}
+                className="h-[190px] w-auto object-contain"
               />
             </Link>
             <p className="max-w-xs text-center text-sm leading-5 text-white/80 lg:text-left">
