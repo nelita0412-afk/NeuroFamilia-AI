@@ -21,25 +21,6 @@ function FacebookIcon({ className = '' }: { className?: string }) {
   );
 }
 
-function LinkedinIcon({ className = '' }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
-      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-      <rect width="4" height="12" x="2" y="9" />
-      <circle cx="4" cy="4" r="2" />
-    </svg>
-  );
-}
-
-function YoutubeIcon({ className = '' }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
-      <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
-      <path d="m10 15 5-3-5-3z" />
-    </svg>
-  );
-}
-
 const EXPLORE_LINKS = [
   { label: 'Inicio', href: '#inicio' },
   { label: 'Acerca de', href: '#proposito' },
@@ -60,16 +41,14 @@ const PLATFORM_LINKS = [
 const SOCIAL_LINKS = [
   { label: 'Instagram', href: 'https://instagram.com', icon: InstagramIcon },
   { label: 'Facebook', href: 'https://facebook.com', icon: FacebookIcon },
-  { label: 'LinkedIn', href: 'https://linkedin.com', icon: LinkedinIcon },
-  { label: 'YouTube', href: 'https://youtube.com', icon: YoutubeIcon },
 ];
 
 export function LandingFooter() {
   return (
-    <footer className="relative overflow-hidden bg-gradient-to-br from-[#0D47A1] via-[#0B3B82] to-[#0097B2] text-white">
-      {/* MARCA DE AGUA — tortuga NeuroFamilia muy sutil */}
+    <footer className="relative overflow-hidden bg-gradient-to-br from-[#0F4AA2] via-[#0A66D4] to-[#12C7E5] text-white">
+      {/* MARCA DE AGUA — tortuga NeuroFamilia visible como marca de agua elegante */}
       <HeroTurtle
-        className="pointer-events-none absolute -right-24 -top-16 h-[560px] w-auto opacity-5"
+        className="pointer-events-none absolute -right-24 -top-16 h-[560px] w-auto opacity-10"
         aria-hidden="true"
       />
 
@@ -79,11 +58,11 @@ export function LandingFooter() {
           <div className="flex flex-col items-start gap-5">
             <Link href="/#inicio" aria-label="Inicio NeuroFamilia Galápagos">
               <Image
-                src="/images/logo/logo.png"
+                src="/images/logo/logo-white.png"
                 alt="Logo NeuroFamilia Galápagos"
-                width={132}
-                height={102}
-                className="h-24 w-auto rounded-xl bg-white object-contain p-1.5 shadow-[0_16px_40px_rgba(0,10,30,0.35)]"
+                width={228}
+                height={176}
+                className="h-[176px] w-auto object-contain"
               />
             </Link>
             <p className="text-sm leading-7 text-white/80">
