@@ -46,7 +46,7 @@ export function LandingNavbar() {
       aria-label="Menú principal"
       className="js-navbar sticky top-0 z-50 h-[115px] w-full border-b border-[#0B3B82]/5 bg-white shadow-[0_4px_24px_rgba(11,59,130,0.06)]"
     >
-      <div className="mx-auto grid h-full w-full max-w-[1400px] grid-cols-[1fr_auto_1fr] items-center px-6 sm:px-10">
+      <div className="mx-auto grid h-full w-full max-w-[1500px] grid-cols-[auto_1fr_auto] items-center px-6 sm:px-10 lg:grid-cols-[22%_1fr_12%] lg:px-12">
         {/* LOGO — protagonista, sin texto adicional */}
         <Link href="/#inicio" className="flex items-center justify-self-start" aria-label="Inicio NeuroFamilia Galápagos">
           <Image
@@ -60,7 +60,7 @@ export function LandingNavbar() {
         </Link>
 
         {/* MENÚ PRINCIPAL — centrado entre logo y botón EN */}
-        <ul className="hidden items-center gap-5 lg:flex">
+        <ul className="hidden items-center gap-9 lg:flex">
           {NAV_LINKS.map((link) => {
             const isActive = active === link.section;
             return (
