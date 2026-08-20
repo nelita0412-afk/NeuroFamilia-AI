@@ -53,6 +53,24 @@ export function LandingPage({ page, children }: { page: LandingPageKey; children
             ease: 'none',
             scrollTrigger: { trigger: '.js-hero', start: 'top top', end: 'bottom top', scrub: 1 },
           });
+
+          /* Impacto Alcanzado — tarjetas con contador (reveal único) */
+          gsap.timeline({
+            scrollTrigger: { trigger: '.js-impact-reached', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
+          })
+            .from('.js-impact-reached-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
+            .from('.js-impact-reached-title', { y: 30, opacity: 0, duration: 0.6 }, 0.15)
+            .from('.js-impact-reached-body', { y: 24, opacity: 0, duration: 0.7 }, 0.3);
+          gsap.from('.js-impact-reached-card', {
+            y: 50,
+            opacity: 0,
+            scale: 0.95,
+            duration: 0.7,
+            stagger: 0.12,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: '.js-impact-reached', start: 'top 80%', once: true },
+            clearProps: 'transform,opacity',
+          });
         }
 
         if (page === 'acerca') {

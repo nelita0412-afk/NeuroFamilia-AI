@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Counter } from '../counter';
 import {
   Brain,
   Globe,
@@ -223,37 +223,6 @@ const METRICS = [
   { value: '5', count: 5, label: 'Áreas Estratégicas' },
   { value: '1', count: 1, label: 'Ecosistema Digital' },
 ];
-
-function Counter({ target }: { target: number }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    let raf = 0;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        io.disconnect();
-        const start = performance.now();
-        const duration = 1200;
-        const tick = (now: number) => {
-          const p = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - p, 3);
-          el.textContent = String(Math.round(target * eased));
-          if (p < 1) raf = requestAnimationFrame(tick);
-        };
-        raf = requestAnimationFrame(tick);
-      },
-      { threshold: 0.4 },
-    );
-    io.observe(el);
-    return () => {
-      io.disconnect();
-      cancelAnimationFrame(raf);
-    };
-  }, [target]);
-  return <span ref={ref}>0</span>;
-}
 
 export function AboutSection() {
   return (
