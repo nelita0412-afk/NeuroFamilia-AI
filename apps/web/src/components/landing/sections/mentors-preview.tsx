@@ -4,17 +4,17 @@ import { ArrowRight } from 'lucide-react';
 import { MENTOR_NAMES } from '@neurofamilia/shared';
 import { MENTOR_IDENTITY } from '@/lib/mentor-identity';
 
-/* Encuadre individual calculado por imagen (centroide del personaje)
-   para que todos los mentores queden centrados en el círculo. */
+/* Encuadre individual calculado por imagen (centroide del personaje,
+   excluyendo bandas de texto) para centrar a cada mentor en el círculo. */
 const AVATAR_FOCUS: Record<string, string> = {
-  ALBA: '16% 50%',
-  NIA: '27% 50%',
-  MAKI: '31% 50%',
-  BOBBY: '26% 50%',
-  LEO: '24% 50%',
-  CORA: '26% 50%',
-  PINGO: '21% 50%',
-  DARWIN: '29% 50%',
+  ALBA: '31% 50%',
+  NIA: '34% 50%',
+  MAKI: '33% 50%',
+  BOBBY: '40% 50%',
+  LEO: '32% 50%',
+  CORA: '36% 50%',
+  PINGO: '26% 50%',
+  DARWIN: '35% 50%',
 };
 
 export function MentorsPreviewSection() {
@@ -42,18 +42,18 @@ export function MentorsPreviewSection() {
           retos de cada persona.
         </p>
 
-        <ul className="mx-auto mt-14 grid grid-cols-4 gap-x-2 gap-y-10 sm:max-w-3xl lg:max-w-4xl xl:max-w-none xl:grid-cols-8 xl:gap-x-3">
+        <ul className="mx-auto mt-14 grid grid-cols-4 gap-x-3 gap-y-10 sm:max-w-3xl lg:max-w-none lg:grid-cols-8 lg:gap-x-5">
           {MENTOR_NAMES.map((name) => {
             const identity = MENTOR_IDENTITY[name];
             return (
               <li key={name} className="js-mentor-avatar flex flex-col items-center">
                 {/* Avatar — tamaño uniforme en todos los breakpoints */}
-                <span className="relative h-[72px] w-[72px] overflow-hidden rounded-full bg-white/10 ring-2 ring-white/25 transition-transform duration-300 hover:scale-110 hover:ring-white/60 sm:h-[120px] sm:w-[120px]">
+                <span className="relative h-16 w-16 overflow-hidden rounded-full bg-white/10 ring-2 ring-white/25 transition-transform duration-300 hover:scale-110 hover:ring-white/60 sm:h-[100px] sm:w-[100px]">
                   <Image
                     src={identity.image}
                     alt={`Mentor ${name}, ${identity.specialty}`}
                     fill
-                    sizes="(max-width: 640px) 72px, 120px"
+                    sizes="(max-width: 640px) 64px, 100px"
                     loading="lazy"
                     className="object-cover"
                     style={{ objectPosition: AVATAR_FOCUS[name] ?? '50% 50%' }}
