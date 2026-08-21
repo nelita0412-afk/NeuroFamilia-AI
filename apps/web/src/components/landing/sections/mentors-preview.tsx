@@ -14,13 +14,13 @@ const BASE_ZOOM = 1.15;
 
 const AVATAR_FRAMING: Record<string, { pos: string; scale: number; dy: number; oy: number }> = {
   ALBA: { pos: '31% 50%', scale: 0.9, dy: 6, oy: 42 },
-  NIA: { pos: '34% 50%', scale: 1.08, dy: 0, oy: 46 },
+  NIA: { pos: '34% 50%', scale: 1.12, dy: 0, oy: 46 },
   MAKI: { pos: '33% 50%', scale: 0.95, dy: 3, oy: 47 },
   BOBBY: { pos: '40% 50%', scale: 0.9, dy: 6, oy: 49 },
   LEO: { pos: '32% 50%', scale: 0.92, dy: 5, oy: 44 },
   CORA: { pos: '36% 50%', scale: 0.88, dy: 7, oy: 44 },
   PINGO: { pos: '26% 50%', scale: 0.95, dy: 0, oy: 45 },
-  DARWIN: { pos: '35% 50%', scale: 1.08, dy: 0, oy: 41 },
+  DARWIN: { pos: '35% 50%', scale: 1.12, dy: 0, oy: 41 },
 };
 
 export function MentorsPreviewSection() {
