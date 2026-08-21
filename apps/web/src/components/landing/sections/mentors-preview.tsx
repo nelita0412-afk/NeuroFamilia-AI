@@ -4,6 +4,19 @@ import { ArrowRight } from 'lucide-react';
 import { MENTOR_NAMES } from '@neurofamilia/shared';
 import { MENTOR_IDENTITY } from '@/lib/mentor-identity';
 
+/* Encuadre individual calculado por imagen (centroide del personaje)
+   para que todos los mentores queden centrados en el círculo. */
+const AVATAR_FOCUS: Record<string, string> = {
+  ALBA: '16% 50%',
+  NIA: '27% 50%',
+  MAKI: '31% 50%',
+  BOBBY: '26% 50%',
+  LEO: '24% 50%',
+  CORA: '26% 50%',
+  PINGO: '21% 50%',
+  DARWIN: '29% 50%',
+};
+
 export function MentorsPreviewSection() {
   return (
     <section
@@ -29,23 +42,29 @@ export function MentorsPreviewSection() {
           retos de cada persona.
         </p>
 
-        <ul className="mx-auto mt-12 grid max-w-4xl grid-cols-4 gap-x-4 gap-y-8 sm:grid-cols-8 sm:gap-x-3">
+        <ul className="mx-auto mt-14 grid grid-cols-4 gap-x-2 gap-y-10 sm:max-w-3xl lg:max-w-4xl xl:max-w-none xl:grid-cols-8 xl:gap-x-3">
           {MENTOR_NAMES.map((name) => {
             const identity = MENTOR_IDENTITY[name];
             return (
               <li key={name} className="js-mentor-avatar flex flex-col items-center">
-                <span className="relative h-16 w-16 overflow-hidden rounded-full ring-2 ring-white/25 transition-transform duration-300 hover:scale-110 hover:ring-white/60 sm:h-[4.5rem] sm:w-[4.5rem]">
+                {/* Avatar — tamaño uniforme en todos los breakpoints */}
+                <span className="relative h-[72px] w-[72px] overflow-hidden rounded-full bg-white/10 ring-2 ring-white/25 transition-transform duration-300 hover:scale-110 hover:ring-white/60 sm:h-[120px] sm:w-[120px]">
                   <Image
                     src={identity.image}
                     alt={`Mentor ${name}, ${identity.specialty}`}
                     fill
-                    sizes="72px"
+                    sizes="(max-width: 640px) 72px, 120px"
                     loading="lazy"
-                    className="object-cover object-top"
+                    className="object-cover"
+                    style={{ objectPosition: AVATAR_FOCUS[name] ?? '50% 50%' }}
                   />
                 </span>
-                <p className="mt-2.5 text-sm font-extrabold tracking-wide text-white">{name}</p>
-                <p className="mt-0.5 text-[10px] font-semibold uppercase leading-4 tracking-[0.08em] text-white/55">
+                {/* Nombre — altura fija para alineación perfecta */}
+                <p className="mt-3 flex h-5 items-start justify-center text-sm font-extrabold tracking-wide text-white">
+                  {name}
+                </p>
+                {/* Especialidad — bloque de altura fija (constante en 1, 2 o 3 líneas) */}
+                <p className="mt-1 flex h-12 items-start justify-center text-center text-[10px] font-semibold uppercase leading-4 tracking-[0.08em] text-white/55">
                   {identity.specialty}
                 </p>
               </li>
