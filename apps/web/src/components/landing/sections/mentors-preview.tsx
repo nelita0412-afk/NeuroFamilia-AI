@@ -4,17 +4,23 @@ import { ArrowRight } from 'lucide-react';
 import { MENTOR_NAMES } from '@neurofamilia/shared';
 import { MENTOR_IDENTITY } from '@/lib/mentor-identity';
 
-/* Encuadre individual calculado por imagen (centroide del personaje,
-   excluyendo bandas de texto) para centrar a cada mentor en el círculo. */
-const AVATAR_FOCUS: Record<string, string> = {
-  ALBA: '31% 50%',
-  NIA: '34% 50%',
-  MAKI: '33% 50%',
-  BOBBY: '40% 50%',
-  LEO: '32% 50%',
-  CORA: '36% 50%',
-  PINGO: '26% 50%',
-  DARWIN: '35% 50%',
+/* Encuadre individual por mentor.
+   - pos: object-position que centra el personaje (medido por imagen).
+   - scale: ajuste de escala solicitado por mentor (se multiplica por BASE_ZOOM
+     para que ninguna reducción deje huecos dentro del círculo).
+   - dy: bajada fina en px para igualar la línea de los rostros.
+   - oy: origen vertical del zoom (%), tomado del centroide del personaje. */
+const BASE_ZOOM = 1.15;
+
+const AVATAR_FRAMING: Record<string, { pos: string; scale: number; dy: number; oy: number }> = {
+  ALBA: { pos: '31% 50%', scale: 0.9, dy: 6, oy: 42 },
+  NIA: { pos: '34% 50%', scale: 1.08, dy: 0, oy: 46 },
+  MAKI: { pos: '33% 50%', scale: 0.95, dy: 3, oy: 47 },
+  BOBBY: { pos: '40% 50%', scale: 0.9, dy: 6, oy: 49 },
+  LEO: { pos: '32% 50%', scale: 0.92, dy: 5, oy: 44 },
+  CORA: { pos: '36% 50%', scale: 0.88, dy: 7, oy: 44 },
+  PINGO: { pos: '26% 50%', scale: 0.95, dy: 0, oy: 45 },
+  DARWIN: { pos: '35% 50%', scale: 1.08, dy: 0, oy: 41 },
 };
 
 export function MentorsPreviewSection() {
@@ -45,6 +51,12 @@ export function MentorsPreviewSection() {
         <ul className="mx-auto mt-14 grid grid-cols-4 gap-x-3 gap-y-10 sm:max-w-3xl lg:max-w-none lg:grid-cols-8 lg:gap-x-5">
           {MENTOR_NAMES.map((name) => {
             const identity = MENTOR_IDENTITY[name];
+            const framing = AVATAR_FRAMING[name] ?? {
+              pos: '50% 50%',
+              scale: 1,
+              dy: 0,
+              oy: 50,
+            };
             return (
               <li key={name} className="js-mentor-avatar flex flex-col items-center">
                 {/* Avatar — tamaño uniforme en todos los breakpoints */}
@@ -56,7 +68,11 @@ export function MentorsPreviewSection() {
                     sizes="(max-width: 640px) 64px, 100px"
                     loading="lazy"
                     className="object-cover"
-                    style={{ objectPosition: AVATAR_FOCUS[name] ?? '50% 50%' }}
+                    style={{
+                      objectPosition: framing.pos,
+                      transform: `translateY(${framing.dy}px) scale(${(BASE_ZOOM * framing.scale).toFixed(3)})`,
+                      transformOrigin: `50% ${framing.oy}%`,
+                    }}
                   />
                 </span>
                 {/* Nombre — altura fija para alineación perfecta */}
