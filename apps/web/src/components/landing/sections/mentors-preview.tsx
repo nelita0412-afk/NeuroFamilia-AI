@@ -3,25 +3,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { MENTOR_NAMES } from '@neurofamilia/shared';
 import { MENTOR_IDENTITY } from '@/lib/mentor-identity';
-
-/* Encuadre individual por mentor.
-   - pos: object-position que centra el personaje (medido por imagen).
-   - scale: ajuste de escala solicitado por mentor (se multiplica por BASE_ZOOM
-     para que ninguna reducción deje huecos dentro del círculo).
-   - dy: bajada fina en px para igualar la línea de los rostros.
-   - oy: origen vertical del zoom (%), tomado del centroide del personaje. */
-const BASE_ZOOM = 1.15;
-
-const AVATAR_FRAMING: Record<string, { pos: string; scale: number; dy: number; oy: number }> = {
-  ALBA: { pos: '31% 50%', scale: 0.9, dy: 6, oy: 42 },
-  NIA: { pos: '34% 50%', scale: 1.12, dy: 0, oy: 46 },
-  MAKI: { pos: '33% 50%', scale: 0.95, dy: 3, oy: 47 },
-  BOBBY: { pos: '40% 50%', scale: 0.9, dy: 6, oy: 49 },
-  LEO: { pos: '32% 50%', scale: 0.92, dy: 5, oy: 44 },
-  CORA: { pos: '36% 50%', scale: 0.88, dy: 7, oy: 44 },
-  PINGO: { pos: '26% 50%', scale: 0.95, dy: 0, oy: 45 },
-  DARWIN: { pos: '35% 50%', scale: 1.12, dy: 0, oy: 41 },
-};
+import { MENTOR_COLORS } from '@/lib/mentor-visuals';
 
 export function MentorsPreviewSection() {
   return (
@@ -48,45 +30,42 @@ export function MentorsPreviewSection() {
           retos de cada persona.
         </p>
 
-        <ul className="mx-auto mt-14 grid grid-cols-4 gap-x-3 gap-y-10 sm:max-w-3xl lg:max-w-none lg:grid-cols-8 lg:gap-x-5">
+        {/* Cards verticales — ilustración completa 2:3 sin recortes */}
+        <div className="mx-auto mt-14 grid max-w-[960px] grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {MENTOR_NAMES.map((name) => {
             const identity = MENTOR_IDENTITY[name];
-            const framing = AVATAR_FRAMING[name] ?? {
-              pos: '50% 50%',
-              scale: 1,
-              dy: 0,
-              oy: 50,
-            };
+            const accent = MENTOR_COLORS[name].primary;
             return (
-              <li key={name} className="js-mentor-avatar flex flex-col items-center">
-                {/* Avatar — tamaño uniforme en todos los breakpoints */}
-                <span className="relative h-16 w-16 overflow-hidden rounded-full bg-white/10 ring-2 ring-white/25 transition-transform duration-300 hover:scale-110 hover:ring-white/60 sm:h-[100px] sm:w-[100px]">
+              <article
+                key={name}
+                className="js-mentor-card group flex h-full flex-col overflow-hidden rounded-[14px] bg-white text-left shadow-[0_8px_30px_rgba(0,20,60,0.25)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_48px_rgba(0,40,90,0.45),0_0_32px_rgba(0,184,217,0.18)]"
+              >
+                <div className="relative aspect-[2/3] w-full bg-[#E8F1FA]">
                   <Image
                     src={identity.image}
                     alt={`Mentor ${name}, ${identity.specialty}`}
                     fill
-                    sizes="(max-width: 640px) 64px, 100px"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 216px"
                     loading="lazy"
                     className="object-cover"
-                    style={{
-                      objectPosition: framing.pos,
-                      transform: `translateY(${framing.dy}px) scale(${(BASE_ZOOM * framing.scale).toFixed(3)})`,
-                      transformOrigin: `50% ${framing.oy}%`,
-                    }}
                   />
-                </span>
-                {/* Nombre — altura fija para alineación perfecta */}
-                <p className="mt-3 flex h-5 items-start justify-center text-sm font-extrabold tracking-wide text-white">
-                  {name}
-                </p>
-                {/* Especialidad — bloque de altura fija (constante en 1, 2 o 3 líneas) */}
-                <p className="mt-1 flex h-12 items-start justify-center text-center text-[10px] font-semibold uppercase leading-4 tracking-[0.08em] text-white/55">
-                  {identity.specialty}
-                </p>
-              </li>
+                </div>
+                <div
+                  className="flex flex-1 flex-col border-t-[3px] p-4"
+                  style={{ borderColor: accent }}
+                >
+                  <h3 className="text-lg font-extrabold text-[#0B3B82]">{name}</h3>
+                  <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#0066CC]">
+                    {identity.specialty}
+                  </p>
+                  <p className="mt-2 min-h-[40px] text-[13px] leading-[1.5] text-[#0B3B82]/70">
+                    {identity.shortDescription}
+                  </p>
+                </div>
+              </article>
             );
           })}
-        </ul>
+        </div>
 
         <Link
           href="/neuromentores"

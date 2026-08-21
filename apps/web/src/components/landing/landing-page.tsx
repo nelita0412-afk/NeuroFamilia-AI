@@ -113,14 +113,14 @@ export function LandingPage({ page, children }: { page: LandingPageKey; children
             .from('.js-mentors-preview-title', { y: 30, opacity: 0, duration: 0.6 }, 0.1)
             .from('.js-mentors-preview-body', { y: 24, opacity: 0, duration: 0.6 }, 0.25)
             .from(
-              '.js-mentor-avatar',
+              '.js-mentor-card',
               {
                 y: 30,
                 opacity: 0,
-                scale: 0.85,
+                scale: 0.95,
                 duration: 0.5,
                 stagger: 0.06,
-                ease: 'back.out(1.5)',
+                ease: 'power2.out',
                 clearProps: 'transform,opacity',
               },
               0.35
