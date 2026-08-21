@@ -32,7 +32,7 @@ export function ImpactReachedSection() {
           </p>
         </div>
 
-        <ul className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-16 grid gap-6 md:grid-cols-3">
           {IMPACT_METRICS.map(({ id, icon: Icon, value, suffix, label, description }) => (
             <li
               key={id}

@@ -89,6 +89,47 @@ export function LandingPage({ page, children }: { page: LandingPageKey; children
             scrollTrigger: { trigger: '.js-foundation', start: 'top 80%', once: true },
             clearProps: 'transform,opacity',
           });
+
+          /* Vista previa Acerca — reveal único, sobrio */
+          gsap
+            .timeline({
+              scrollTrigger: { trigger: '.js-about-preview', start: 'top 80%', once: true },
+            })
+            .from('.js-about-preview-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
+            .from('.js-about-preview-title', { y: 30, opacity: 0, duration: 0.6 }, 0.15)
+            .from('.js-about-preview-body', { y: 24, opacity: 0, duration: 0.6 }, 0.3)
+            .from(
+              '.js-about-preview-cta',
+              { y: 20, opacity: 0, duration: 0.5, clearProps: 'transform,opacity' },
+              0.45
+            );
+
+          /* Vista previa NeuroMentores — banda navy con avatares */
+          gsap
+            .timeline({
+              scrollTrigger: { trigger: '.js-mentors-preview', start: 'top 80%', once: true },
+            })
+            .from('.js-mentors-preview-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
+            .from('.js-mentors-preview-title', { y: 30, opacity: 0, duration: 0.6 }, 0.1)
+            .from('.js-mentors-preview-body', { y: 24, opacity: 0, duration: 0.6 }, 0.25)
+            .from(
+              '.js-mentor-avatar',
+              {
+                y: 30,
+                opacity: 0,
+                scale: 0.85,
+                duration: 0.5,
+                stagger: 0.06,
+                ease: 'back.out(1.5)',
+                clearProps: 'transform,opacity',
+              },
+              0.35
+            )
+            .from(
+              '.js-mentors-preview-cta',
+              { y: 20, opacity: 0, duration: 0.5, clearProps: 'transform,opacity' },
+              0.6
+            );
         }
 
         if (page === 'acerca') {

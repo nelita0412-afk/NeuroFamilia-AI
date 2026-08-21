@@ -5,6 +5,8 @@ import { LandingNavbar } from '@/components/landing/navbar';
 import { HeroSection } from '@/components/landing/sections/hero';
 import { ImpactReachedSection } from '@/components/landing/sections/impact-reached';
 import { FoundationSection } from '@/components/landing/sections/foundation';
+import { AboutPreviewSection } from '@/components/landing/sections/about-preview';
+import { MentorsPreviewSection } from '@/components/landing/sections/mentors-preview';
 import { LandingFooter } from '@/components/landing/footer';
 
 export const metadata: Metadata = {
@@ -20,6 +22,8 @@ export default function Home() {
       <HeroSection />
       <ImpactReachedSection />
       <FoundationSection />
+      <AboutPreviewSection />
+      <MentorsPreviewSection />
       <LandingFooter />
     </LandingPage>
   );
