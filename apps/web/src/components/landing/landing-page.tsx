@@ -134,9 +134,22 @@ export function LandingPage({ page, children }: { page: LandingPageKey; children
 
         if (page === 'acerca') {
           /* ═══════════════════════════════════════════════════════
-             ACERCA DE — Quiénes Somos, Propósito, Equipo,
-             Origen, Valores, Métricas y Cierre
+             ACERCA DE — Hero, Quiénes Somos, Historia, Propósito,
+             Equipo, Valores, Futuro y Cierre
              ═══════════════════════════════════════════════════════ */
+
+          /* Hero Acerca — entrada al cargar */
+          gsap
+            .timeline({ delay: 0.15 })
+            .from('.js-about-hero-kicker', { y: 24, opacity: 0, duration: 0.6, ease: 'power2.out' }, 0)
+            .from('.js-about-hero-title', { y: 34, opacity: 0, duration: 0.8, ease: 'power2.out' }, 0.12)
+            .from(
+              '.js-about-hero-subtitle',
+              { y: 26, opacity: 0, duration: 0.7, ease: 'power2.out' },
+              0.3
+            )
+            .from('.js-about-hero-cta', { y: 20, opacity: 0, duration: 0.6, ease: 'power2.out' }, 0.5);
+
           gsap.timeline({
             scrollTrigger: { trigger: '.js-about', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
           })
@@ -177,6 +190,27 @@ export function LandingPage({ page, children }: { page: LandingPageKey; children
             duration: 0.6,
             stagger: 0.1,
             scrollTrigger: { trigger: '.js-eco-mobile', start: 'top 80%', end: 'bottom 50%', scrub: 0.4 },
+          });
+
+          /* Franja Fundación + pilares */
+          gsap.from('.js-about-foundation', {
+            y: 30,
+            opacity: 0,
+            duration: 0.8,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: '.js-about-foundation', start: 'top 85%', once: true },
+            clearProps: 'transform,opacity',
+          });
+          gsap.from('.js-about-pillar', {
+            y: 20,
+            opacity: 0,
+            scale: 0.9,
+            duration: 0.5,
+            stagger: 0.08,
+            delay: 0.3,
+            ease: 'back.out(1.5)',
+            scrollTrigger: { trigger: '.js-about-foundation', start: 'top 85%', once: true },
+            clearProps: 'transform,opacity',
           });
 
           gsap.timeline({
@@ -223,25 +257,35 @@ export function LandingPage({ page, children }: { page: LandingPageKey; children
             }
           });
 
+          /* Nuestra Historia — resumen en tres actos */
           gsap.timeline({
-            scrollTrigger: { trigger: '.js-about-why', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
+            scrollTrigger: { trigger: '.js-about-origin', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
           })
-            .from('.js-about-why-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
-            .from('.js-about-why-title', { y: 30, opacity: 0, duration: 0.6 }, 0.15)
-            .from('.js-about-why-lead', { y: 24, opacity: 0, duration: 0.7 }, 0.3)
-            .from('.js-why-item', {
-              y: 30,
-              opacity: 0,
-              duration: 0.6,
-              stagger: 0.12,
-              ease: 'power2.out',
-            }, 0.5);
-          gsap.from('.js-why-photo', {
+            .from('.js-about-origin-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
+            .from('.js-about-origin-title', { y: 30, opacity: 0, duration: 0.6 }, 0.15);
+          gsap.from('.js-origin-photo', {
             x: -60,
             opacity: 0,
             duration: 1,
             ease: 'power2.out',
-            scrollTrigger: { trigger: '.js-about-why', start: 'top 70%', end: 'bottom 40%', scrub: 0.5 },
+            scrollTrigger: { trigger: '.js-about-origin', start: 'top 70%', end: 'bottom 40%', scrub: 0.5 },
+          });
+          gsap.from('.js-origin-act', {
+            x: 40,
+            opacity: 0,
+            duration: 0.7,
+            stagger: 0.16,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: '.js-about-origin', start: 'top 65%', once: true },
+            clearProps: 'transform,opacity',
+          });
+          gsap.from('.js-about-origin-cta', {
+            y: 20,
+            opacity: 0,
+            duration: 0.6,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: '.js-about-origin', start: 'bottom 75%', once: true },
+            clearProps: 'transform,opacity',
           });
 
           gsap.from('.js-about-values-kicker', {
@@ -262,13 +306,35 @@ export function LandingPage({ page, children }: { page: LandingPageKey; children
             clearProps: 'transform,opacity',
           });
 
-          gsap.from('.js-metric', {
-            y: 40,
+          /* Mirando hacia el Futuro — ruta proyectiva */
+          gsap.timeline({
+            scrollTrigger: { trigger: '.js-about-future', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
+          })
+            .from('.js-about-future-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
+            .from('.js-about-future-title', { y: 30, opacity: 0, duration: 0.6 }, 0.15)
+            .from('.js-about-future-body', { y: 24, opacity: 0, duration: 0.7 }, 0.3);
+          gsap.from('.js-future-route', {
+            y: 30,
             opacity: 0,
-            duration: 0.7,
-            stagger: 0.12,
+            duration: 0.9,
             ease: 'power2.out',
-            scrollTrigger: { trigger: '.js-about-metrics', start: 'top 75%', end: 'bottom 45%', scrub: 0.5 },
+            scrollTrigger: { trigger: '.js-future-route', start: 'top 85%', once: true },
+            clearProps: 'transform,opacity',
+          });
+          /* Flujo continuo de la ruta hacia El mundo */
+          gsap.to('.js-future-path', {
+            strokeDashoffset: -100,
+            duration: 6,
+            repeat: -1,
+            ease: 'none',
+          });
+          gsap.to('.js-future-dot', {
+            scale: 1.4,
+            svgOrigin: '580 55',
+            duration: 1.4,
+            yoyo: true,
+            repeat: -1,
+            ease: 'sine.inOut',
           });
 
           gsap.timeline({

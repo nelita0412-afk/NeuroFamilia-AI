@@ -2,18 +2,17 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Counter } from '../counter';
 import {
+  ArrowRight,
   Brain,
+  Building2,
   Globe,
   Handshake,
   HeartHandshake,
   Lightbulb,
   Lock,
-  MapPin,
   MonitorSmartphone,
   Rocket,
-  Stethoscope,
   TrendingUp,
   Users,
 } from 'lucide-react';
@@ -35,6 +34,31 @@ const ECOSYSTEM_LINES = [
   'M50,50 L72,78',
   'M50,50 L28,78',
   'M50,50 L15,30',
+];
+
+/* Pilares institucionales (franja Quiénes Somos) */
+const PILLARS = ['Ciencia', 'Salud Mental', 'Desarrollo Humano', 'Innovación Social'];
+
+/* ── 3. NUESTRA HISTORIA · Resumen en tres actos ───────────── */
+
+const ORIGIN_ACTS = [
+  {
+    number: '01',
+    title: 'El contexto',
+    detail: 'Vivir en una isla implica oportunidades y desafíos únicos.',
+  },
+  {
+    number: '02',
+    title: 'La necesidad',
+    detail:
+      'El acceso a especialistas en salud mental es limitado y las familias necesitan acompañamiento cercano y continuo.',
+  },
+  {
+    number: '03',
+    title: 'La respuesta',
+    detail:
+      'En septiembre de 2025 nace NeuroFamilia: tecnología con propósito, construida junto a la comunidad.',
+  },
 ];
 
 function EcosystemVisual() {
@@ -174,37 +198,7 @@ const FOUNDERS = [
   },
 ];
 
-/* ── 5. ¿POR QUÉ NACE NEUROFAMILIA? ────────────────────────── */
-
-const WHY = [
-  {
-    icon: MapPin,
-    title: 'Contexto insular',
-    detail: 'Vivir en una isla implica oportunidades y desafíos únicos.',
-  },
-  {
-    icon: Stethoscope,
-    title: 'Acceso limitado',
-    detail: 'La disponibilidad de especialistas en salud mental es reducida.',
-  },
-  {
-    icon: HeartHandshake,
-    title: 'Apoyo familiar',
-    detail: 'Las familias necesitan acompañamiento cercano y continuo.',
-  },
-  {
-    icon: Lightbulb,
-    title: 'Innovación social',
-    detail: 'Diseñamos soluciones construidas junto a la comunidad.',
-  },
-  {
-    icon: MonitorSmartphone,
-    title: 'Tecnología con propósito',
-    detail: 'Utilizamos herramientas digitales para ampliar el acceso al bienestar.',
-  },
-];
-
-/* ── 6. VALORES ────────────────────────────────────────────── */
+/* ── 5. VALORES ────────────────────────────────────────────── */
 
 const VALUES = [
   { icon: HeartHandshake, label: 'Empatía' },
@@ -215,14 +209,9 @@ const VALUES = [
   { icon: TrendingUp, label: 'Impacto Social' },
 ];
 
-/* ── 7. MÉTRICAS ───────────────────────────────────────────── */
+/* ── 6. MIRANDO HACIA EL FUTURO ───────────────────────────── */
 
-const METRICS = [
-  { value: 'Septiembre 2025', count: null, label: 'Nacimiento de NeuroFamilia' },
-  { value: '2', count: 2, label: 'Fundadoras' },
-  { value: '5', count: 5, label: 'Áreas Estratégicas' },
-  { value: '1', count: 1, label: 'Ecosistema Digital' },
-];
+const FUTURE_STOPS = ['Galápagos', 'Ecuador', 'El mundo'];
 
 export function AboutSection() {
   return (
@@ -247,6 +236,39 @@ export function AboutSection() {
           {/* Ecosistema visual */}
           <EcosystemVisual />
           <EcosystemMobile />
+
+          {/* Franja institucional · Fundación */}
+          <div className="js-about-foundation mx-auto mt-14 max-w-3xl">
+            <div className="flex flex-col items-start gap-4 rounded-2xl border-l-4 border-[#00B8D9] bg-[#F0F7FF] p-6 ring-1 ring-[#0066CC]/10 sm:flex-row sm:items-center">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white text-[#0066CC] shadow-[0_8px_20px_rgba(11,59,130,0.10)] ring-1 ring-[#0066CC]/15">
+                <Building2 className="h-5 w-5" />
+              </span>
+              <p className="text-[15px] leading-7 text-[#0B3B82]/80">
+                NeuroFamilia nace en septiembre de 2025 como una iniciativa de la{' '}
+                <span className="font-bold text-[#0B3B82]">
+                  Fundación Centro Integral de Bienestar e Innovación Social
+                </span>{' '}
+                para fortalecer el bienestar, la salud mental y el desarrollo humano en
+                Galápagos.
+              </p>
+            </div>
+
+            {/* Pilares */}
+            <ul className="mt-7 flex flex-wrap items-center justify-center gap-2.5">
+              {PILLARS.map((pillar, i) => (
+                <li
+                  key={pillar}
+                  className={`js-about-pillar rounded-full px-5 py-2 text-sm font-bold text-[#0B3B82] ring-1 ${
+                    i % 2 === 0
+                      ? 'bg-white ring-[#0066CC]/20'
+                      : 'bg-[#F0F7FF] ring-[#00B8D9]/25'
+                  }`}
+                >
+                  {pillar}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
@@ -345,12 +367,12 @@ export function AboutSection() {
         </div>
       </section>
 
-      {/* ── 4. ¿POR QUÉ NACE NEUROFAMILIA? ───────────────────── */}
-      <section className="js-about-why relative overflow-hidden bg-white py-20">
+      {/* ── 3. NUESTRA HISTORIA · Resumen + CTA a /historia ──── */}
+      <section className="js-about-origin relative overflow-hidden bg-white py-20">
         <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             {/* Fotografía aérea */}
-            <div className="js-why-photo relative">
+            <div className="js-origin-photo relative">
               <div className="relative overflow-hidden rounded-[28px] shadow-[0_32px_72px_rgba(11,59,130,0.25)]">
                 <Image
                   src="/images/landing/galapagos-aerial.jpg"
@@ -367,32 +389,38 @@ export function AboutSection() {
               <span className="absolute -left-6 -top-6 -z-10 h-40 w-40 rounded-full bg-[#00B8D9]/20 blur-2xl" />
             </div>
 
-            {/* Texto adaptado */}
+            {/* Narrativa en tres actos */}
             <div>
-              <p className="js-about-why-kicker text-xs font-bold uppercase tracking-[0.3em] text-[#0066CC]">
-                Nuestro origen
+              <p className="js-about-origin-kicker text-xs font-bold uppercase tracking-[0.3em] text-[#0066CC]">
+                Nuestra Historia
               </p>
-              <h2 className="js-about-why-title mt-4 text-3xl font-extrabold leading-tight text-[#0B3B82] sm:text-4xl">
-                ¿Por qué nace NeuroFamilia?
+              <h2 className="js-about-origin-title mt-4 text-3xl font-extrabold leading-tight text-[#0B3B82] sm:text-4xl">
+                Un camino nacido en Galápagos
               </h2>
-              <p className="js-about-why-lead mt-5 text-base leading-8 text-[#0B3B82]/75 sm:text-lg">
-                Nacemos para responder a una realidad concreta: el bienestar no llega igual a
-                todas las comunidades.
-              </p>
 
-              <ul className="js-about-why-list mt-8 space-y-5">
-                {WHY.map(({ icon: Icon, title, detail }) => (
-                  <li key={title} className="js-why-item group flex gap-4">
-                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#F0F7FF] text-[#0066CC] ring-1 ring-[#0066CC]/15 transition-colors duration-300 group-hover:bg-[#0066CC] group-hover:text-white">
-                      <Icon className="h-5 w-5" />
+              <ol className="mt-9 space-y-8">
+                {ORIGIN_ACTS.map((act) => (
+                  <li key={act.number} className="js-origin-act group flex gap-5">
+                    <span className="select-none text-5xl font-extrabold leading-none text-[#0B3B82]/10 transition-colors duration-300 group-hover:text-[#0066CC]/25">
+                      {act.number}
                     </span>
                     <div>
-                      <p className="text-base font-extrabold text-[#0B3B82]">{title}</p>
-                      <p className="mt-0.5 text-sm leading-6 text-[#0B3B82]/70">{detail}</p>
+                      <h3 className="text-lg font-extrabold text-[#0B3B82]">{act.title}</h3>
+                      <p className="mt-1 max-w-md text-[15px] leading-7 text-[#0B3B82]/70">
+                        {act.detail}
+                      </p>
                     </div>
                   </li>
                 ))}
-              </ul>
+              </ol>
+
+              <Link
+                href="/historia"
+                className="js-about-origin-cta mt-10 inline-flex items-center gap-2 rounded-full border-2 border-[#0066CC]/25 bg-white px-7 py-3 text-sm font-bold text-[#0066CC] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#0066CC] hover:bg-[#0066CC] hover:text-white"
+              >
+                Ver la historia completa
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
           </div>
         </div>
@@ -420,22 +448,48 @@ export function AboutSection() {
         </div>
       </section>
 
-      {/* ── 6. MÉTRICAS INSTITUCIONALES ──────────────────────── */}
-      <section className="js-about-metrics relative overflow-hidden bg-white py-20">
-        <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
-          <dl className="grid gap-10 text-center sm:grid-cols-2 lg:grid-cols-4">
-            {METRICS.map((metric) => (
-              <div key={metric.label} className="js-metric relative">
-                <span className="pointer-events-none absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#00B8D9]/10 blur-2xl" />
-                <dd className="relative text-4xl font-extrabold tracking-tight text-[#0066CC] sm:text-5xl">
-                  {metric.count !== null ? <Counter target={metric.count} /> : metric.value}
-                </dd>
-                <p className="relative mt-3 text-sm font-semibold text-[#0B3B82]/65">
-                  {metric.label}
-                </p>
-              </div>
+      {/* ── 6. MIRANDO HACIA EL FUTURO · Ruta proyectiva ─────── */}
+      <section className="js-about-future relative overflow-hidden bg-white py-20">
+        <div className="relative z-10 mx-auto max-w-3xl px-5 text-center sm:px-8">
+          <p className="js-about-future-kicker text-xs font-bold uppercase tracking-[0.3em] text-[#0066CC]">
+            Mirando hacia el Futuro
+          </p>
+          <h2 className="js-about-future-title mt-4 text-3xl font-extrabold leading-tight text-[#0B3B82] sm:text-4xl">
+            Mirando hacia el futuro
+          </h2>
+          <p className="js-about-future-body mx-auto mt-5 max-w-2xl text-base leading-8 text-[#0B3B82]/75 sm:text-lg">
+            Trabajamos para consolidar un ecosistema de bienestar que conecte personas,
+            familias, profesionales e instituciones, generando nuevas oportunidades para el
+            desarrollo humano en Galápagos y futuras comunidades.
+          </p>
+        </div>
+
+        {/* Ruta proyectiva Galápagos → Ecuador → El mundo */}
+        <div className="js-future-route relative mx-auto mt-14 max-w-2xl px-8">
+          <svg viewBox="0 0 600 70" fill="none" aria-hidden="true" className="w-full">
+            <path
+              d="M20,55 Q300,5 580,55"
+              stroke="#00B8D9"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeDasharray="4 6"
+              className="js-future-path"
+            />
+            <circle cx="20" cy="55" r="5" fill="#0066CC" />
+            <circle cx="300" cy="30" r="6" fill="#FFFFFF" stroke="#00B8D9" strokeWidth="2.5" />
+            <circle cx="580" cy="55" r="7" fill="#00B8D9" opacity="0.35" />
+            <circle cx="580" cy="55" r="4.5" fill="#00B8D9" className="js-future-dot" />
+          </svg>
+          <div className="mt-2 flex items-center justify-between">
+            {FUTURE_STOPS.map((stop) => (
+              <span
+                key={stop}
+                className="text-xs font-bold uppercase tracking-[0.15em] text-[#0B3B82]/60"
+              >
+                {stop}
+              </span>
             ))}
-          </dl>
+          </div>
         </div>
       </section>
 

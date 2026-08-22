@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 
 import { LandingPage } from '@/components/landing/landing-page';
 import { LandingNavbar } from '@/components/landing/navbar';
+import { AboutHeroSection } from '@/components/landing/sections/about-hero';
 import { AboutSection } from '@/components/landing/sections/about';
 import { LandingFooter } from '@/components/landing/footer';
 
@@ -15,6 +16,7 @@ export default function AcercaPage() {
   return (
     <LandingPage page="acerca">
       <LandingNavbar />
+      <AboutHeroSection />
       <AboutSection />
       <LandingFooter />
     </LandingPage>
