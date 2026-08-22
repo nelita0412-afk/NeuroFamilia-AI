@@ -142,13 +142,11 @@ export function LandingPage({ page, children }: { page: LandingPageKey; children
           gsap
             .timeline({ delay: 0.15 })
             .from('.js-about-hero-kicker', { y: 24, opacity: 0, duration: 0.6, ease: 'power2.out' }, 0)
-            .from('.js-about-hero-title', { y: 34, opacity: 0, duration: 0.8, ease: 'power2.out' }, 0.12)
             .from(
-              '.js-about-hero-subtitle',
-              { y: 26, opacity: 0, duration: 0.7, ease: 'power2.out' },
-              0.3
-            )
-            .from('.js-about-hero-cta', { y: 20, opacity: 0, duration: 0.6, ease: 'power2.out' }, 0.5);
+              '.js-about-hero-title',
+              { y: 34, opacity: 0, duration: 0.9, ease: 'power2.out' },
+              0.15
+            );
 
           gsap.timeline({
             scrollTrigger: { trigger: '.js-about', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
