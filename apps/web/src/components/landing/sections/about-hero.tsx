@@ -1,6 +1,6 @@
 export function AboutHeroSection() {
   return (
-    <section className="js-about-hero relative flex h-[85svh] min-h-[640px] w-full flex-col overflow-hidden bg-[#00285A]">
+    <section className="js-about-hero relative flex h-[100svh] min-h-[700px] w-full flex-col overflow-hidden bg-[#00285A]">
       {/* VIDEO HERO V1 — único protagonista del Hero */}
       <video
         src="/images/landing/hero-v1.mp4"
