@@ -134,19 +134,9 @@ export function LandingPage({ page, children }: { page: LandingPageKey; children
 
         if (page === 'acerca') {
           /* ═══════════════════════════════════════════════════════
-             ACERCA DE — Hero, Quiénes Somos, Historia, Propósito,
-             Equipo, Valores, Futuro y Cierre
+             ACERCA DE — Hero en video, Quiénes Somos, Historia,
+             Propósito, Equipo, Valores, Futuro y Cierre
              ═══════════════════════════════════════════════════════ */
-
-          /* Hero Acerca — entrada al cargar */
-          gsap
-            .timeline({ delay: 0.15 })
-            .from('.js-about-hero-kicker', { y: 24, opacity: 0, duration: 0.6, ease: 'power2.out' }, 0)
-            .from(
-              '.js-about-hero-title',
-              { y: 34, opacity: 0, duration: 0.9, ease: 'power2.out' },
-              0.15
-            );
 
           gsap.timeline({
             scrollTrigger: { trigger: '.js-about', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
