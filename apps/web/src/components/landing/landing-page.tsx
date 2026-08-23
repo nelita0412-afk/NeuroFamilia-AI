@@ -180,27 +180,6 @@ export function LandingPage({ page, children }: { page: LandingPageKey; children
             scrollTrigger: { trigger: '.js-eco-mobile', start: 'top 80%', end: 'bottom 50%', scrub: 0.4 },
           });
 
-          /* Franja Fundación + pilares */
-          gsap.from('.js-about-foundation', {
-            y: 30,
-            opacity: 0,
-            duration: 0.8,
-            ease: 'power2.out',
-            scrollTrigger: { trigger: '.js-about-foundation', start: 'top 85%', once: true },
-            clearProps: 'transform,opacity',
-          });
-          gsap.from('.js-about-pillar', {
-            y: 20,
-            opacity: 0,
-            scale: 0.9,
-            duration: 0.5,
-            stagger: 0.08,
-            delay: 0.3,
-            ease: 'back.out(1.5)',
-            scrollTrigger: { trigger: '.js-about-foundation', start: 'top 85%', once: true },
-            clearProps: 'transform,opacity',
-          });
-
           gsap.timeline({
             scrollTrigger: { trigger: '.js-about-purpose', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
           })

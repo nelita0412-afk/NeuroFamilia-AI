@@ -2,12 +2,9 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-
-import { OdsSection } from '@/components/landing/sections/about-ods';
 import {
   ArrowRight,
   Brain,
-  Building2,
   Globe,
   Handshake,
   HeartHandshake,
@@ -20,8 +17,24 @@ import {
 
 /* ── 1. QUIÉNES SOMOS ─────────────────────────────────── */
 
-/* Pilares institucionales (franja Quiénes Somos) */
-const PILLARS = ['Ciencia', 'Salud Mental', 'Desarrollo Humano', 'Innovación Social'];
+/* Conceptos institucionales (línea ✦ Quiénes Somos) */
+const CONCEPTOS = ['Ciencia', 'Salud Mental', 'Desarrollo Humano', 'Innovación Social'];
+
+/* Métricas institucionales (Quiénes Somos) */
+const METRICAS = [
+  { valor: '4+', etiqueta: 'Islas conectadas' },
+  { valor: '5', etiqueta: 'Áreas estratégicas' },
+  { valor: '1', etiqueta: 'Ecosistema digital' },
+];
+
+/* ODS con iconografía oficial de Naciones Unidas (public/images/ods) */
+const ODS_OFICIALES = [
+  { numero: 3, titulo: 'Salud y Bienestar' },
+  { numero: 4, titulo: 'Educación de Calidad' },
+  { numero: 10, titulo: 'Reducción de las Desigualdades' },
+  { numero: 16, titulo: 'Paz, Justicia e Instituciones Sólidas' },
+  { numero: 17, titulo: 'Alianzas para Lograr los Objetivos' },
+];
 
 /* ── 3. NUESTRA HISTORIA · Resumen en tres actos ───────────── */
 
@@ -113,60 +126,87 @@ const FUTURE_STOPS = ['Galápagos', 'Ecuador', 'El mundo'];
 export function AboutSection() {
   return (
     <>
-      {/* ── 1. QUIÉNES SOMOS ─────────────────────────────────── */}
-      <section id="proposito" className="js-about relative overflow-hidden bg-white py-12">
-        <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
-          <div className="mx-auto max-w-3xl text-center">
+      {/* ── 1. QUIÉNES SOMOS · dos columnas, estilo PNUD/UNICEF/BID ── */}
+      <section id="proposito" className="js-about relative overflow-hidden bg-white py-10 sm:py-12">
+        <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[1.55fr_1fr] lg:gap-14">
+          {/* IZQUIERDA (~60%) */}
+          <div>
             <p className="js-about-kicker text-xs font-bold uppercase tracking-[0.3em] text-[#0066CC]">
               Quiénes Somos
             </p>
-            <h2 className="js-about-title mt-4 text-3xl font-extrabold leading-tight text-[#0B3B82] sm:text-4xl">
-              Ciencia, tecnología y acompañamiento humano para el bienestar de las familias
+            <h2 className="js-about-title mt-3 text-[clamp(1.75rem,1.1rem+2.2vw,2.6rem)] font-extrabold leading-[1.12] tracking-tight text-[#0B3B82]">
+              Conectando a las comunidades insulares para fortalecer el bienestar y el
+              desarrollo humano
             </h2>
-            <p className="js-about-body mx-auto mt-5 max-w-2xl text-base leading-7 text-[#0B3B82]/75 sm:text-lg">
-              NeuroFamilia Galápagos integra trabajo social, psicología clínica, salud digital e
-              innovación social para fortalecer el bienestar de niños, adolescentes, familias e
-              instituciones.
+            <p className="js-about-body mt-4 max-w-xl text-[15px] leading-7 text-[#0B3B82]/75 sm:text-base">
+              NeuroFamilia Galápagos es una iniciativa de innovación social que integra
+              ciencia, salud mental, tecnología y desarrollo humano para fortalecer el
+              bienestar de niños, adolescentes, familias e instituciones en comunidades
+              insulares.
             </p>
-          </div>
 
-          {/* Franja institucional · Fundación */}
-          <div className="js-about-foundation mx-auto mt-14 max-w-3xl">
-            <div className="flex flex-col items-start gap-4 rounded-2xl border-l-4 border-[#00B8D9] bg-[#F0F7FF] p-6 ring-1 ring-[#0066CC]/10 sm:flex-row sm:items-center">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white text-[#0066CC] shadow-[0_8px_20px_rgba(11,59,130,0.10)] ring-1 ring-[#0066CC]/15">
-                <Building2 className="h-5 w-5" />
-              </span>
-              <p className="text-[15px] leading-7 text-[#0B3B82]/80">
-                NeuroFamilia nace en septiembre de 2025 como una iniciativa de la{' '}
-                <span className="font-bold text-[#0B3B82]">
-                  Fundación Centro Integral de Bienestar e Innovación Social
-                </span>{' '}
-                para fortalecer el bienestar, la salud mental y el desarrollo humano en
-                Galápagos.
-              </p>
-            </div>
-
-            {/* Pilares */}
-            <ul className="mt-7 flex flex-wrap items-center justify-center gap-2.5">
-              {PILLARS.map((pillar, i) => (
+            {/* Línea de conceptos */}
+            <ul className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2">
+              {CONCEPTOS.map((concepto) => (
                 <li
-                  key={pillar}
-                  className={`js-about-pillar rounded-full px-5 py-2 text-sm font-bold text-[#0B3B82] ring-1 ${
-                    i % 2 === 0
-                      ? 'bg-white ring-[#0066CC]/20'
-                      : 'bg-[#F0F7FF] ring-[#00B8D9]/25'
-                  }`}
+                  key={concepto}
+                  className="text-sm font-semibold text-[#0B3B82]/80"
                 >
-                  {pillar}
+                  <span className="mr-1.5 text-[#00B8D9]" aria-hidden="true">✦</span>
+                  {concepto}
                 </li>
               ))}
             </ul>
+
+            {/* Métricas institucionales */}
+            <dl className="mt-8 flex flex-wrap gap-x-12 gap-y-6 border-t border-[#0B3B82]/10 pt-7">
+              {METRICAS.map(({ valor, etiqueta }) => (
+                <div key={etiqueta} className="js-about-metrica">
+                  <dt className="order-2 mt-1 text-[11px] font-bold uppercase tracking-[0.18em] text-[#0B3B82]/60">
+                    {etiqueta}
+                  </dt>
+                  <dd className="order-1 text-4xl font-extrabold leading-none text-[#0B3B82]">
+                    {valor}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+
+            {/* Bloque ODS · iconografía oficial de Naciones Unidas */}
+            <div className="mt-9">
+              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#0B3B82]/60">
+                Contribuimos a los Objetivos de Desarrollo Sostenible
+              </p>
+              <ul className="mt-3 flex flex-wrap items-center gap-3">
+                {ODS_OFICIALES.map(({ numero, titulo }) => (
+                  <li key={numero}>
+                    <Image
+                      src={`/images/ods/ods-${numero}.svg`}
+                      alt={`ODS ${numero} — ${titulo}`}
+                      width={44}
+                      height={44}
+                      unoptimized
+                      className="h-11 w-11 object-contain"
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* DERECHA (~40%) · logo NFG protagonista, sin cajas ni fondos */}
+          <div className="flex justify-center lg:justify-end">
+            <Image
+              src="/images/logos/nfg-logo.png"
+              alt="Logo NFG · NeuroFamilia Galápagos"
+              width={1189}
+              height={709}
+              priority
+              className="js-about-logo h-auto w-full max-w-[300px] object-contain sm:max-w-[380px] lg:max-w-[420px]"
+            />
           </div>
         </div>
       </section>
-
-      {/* ── 1b. ODS · Agenda 2030 ─────────────────────────────── */}
-      <OdsSection />
 
       {/* ── 2. NUESTRO PROPÓSITO · Tarjetas premium ──────────── */}
       <section className="js-about-purpose relative overflow-hidden bg-white py-14">
