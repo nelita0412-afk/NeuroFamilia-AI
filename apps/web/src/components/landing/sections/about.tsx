@@ -2,6 +2,8 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+
+import { OdsSection } from '@/components/landing/sections/about-ods';
 import {
   ArrowRight,
   Brain,
@@ -11,30 +13,12 @@ import {
   HeartHandshake,
   Lightbulb,
   Lock,
-  MonitorSmartphone,
   Rocket,
   TrendingUp,
   Users,
 } from 'lucide-react';
 
-/* ── 1. QUIÉNES SOMOS · Ecosistema ─────────────────────────── */
-
-/* Pentágono uniforme alrededor del centro (50,50) */
-const NODES = [
-  { icon: Brain, label: 'Salud Mental', position: 'lg:left-[50%] lg:top-[8%]' },
-  { icon: Users, label: 'Familias', position: 'lg:left-[85%] lg:top-[30%]' },
-  { icon: MonitorSmartphone, label: 'Tecnología', position: 'lg:left-[72%] lg:top-[78%]' },
-  { icon: Lightbulb, label: 'Innovación Social', position: 'lg:left-[28%] lg:top-[78%]' },
-  { icon: Globe, label: 'Comunidad', position: 'lg:left-[15%] lg:top-[30%]' },
-];
-
-const ECOSYSTEM_LINES = [
-  'M50,50 L50,8',
-  'M50,50 L85,30',
-  'M50,50 L72,78',
-  'M50,50 L28,78',
-  'M50,50 L15,30',
-];
+/* ── 1. QUIÉNES SOMOS ─────────────────────────────────── */
 
 /* Pilares institucionales (franja Quiénes Somos) */
 const PILLARS = ['Ciencia', 'Salud Mental', 'Desarrollo Humano', 'Innovación Social'];
@@ -60,93 +44,6 @@ const ORIGIN_ACTS = [
       'En septiembre de 2025 nace NeuroFamilia: tecnología con propósito, construida junto a la comunidad.',
   },
 ];
-
-function EcosystemVisual() {
-  return (
-    <div className="js-eco relative mx-auto mt-10 hidden h-[460px] w-full max-w-[640px] lg:block">
-      {/* Líneas de conexión */}
-      <svg
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
-        className="js-eco-lines absolute inset-0 h-full w-full"
-        aria-hidden="true"
-      >
-        {ECOSYSTEM_LINES.map((d, i) => {
-          const [p1, p2] = d.split(' ');
-          const [x1, y1] = p1.replace('M', '').split(',');
-          const [x2, y2] = p2.replace('L', '').split(',');
-          return (
-            <line
-              key={i}
-              x1={x1}
-              y1={y1}
-              x2={x2}
-              y2={y2}
-              stroke="#00B8D9"
-              strokeWidth="0.35"
-              strokeDasharray="2 1.5"
-              strokeLinecap="round"
-              className="js-eco-line"
-              opacity="0.5"
-            />
-          );
-        })}
-      </svg>
-
-      {/* Nodo central */}
-      <div className="js-eco-hub absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
-        <div className="grid h-32 w-32 place-items-center rounded-full bg-gradient-to-br from-[#0B3B82] to-[#0066CC] text-center shadow-[0_20px_48px_rgba(11,59,130,0.35)] ring-4 ring-white">
-          <div>
-            <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-white">
-              Neuro
-            </p>
-            <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#00B8D9]">
-              Familia
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Nodos satélite */}
-      {NODES.map(({ icon: Icon, label, position }) => (
-        <div
-          key={label}
-          className={`js-eco-node absolute ${position} z-20 -translate-x-1/2 -translate-y-1/2`}
-        >
-          <div className="group flex flex-col items-center gap-2.5">
-            <span className="grid h-16 w-16 place-items-center rounded-2xl bg-white text-[#0066CC] shadow-[0_16px_40px_rgba(11,59,130,0.16)] ring-1 ring-[#0066CC]/15 transition-all duration-300 group-hover:-translate-y-1 group-hover:bg-[#0066CC] group-hover:text-white group-hover:shadow-[0_20px_48px_rgba(0,102,204,0.35)]">
-              <Icon className="h-7 w-7" />
-            </span>
-            <p className="whitespace-nowrap rounded-full bg-[#F0F7FF] px-4 py-1.5 text-[13px] font-bold text-[#0B3B82] ring-1 ring-[#0066CC]/10">
-              {label}
-            </p>
-          </div>
-        </div>
-      ))}
-
-      {/* Pulso decorativo del centro */}
-      <span className="js-eco-pulse absolute left-1/2 top-1/2 -z-10 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#00B8D9]/15 blur-2xl" />
-    </div>
-  );
-}
-
-function EcosystemMobile() {
-  return (
-    <div className="js-eco-mobile relative mx-auto mt-10 max-w-sm lg:hidden">
-      <span className="absolute bottom-6 left-7 top-6 w-0.5 bg-gradient-to-b from-[#0066CC] to-[#00B8D9]/40" />
-      <ul className="space-y-5">
-        {NODES.map(({ icon: Icon, label }) => (
-          <li key={label} className="js-eco-mobile-node relative flex items-center gap-4">
-            <span className="relative z-10 grid h-13 w-13 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[#0066CC] to-[#00B8D9] text-white shadow-[0_10px_24px_rgba(0,102,204,0.3)]">
-              <Icon className="h-6 w-6" />
-            </span>
-            <p className="text-base font-bold text-[#0B3B82]">{label}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
 
 /* ── 2. NUESTRO PROPÓSITO ──────────────────────────────────── */
 
@@ -233,10 +130,6 @@ export function AboutSection() {
             </p>
           </div>
 
-          {/* Ecosistema visual */}
-          <EcosystemVisual />
-          <EcosystemMobile />
-
           {/* Franja institucional · Fundación */}
           <div className="js-about-foundation mx-auto mt-14 max-w-3xl">
             <div className="flex flex-col items-start gap-4 rounded-2xl border-l-4 border-[#00B8D9] bg-[#F0F7FF] p-6 ring-1 ring-[#0066CC]/10 sm:flex-row sm:items-center">
@@ -271,6 +164,9 @@ export function AboutSection() {
           </div>
         </div>
       </section>
+
+      {/* ── 1b. ODS · Agenda 2030 ─────────────────────────────── */}
+      <OdsSection />
 
       {/* ── 2. NUESTRO PROPÓSITO · Tarjetas premium ──────────── */}
       <section className="js-about-purpose relative overflow-hidden bg-white py-14">
