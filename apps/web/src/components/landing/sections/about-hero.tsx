@@ -41,22 +41,6 @@ export function AboutHeroSection() {
         />
       ))}
 
-      {/* Profundidad ligera en los bordes — viñeta institucional */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            'radial-gradient(ellipse 118% 96% at 50% 44%, transparent 56%, rgba(1,22,56,0.26) 100%)',
-        }}
-      />
-
-      {/* Neblina institucional sutil — degradado navy que unifica sin ocultar contenido */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(3,36,88,0.20)_0%,rgba(3,36,88,0.04)_36%,rgba(2,31,76,0.10)_68%,rgba(1,24,62,0.30)_100%)]"
-      />
-
       {/* Título institucional invisible — semántica/SEO sin competir con la imagen */}
       <h1 className="sr-only">
         Construyendo bienestar desde Galápagos para las nuevas generaciones

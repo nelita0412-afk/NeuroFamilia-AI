@@ -17,11 +17,6 @@ export default function AcercaPage() {
     <LandingPage page="acerca">
       <LandingNavbar />
       <AboutHeroSection />
-      {/* Transición elegante Hero → contenido: fundido navy institucional a blanco */}
-      <div
-        aria-hidden="true"
-        className="h-[clamp(28px,5vw,64px)] bg-[linear-gradient(180deg,#032458,#ffffff)]"
-      />
       <AboutSection />
       <LandingFooter />
     </LandingPage>
