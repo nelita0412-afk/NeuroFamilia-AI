@@ -11,7 +11,7 @@ export function AboutHeroSection() {
         height={940}
         priority
         unoptimized
-        className="js-about-hero-image block h-auto w-full max-w-[1100px] object-contain"
+        className="js-about-hero-image block h-auto w-full object-contain"
       />
 
       {/* Título institucional invisible — semántica/SEO sin competir con la imagen */}
