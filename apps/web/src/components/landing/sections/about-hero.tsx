@@ -11,12 +11,6 @@ const NODOS_CONEXION = [
   { x: 29.7, y: 65.3 },
 ];
 
-const BRUMA_MAR = [
-  { x: 16, y: 72, s: 34 },
-  { x: 47, y: 89, s: 40 },
-  { x: 66, y: 30, s: 30 },
-];
-
 export function AboutHeroSection() {
   return (
     <section className="js-about-hero relative flex w-full justify-center overflow-hidden bg-[#032458]">
@@ -31,22 +25,6 @@ export function AboutHeroSection() {
         unoptimized
         className="js-about-hero-image block h-auto w-full object-contain"
       />
-
-      {/* Neblina oceánica muy sutil sobre zonas del mar */}
-      {BRUMA_MAR.map((b, i) => (
-        <div
-          key={`bruma-${i}`}
-          aria-hidden="true"
-          className="pointer-events-none absolute aspect-square -translate-x-1/2 -translate-y-1/2 rounded-full"
-          style={{
-            left: `${b.x}%`,
-            top: `${b.y}%`,
-            width: `${b.s}%`,
-            background:
-              'radial-gradient(closest-side, rgba(150,195,230,0.055), transparent 72%)',
-          }}
-        />
-      ))}
 
       {/* Brillo discreto en los nodos de conexión entre islas */}
       {NODOS_CONEXION.map((n, i) => (
