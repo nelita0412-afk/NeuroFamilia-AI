@@ -35,7 +35,7 @@ export function AboutHeroSection() {
             video.pause();
           }
         }}
-        className="js-about-hero-video block h-auto max-h-[100svh] w-full object-contain"
+        className="js-about-hero-video block h-auto w-full object-contain"
       />
 
       {/* Título institucional invisible — semántica/SEO sin competir con el video */}
