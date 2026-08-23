@@ -33,11 +33,11 @@ export default function LoginPage() {
         <div className="relative z-10 px-12 pb-6 pt-14">
           <div className="flex items-center gap-3">
             <Image
-              src="/images/logo/logo.png"
-              alt="Logo NeuroFamilia AI"
-              width={48}
+              src="/images/logos/nfg-logo.png"
+              alt="Logo NFG · NeuroFamilia Galápagos"
+              width={80}
               height={48}
-              className="h-12 w-12 object-contain"
+              className="h-12 w-auto object-contain"
             />
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.22em] text-ocean-100">NeuroFamilia AI</p>

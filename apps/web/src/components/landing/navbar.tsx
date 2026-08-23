@@ -34,9 +34,9 @@ export function LandingNavbar() {
         {/* LOGO — protagonista, sin texto adicional */}
         <Link href="/" className="flex items-center justify-self-start" aria-label="Inicio NeuroFamilia Galápagos">
           <Image
-            src="/images/logo/logo.png"
-            alt="Logo NeuroFamilia Galápagos"
-            width={130}
+            src="/images/logos/nfg-logo.png"
+            alt="Logo NFG · NeuroFamilia Galápagos"
+            width={168}
             height={100}
             priority
             className="h-[100px] w-auto object-contain"

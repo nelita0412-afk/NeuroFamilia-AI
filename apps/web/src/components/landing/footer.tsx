@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { Mail, Phone } from 'lucide-react';
 import { HeroTurtle } from './svg/hero-turtle';
@@ -63,24 +62,18 @@ export function LandingFooter() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-5 pb-4 pt-3 sm:px-8 lg:px-12">
         <div className="grid gap-6 lg:grid-cols-[1.8fr_1fr_1fr_1fr_1.1fr] lg:gap-5">
-          {/* COLUMNA 1 — IDENTIDAD */}
-          <div className="flex flex-col items-center gap-2.5 lg:items-start">
-            <Link href="/" aria-label="Inicio NeuroFamilia Galápagos" className="lg:self-center">
-              <Image
-                src="/images/logo/logo-white.png"
-                alt="Logo NeuroFamilia Galápagos"
-                width={247}
-                height={190}
-                className="h-[120px] w-auto object-contain"
-              />
+          {/* COLUMNA 1 — IDENTIDAD · isotipo institucional de la tortuga */}
+          <div className="flex flex-col items-center gap-2.5">
+            <Link href="/" aria-label="Inicio NeuroFamilia Galápagos" className="self-center">
+              <HeroTurtle className="h-[150px] w-auto" />
             </Link>
-            <p className="max-w-xs text-center text-sm leading-5 text-white/80 lg:text-left">
+            <p className="max-w-xs text-center text-sm leading-5 text-white/80">
               Ciencia, tecnología y acompañamiento humano para el crecimiento de niños,
               adolescentes y familias.
             </p>
 
             {/* REDES SOCIALES — solo iconos, distribución horizontal */}
-            <ul className="flex items-center gap-2.5 lg:self-center">
+            <ul className="flex items-center gap-2.5 self-center">
               {SOCIAL_LINKS.map(({ label, href, icon: Icon }) => (
                 <li key={label}>
                   <a
