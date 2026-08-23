@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export function AboutHeroSection() {
   return (
-    <section className="js-about-hero relative flex w-full justify-center overflow-hidden bg-[#00285A]">
+    <section className="js-about-hero relative flex w-full justify-center overflow-hidden bg-[#032458]">
       {/* HERO-5 · portada institucional del ecosistema NeuroFamilia */}
       <Image
         src="/images/landing/hero-5.png"
