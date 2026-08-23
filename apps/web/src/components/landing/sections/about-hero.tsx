@@ -1,6 +1,6 @@
 export function AboutHeroSection() {
   return (
-    <section className="js-about-hero relative flex h-[70svh] min-h-[420px] w-full items-center justify-center overflow-hidden bg-[#00285A] sm:h-[80svh] lg:h-[85svh]">
+    <section className="js-about-hero relative flex h-[75svh] w-full items-center justify-center overflow-hidden bg-[#00285A] sm:h-[80svh] lg:h-[85svh]">
       {/* VIDEO HERO V4 · ecosistema NeuroFamilia — pieza institucional completa */}
       <video
         src="/images/landing/hero-v4.mp4"
