@@ -342,7 +342,7 @@ export function AboutSection() {
         </div>
 
         {/* Ruta proyectiva Galápagos → Ecuador → El mundo */}
-        <div className="js-future-route relative mx-auto mt-14 max-w-2xl px-8">
+        <div className="js-future-route relative mx-auto mt-6 max-w-2xl px-8">
           <svg viewBox="0 0 600 88" fill="none" aria-hidden="true" className="w-full">
             <path
               d="M20,55 Q300,5 580,55"
@@ -352,16 +352,15 @@ export function AboutSection() {
               strokeDasharray="4 6"
               className="js-future-path"
             />
-            {/* Galápagos · silueta simplificada del archipiélago */}
+            {/* Galápagos · archipiélago: Isabela, Santa Cruz, San Cristóbal y Floreana */}
             <g transform="translate(20,55)" fill="#0066CC">
-              <ellipse cx="-8" cy="8" rx="3" ry="1.7" />
-              <ellipse cx="-3" cy="4" rx="4" ry="2" />
-              <ellipse cx="2.5" cy="0" rx="2.6" ry="1.7" />
-              <ellipse cx="7" cy="-4.5" rx="3.4" ry="1.9" />
-              <ellipse cx="10.5" cy="-8" rx="1.8" ry="1.2" />
+              <path d="M-10,-8 C-13,-4 -12,2 -8,5 L-4,3 C-6,-1 -6,-5 -4,-8 C-6,-10 -8,-10 -10,-8 Z" />
+              <ellipse cx="-1" cy="1" rx="3" ry="4.4" />
+              <ellipse cx="7" cy="4" rx="4.5" ry="2" transform="rotate(-25 7 4)" />
+              <circle cx="2" cy="8.5" r="2" />
             </g>
             {/* Ecuador · silueta simplificada del mapa */}
-            <g transform="translate(288,22)">
+            <g transform="translate(285.4,20.6) scale(1.22)">
               <path
                 d="M2,6.5 C0.8,9 2.5,12.5 5.5,13.8 C9,15.4 13.5,15 16.5,12.2 L22,12.8 C23.8,9.5 22.5,7 23.5,3.8 L19.5,0.8 L14.8,2.8 L10.8,0.8 L6.5,3.8 Z"
                 stroke="#0B3B82"
