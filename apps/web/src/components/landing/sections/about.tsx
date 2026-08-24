@@ -127,7 +127,7 @@ export function AboutSection() {
           </h2>
 
           {/* Componentes del modelo */}
-          <ul className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 lg:-mx-[104px] lg:flex-nowrap">
+          <ul className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 lg:-mx-[122px] lg:flex-nowrap">
             {CONCEPTOS.map(({ icon: Icon, label }) => (
               <li
                 key={label}
@@ -136,7 +136,7 @@ export function AboutSection() {
                 <Icon
                   aria-hidden="true"
                   strokeWidth={1.8}
-                  className="h-10 w-10 shrink-0 text-[#0066CC]"
+                  className="h-[50px] w-[50px] shrink-0 text-[#0066CC]"
                 />
                 {label}
               </li>
