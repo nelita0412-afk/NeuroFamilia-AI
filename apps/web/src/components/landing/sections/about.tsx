@@ -7,16 +7,11 @@ import {
   Atom,
   Brain,
   Globe,
-  Handshake,
-  HeartHandshake,
   Lightbulb,
-  Lock,
   MonitorSmartphone,
   Network,
   Rocket,
   Sprout,
-  TrendingUp,
-  Users,
 } from 'lucide-react';
 
 /* ── 1. QUIÉNES SOMOS ─────────────────────────────────── */
@@ -116,18 +111,7 @@ const FOUNDERS = [
   },
 ];
 
-/* ── 5. VALORES ────────────────────────────────────────────── */
-
-const VALUES = [
-  { icon: HeartHandshake, label: 'Empatía' },
-  { icon: Lightbulb, label: 'Innovación' },
-  { icon: Lock, label: 'Confidencialidad' },
-  { icon: Users, label: 'Inclusión' },
-  { icon: Handshake, label: 'Colaboración' },
-  { icon: TrendingUp, label: 'Impacto Social' },
-];
-
-/* ── 6. MIRANDO HACIA EL FUTURO ───────────────────────────── */
+/* ── 5. MIRANDO HACIA EL FUTURO ───────────────────────────── */
 
 const FUTURE_STOPS = ['Galápagos', 'Ecuador', 'El mundo'];
 
@@ -338,28 +322,6 @@ export function AboutSection() {
               </Link>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* ── 5. VALORES · Banda horizontal ────────────────────── */}
-      <section className="js-about-values relative overflow-hidden bg-[#0B3B82] py-14">
-        <div className="pointer-events-none absolute -left-24 top-0 h-full w-96 bg-[#00B8D9]/10 blur-3xl" />
-        <div className="pointer-events-none absolute -right-24 top-0 h-full w-96 bg-[#0066CC]/20 blur-3xl" />
-        <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
-          <p className="js-about-values-kicker text-center text-xs font-bold uppercase tracking-[0.3em] text-[#00B8D9]">
-            Nuestros Valores
-          </p>
-          <ul className="js-about-values-band mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-5 lg:gap-x-6">
-            {VALUES.map(({ icon: Icon, label }) => (
-              <li
-                key={label}
-                className="js-value-item flex items-center gap-3 rounded-full bg-white/5 px-5 py-3 ring-1 ring-white/10 backdrop-blur-sm transition-[transform,background-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:bg-white/10 hover:ring-[#00B8D9]/50"
-              >
-                <Icon className="h-5 w-5 text-[#00B8D9]" />
-                <span className="text-sm font-bold text-white">{label}</span>
-              </li>
-            ))}
-          </ul>
         </div>
       </section>
 
