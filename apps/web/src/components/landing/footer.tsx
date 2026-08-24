@@ -58,7 +58,7 @@ export function LandingFooter() {
         <div className="grid gap-6 lg:grid-cols-[1.8fr_1fr_1fr_1fr_1.1fr] lg:gap-5">
           {/* COLUMNA 1 — IDENTIDAD · logo institucional completo (tortuga + nombre + lema) */}
           <div className="flex flex-col items-center gap-2.5">
-            <Link href="/" aria-label="Inicio NeuroFamilia Galápagos" className="mb-2 self-center">
+            <Link href="/" aria-label="Inicio NeuroFamilia Galápagos" className="mb-3 self-center">
               <Image
                 src="/images/logo/logo-white.png"
                 alt="NeuroFamilia Galápagos — logo institucional"
@@ -66,7 +66,7 @@ export function LandingFooter() {
                 height={775}
                 unoptimized
                 priority
-                className="h-auto w-[75px] object-contain sm:w-[84px]"
+                className="h-auto w-[45px] object-contain sm:w-[50px]"
               />
             </Link>
             <p className="max-w-xs text-center text-sm leading-5 text-white/80">
