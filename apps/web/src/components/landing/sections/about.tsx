@@ -138,31 +138,31 @@ export function AboutSection() {
     <>
       {/* ── 1. QUIÉNES SOMOS · columna única centrada, estilo PNUD/UNICEF/BID ── */}
       <section id="proposito" className="js-about relative overflow-hidden bg-white py-10 sm:py-12">
-        <div className="relative z-10 mx-auto max-w-4xl px-5 sm:px-8">
+        <div className="relative z-10 mx-auto max-w-3xl px-5 text-center sm:px-8">
           <p className="js-about-kicker text-xs font-bold uppercase tracking-[0.3em] text-[#0066CC]">
             Quiénes Somos
           </p>
-          <h2 className="js-about-title mt-3 text-[clamp(1.75rem,1.1rem+2.2vw,2.6rem)] font-extrabold leading-[1.12] tracking-tight text-[#0B3B82]">
-            Conectando a las comunidades insulares para fortalecer el bienestar y el
-            desarrollo humano
+          <h2 className="js-about-title mx-auto mt-3 max-w-2xl text-[clamp(1.85rem,1.15rem+2.3vw,2.9rem)] font-extrabold leading-[1.12] tracking-tight text-[#0B3B82]">
+            Conectamos comunidades insulares para fortalecer el bienestar y el
+            desarrollo humano.
           </h2>
-          <p className="js-about-body mt-4 max-w-3xl text-[15px] leading-7 text-[#0B3B82]/75 sm:text-base">
+          <p className="js-about-body mx-auto mt-4 max-w-xl text-[15px] leading-7 text-[#0B3B82]/75 sm:text-base">
             NeuroFamilia Galápagos impulsa soluciones innovadoras para acercar apoyo,
             información y oportunidades de desarrollo a las comunidades insulares,
             integrando ciencia, salud mental, educación y transformación digital.
           </p>
 
           {/* Componentes del modelo */}
-          <ul className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2">
+          <ul className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
             {CONCEPTOS.map(({ icon: Icon, label }) => (
               <li
                 key={label}
-                className="flex items-center gap-1.5 text-sm font-semibold text-[#0B3B82]/80"
+                className="flex items-center justify-center gap-2.5 text-sm font-semibold text-[#0B3B82]/80"
               >
                 <Icon
                   aria-hidden="true"
                   strokeWidth={1.8}
-                  className="h-4 w-4 shrink-0 text-[#0066CC]"
+                  className="h-6 w-6 shrink-0 text-[#0066CC]"
                 />
                 {label}
               </li>
@@ -170,10 +170,10 @@ export function AboutSection() {
           </ul>
 
           {/* Métricas institucionales */}
-          <dl className="mt-8 flex flex-wrap gap-x-12 gap-y-6 border-t border-[#0B3B82]/10 pt-7">
+          <dl className="mt-10 flex flex-wrap items-start justify-center gap-x-14 gap-y-8 border-t border-[#0B3B82]/10 pt-9">
             {METRICAS.map(({ valor, etiqueta }) => (
-              <div key={etiqueta} className="js-about-metrica">
-                <dt className="order-2 mt-1 text-[11px] font-bold uppercase tracking-[0.18em] text-[#0B3B82]/60">
+              <div key={etiqueta} className="js-about-metrica flex flex-col items-center">
+                <dt className="order-2 mt-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-[#0B3B82]/60">
                   {etiqueta}
                 </dt>
                 <dd className="order-1 text-4xl font-extrabold leading-none text-[#0B3B82]">
@@ -184,20 +184,20 @@ export function AboutSection() {
           </dl>
 
           {/* Bloque ODS · iconografía oficial de Naciones Unidas */}
-          <div className="mt-9">
+          <div className="mt-10">
             <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#0B3B82]/60">
               Contribuimos a los Objetivos de Desarrollo Sostenible
             </p>
-            <ul className="mt-3 flex flex-wrap items-center gap-4">
+            <ul className="mt-5 flex flex-wrap items-center justify-center gap-5">
               {ODS_OFICIALES.map(({ numero }) => (
                 <li key={numero}>
                   <Image
                     src={`/images/ods/ods-${numero}.svg`}
                     alt={`ODS ${numero}`}
-                    width={60}
-                    height={60}
+                    width={72}
+                    height={72}
                     unoptimized
-                    className="h-[60px] w-[60px] object-contain"
+                    className="h-[72px] w-[72px] object-contain"
                   />
                 </li>
               ))}
