@@ -139,10 +139,9 @@ export function AboutSection() {
               desarrollo humano
             </h2>
             <p className="js-about-body mt-4 max-w-xl text-[15px] leading-7 text-[#0B3B82]/75 sm:text-base">
-              NeuroFamilia Galápagos es una iniciativa de innovación social que integra
-              ciencia, salud mental, tecnología y desarrollo humano para fortalecer el
-              bienestar de niños, adolescentes, familias e instituciones en comunidades
-              insulares.
+              NeuroFamilia Galápagos impulsa soluciones innovadoras para acercar apoyo,
+              información y oportunidades de desarrollo a las comunidades insulares,
+              integrando ciencia, salud mental, educación y transformación digital.
             </p>
 
             {/* Línea de conceptos */}
@@ -194,15 +193,16 @@ export function AboutSection() {
             </div>
           </div>
 
-          {/* DERECHA (~40%) · logo NFG protagonista, sin cajas ni fondos */}
+          {/* DERECHA (~40%) · contexto territorial — comunidades insulares conectadas */}
           <div className="flex justify-center lg:justify-end">
             <Image
-              src="/images/logos/nfg-logo.png"
-              alt="Logo NFG · NeuroFamilia Galápagos"
-              width={1189}
-              height={709}
+              src="/images/landing/comunidad-insular.png"
+              alt="Comunidades insulares de Galápagos conectadas por el ecosistema NeuroFamilia"
+              width={1672}
+              height={941}
               priority
-              className="js-about-logo h-auto w-full max-w-[300px] object-contain sm:max-w-[380px] lg:max-w-[420px]"
+              sizes="(max-width: 1024px) 90vw, 460px"
+              className="js-about-territorio h-auto w-full max-w-[420px] rounded-[20px] object-contain shadow-[0_24px_48px_-24px_rgba(4,43,96,0.35)]"
             />
           </div>
         </div>
