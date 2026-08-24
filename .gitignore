@@ -6,3 +6,7 @@ coverage
 .prisma.pnpm-store/
 .vercel
 /hero.MP4
+
+# macOS
+.DS_Store
+**/.DS_Store
