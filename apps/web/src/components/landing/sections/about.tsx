@@ -10,7 +10,6 @@ import {
   Lightbulb,
   MonitorSmartphone,
   Network,
-  Rocket,
   Sprout,
 } from 'lucide-react';
 
@@ -335,15 +334,16 @@ export function AboutSection() {
             Mirando hacia el futuro
           </h2>
           <p className="js-about-future-body mx-auto mt-5 max-w-2xl text-base leading-8 text-[#0B3B82]/75 sm:text-lg">
-            Trabajamos para consolidar un ecosistema de bienestar que conecte personas,
-            familias, profesionales e instituciones, generando nuevas oportunidades para el
-            desarrollo humano en Galápagos y futuras comunidades.
+            Trabajamos para consolidar un ecosistema de bienestar que integra salud
+            mental, innovación social, desarrollo humano y transformación digital,
+            conectando comunidades y generando nuevas oportunidades desde Galápagos
+            hacia el Ecuador y el mundo.
           </p>
         </div>
 
         {/* Ruta proyectiva Galápagos → Ecuador → El mundo */}
         <div className="js-future-route relative mx-auto mt-14 max-w-2xl px-8">
-          <svg viewBox="0 0 600 70" fill="none" aria-hidden="true" className="w-full">
+          <svg viewBox="0 0 600 88" fill="none" aria-hidden="true" className="w-full">
             <path
               d="M20,55 Q300,5 580,55"
               stroke="#00B8D9"
@@ -352,10 +352,27 @@ export function AboutSection() {
               strokeDasharray="4 6"
               className="js-future-path"
             />
-            <circle cx="20" cy="55" r="5" fill="#0066CC" />
-            <circle cx="300" cy="30" r="6" fill="#FFFFFF" stroke="#00B8D9" strokeWidth="2.5" />
-            <circle cx="580" cy="55" r="7" fill="#00B8D9" opacity="0.35" />
-            <circle cx="580" cy="55" r="4.5" fill="#00B8D9" className="js-future-dot" />
+            {/* Galápagos · silueta simplificada del archipiélago */}
+            <g transform="translate(20,55)" fill="#0066CC">
+              <ellipse cx="-8" cy="8" rx="3" ry="1.7" />
+              <ellipse cx="-3" cy="4" rx="4" ry="2" />
+              <ellipse cx="2.5" cy="0" rx="2.6" ry="1.7" />
+              <ellipse cx="7" cy="-4.5" rx="3.4" ry="1.9" />
+              <ellipse cx="10.5" cy="-8" rx="1.8" ry="1.2" />
+            </g>
+            {/* Ecuador · silueta simplificada del mapa */}
+            <g transform="translate(288,22)">
+              <path
+                d="M2,6.5 C0.8,9 2.5,12.5 5.5,13.8 C9,15.4 13.5,15 16.5,12.2 L22,12.8 C23.8,9.5 22.5,7 23.5,3.8 L19.5,0.8 L14.8,2.8 L10.8,0.8 L6.5,3.8 Z"
+                fill="#0B3B82"
+              />
+            </g>
+            {/* El Mundo · globo terráqueo minimalista */}
+            <g transform="translate(580,55)" stroke="#00B8D9" strokeWidth="2">
+              <circle r="10.5" />
+              <ellipse rx="4.6" ry="10.5" />
+              <line x1="-10.5" y1="0" x2="10.5" y2="0" />
+            </g>
           </svg>
           <div className="mt-2 flex items-center justify-between">
             {FUTURE_STOPS.map((stop) => (
@@ -367,31 +384,6 @@ export function AboutSection() {
               </span>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ── 7. CIERRE INSPIRADOR ─────────────────────────────── */}
-      <section className="js-about-closing relative overflow-hidden bg-gradient-to-br from-[#0B3B82] via-[#0066CC] to-[#00B8D9] py-24">
-        <div className="pointer-events-none absolute -left-32 top-10 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
-        <div className="pointer-events-none absolute -right-32 bottom-10 h-96 w-96 rounded-full bg-[#00B8D9]/25 blur-3xl" />
-        <div className="relative z-10 mx-auto max-w-4xl px-5 text-center sm:px-8">
-          <p className="js-about-closing-kicker text-xs font-bold uppercase tracking-[0.35em] text-[#00B8D9]">
-            Galápagos · Ecuador
-          </p>
-          <h2 className="js-about-closing-title mt-6 text-4xl font-extrabold leading-tight text-white sm:text-5xl">
-            Construyendo bienestar desde Galápagos para el mundo
-          </h2>
-          <p className="js-about-closing-body mx-auto mt-8 max-w-2xl text-base leading-8 text-white/85 sm:text-lg">
-            Creemos en una sociedad donde la salud mental, la innovación y el acompañamiento
-            humano sean accesibles para todas las personas, sin importar dónde vivan.
-          </p>
-          <Link
-            href="/teoria-de-cambio"
-            className="js-about-closing-cta mt-10 inline-flex items-center gap-3 rounded-full bg-white px-9 py-4 text-sm font-bold text-[#0B3B82] shadow-[0_16px_40px_rgba(0,40,90,0.4)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#00B8D9] hover:text-white"
-          >
-            Conoce NeuroFamilia
-            <Rocket className="h-4 w-4" />
-          </Link>
         </div>
       </section>
     </>
