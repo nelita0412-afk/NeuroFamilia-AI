@@ -66,7 +66,7 @@ export function LandingFooter() {
                 height={775}
                 unoptimized
                 priority
-                className="h-auto w-[72px] object-contain sm:w-[80px]"
+                className="h-auto w-[120px] object-contain sm:w-[135px]"
               />
             </Link>
             <p className="max-w-xs text-center text-sm leading-5 text-white/80">
