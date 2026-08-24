@@ -22,9 +22,6 @@ export function ImpactSection() {
   return (
     <section id="impacto" className="js-impact relative overflow-hidden bg-[#F0F7FF] py-14">
       <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
-        <p className="js-impact-kicker text-center text-xs font-bold uppercase tracking-[0.3em] text-[#0066CC]">
-          Alcance del modelo
-        </p>
         <h2 className="js-impact-title mt-4 text-center text-3xl font-extrabold leading-tight text-[#0B3B82] sm:text-5xl">
           Alcance del Modelo NeuroFamilia
         </h2>

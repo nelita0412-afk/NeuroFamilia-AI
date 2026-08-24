@@ -66,7 +66,7 @@ export function HistorySection() {
         <div className="js-timeline relative mx-auto mt-10 max-w-4xl">
           {/* Eje central */}
           <span
-            className="absolute left-8 top-2 bottom-2 w-0.5 bg-[#00B8D9]/30 md:left-1/2 md:-translate-x-1/2"
+            className="absolute left-8 top-2 bottom-24 w-0.5 bg-[#00B8D9]/30 md:left-1/2 md:-translate-x-1/2"
             aria-hidden
           />
 
@@ -124,6 +124,16 @@ export function HistorySection() {
               );
             })}
           </ol>
+
+          {/* Cierre del eje + transición hacia "Alcance del Modelo NeuroFamilia" */}
+          <div className="absolute bottom-2 left-8 -translate-x-1/2 flex flex-col items-center md:left-1/2 md:-translate-x-1/2">
+            <span className="h-12 w-0.5 bg-[#00B8D9]/30" aria-hidden />
+            <span
+              className="h-3 w-3 rounded-full bg-[#0B3B82] ring-4 ring-[#F0F7FF]"
+              aria-hidden
+            />
+            <span className="mt-4 h-px w-24 bg-[#0B3B82]/25" aria-hidden />
+          </div>
         </div>
       </div>
     </section>
