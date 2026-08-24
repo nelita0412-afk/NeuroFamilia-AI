@@ -1,6 +1,6 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Mail, Phone } from 'lucide-react';
-import { HeroTurtle } from './svg/hero-turtle';
 
 function InstagramIcon({ className = '' }: { className?: string }) {
   return (
@@ -48,12 +48,6 @@ const SOCIAL_LINKS = [
 export function LandingFooter() {
   return (
     <footer className="relative overflow-hidden bg-gradient-to-br from-[#0F4AA2] via-[#0A66D4] to-[#12C7E5] text-white">
-      {/* MARCA DE AGUA — tortuga NeuroFamilia */}
-      <HeroTurtle
-        className="pointer-events-none absolute -right-16 -top-8 h-[300px] w-auto opacity-[0.07]"
-        aria-hidden="true"
-      />
-
       {/* VELO INSTITUCIONAL — atenúa el brillo del gradiente tras el cierre */}
       <div
         aria-hidden="true"
@@ -62,10 +56,18 @@ export function LandingFooter() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-5 pb-4 pt-3 sm:px-8 lg:px-12">
         <div className="grid gap-6 lg:grid-cols-[1.8fr_1fr_1fr_1fr_1.1fr] lg:gap-5">
-          {/* COLUMNA 1 — IDENTIDAD · isotipo institucional de la tortuga */}
+          {/* COLUMNA 1 — IDENTIDAD · logo institucional completo (tortuga + nombre + lema) */}
           <div className="flex flex-col items-center gap-2.5">
             <Link href="/" aria-label="Inicio NeuroFamilia Galápagos" className="self-center">
-              <HeroTurtle className="h-[150px] w-auto" />
+              <Image
+                src="/images/logo/logo-white.png"
+                alt="NeuroFamilia Galápagos — logo institucional"
+                width={1004}
+                height={775}
+                unoptimized
+                priority
+                className="h-auto w-[180px] object-contain sm:w-[200px]"
+              />
             </Link>
             <p className="max-w-xs text-center text-sm leading-5 text-white/80">
               Ciencia, tecnología y acompañamiento humano para el crecimiento de niños,
