@@ -112,8 +112,6 @@ const FOUNDERS = [
 
 /* ── 5. MIRANDO HACIA EL FUTURO ───────────────────────────── */
 
-const FUTURE_STOPS = ['Galápagos', 'Ecuador', 'El mundo'];
-
 export function AboutSection() {
   return (
     <>
@@ -376,16 +374,6 @@ export function AboutSection() {
               <line x1="-10.5" y1="0" x2="10.5" y2="0" />
             </g>
           </svg>
-          <div className="mt-2 flex items-center justify-between">
-            {FUTURE_STOPS.map((stop) => (
-              <span
-                key={stop}
-                className="text-xs font-bold uppercase tracking-[0.15em] text-[#0B3B82]/60"
-              >
-                {stop}
-              </span>
-            ))}
-          </div>
         </div>
       </section>
     </>
