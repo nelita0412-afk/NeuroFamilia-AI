@@ -146,23 +146,18 @@ export function AboutSection() {
             Conectamos comunidades insulares para fortalecer el bienestar y el
             desarrollo humano.
           </h2>
-          <p className="js-about-body mx-auto mt-4 max-w-xl text-[15px] leading-7 text-[#0B3B82]/75 sm:text-base">
-            NeuroFamilia Galápagos impulsa soluciones innovadoras para acercar apoyo,
-            información y oportunidades de desarrollo a las comunidades insulares,
-            integrando ciencia, salud mental, educación y transformación digital.
-          </p>
 
           {/* Componentes del modelo */}
-          <ul className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+          <ul className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 lg:-mx-[104px] lg:flex-nowrap">
             {CONCEPTOS.map(({ icon: Icon, label }) => (
               <li
                 key={label}
-                className="flex items-center justify-center gap-2.5 text-sm font-semibold text-[#0B3B82]/80"
+                className="flex items-center justify-center gap-3 text-sm font-semibold text-[#0B3B82]/80 lg:whitespace-nowrap"
               >
                 <Icon
                   aria-hidden="true"
                   strokeWidth={1.8}
-                  className="h-6 w-6 shrink-0 text-[#0066CC]"
+                  className="h-10 w-10 shrink-0 text-[#0066CC]"
                 />
                 {label}
               </li>

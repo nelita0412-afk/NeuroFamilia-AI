@@ -44,7 +44,7 @@ export function LandingNavbar() {
         </Link>
 
         {/* MENÚ PRINCIPAL — centrado entre logo y botón EN */}
-        <ul className="hidden items-center gap-9 lg:flex">
+        <ul className="hidden items-center gap-6 2xl:gap-9 xl:flex">
           {NAV_LINKS.map((link) => {
             const isActiveLink = isActive(link.href);
             return (
@@ -87,15 +87,15 @@ export function LandingNavbar() {
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-label="Abrir menú"
-          className="inline-flex h-11 w-11 items-center justify-center justify-self-end rounded-lg text-[#111827] transition-colors duration-300 hover:text-[#0066CC] lg:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center justify-self-end rounded-lg text-[#111827] transition-colors duration-300 hover:text-[#0066CC] xl:hidden"
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
 
-      {/* PANEL MÓVIL — solo dispositivos móviles y tablet (≤1024px) */}
+      {/* PANEL MÓVIL — visible por debajo de xl (1280px) */}
       <div
-        className={`lg:hidden ${
+        className={`xl:hidden ${
           open ? 'max-h-[520px] opacity-100' : 'max-h-0 opacity-0'
         } overflow-hidden bg-white transition-all duration-300`}
       >
