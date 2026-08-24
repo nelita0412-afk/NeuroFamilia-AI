@@ -11,6 +11,7 @@ import {
   HeartHandshake,
   Lightbulb,
   Lock,
+  MonitorSmartphone,
   Network,
   Rocket,
   Sprout,
@@ -20,18 +21,19 @@ import {
 
 /* ── 1. QUIÉNES SOMOS ─────────────────────────────────── */
 
-/* Conceptos institucionales (línea de iconos · Quiénes Somos) */
+/* Componentes del modelo (línea de iconos · Quiénes Somos) */
 const CONCEPTOS = [
   { icon: Atom, label: 'Ciencia' },
   { icon: Brain, label: 'Salud Mental' },
   { icon: Sprout, label: 'Desarrollo Humano' },
   { icon: Network, label: 'Innovación Social' },
+  { icon: MonitorSmartphone, label: 'Transformación Digital' },
 ];
 
 /* Métricas institucionales (Quiénes Somos) */
 const METRICAS = [
   { valor: '4+', etiqueta: 'Islas conectadas' },
-  { valor: '5', etiqueta: 'Áreas estratégicas' },
+  { valor: '5', etiqueta: 'Componentes del modelo' },
   { valor: '1', etiqueta: 'Ecosistema digital' },
 ];
 
@@ -134,88 +136,72 @@ const FUTURE_STOPS = ['Galápagos', 'Ecuador', 'El mundo'];
 export function AboutSection() {
   return (
     <>
-      {/* ── 1. QUIÉNES SOMOS · dos columnas, estilo PNUD/UNICEF/BID ── */}
+      {/* ── 1. QUIÉNES SOMOS · columna única centrada, estilo PNUD/UNICEF/BID ── */}
       <section id="proposito" className="js-about relative overflow-hidden bg-white py-10 sm:py-12">
-        <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[1.55fr_1fr] lg:gap-14">
-          {/* IZQUIERDA (~60%) */}
-          <div>
-            <p className="js-about-kicker text-xs font-bold uppercase tracking-[0.3em] text-[#0066CC]">
-              Quiénes Somos
-            </p>
-            <h2 className="js-about-title mt-3 text-[clamp(1.75rem,1.1rem+2.2vw,2.6rem)] font-extrabold leading-[1.12] tracking-tight text-[#0B3B82]">
-              Conectando a las comunidades insulares para fortalecer el bienestar y el
-              desarrollo humano
-            </h2>
-            <p className="js-about-body mt-4 max-w-xl text-[15px] leading-7 text-[#0B3B82]/75 sm:text-base">
-              NeuroFamilia Galápagos impulsa soluciones innovadoras para acercar apoyo,
-              información y oportunidades de desarrollo a las comunidades insulares,
-              integrando ciencia, salud mental, educación y transformación digital.
-            </p>
+        <div className="relative z-10 mx-auto max-w-4xl px-5 sm:px-8">
+          <p className="js-about-kicker text-xs font-bold uppercase tracking-[0.3em] text-[#0066CC]">
+            Quiénes Somos
+          </p>
+          <h2 className="js-about-title mt-3 text-[clamp(1.75rem,1.1rem+2.2vw,2.6rem)] font-extrabold leading-[1.12] tracking-tight text-[#0B3B82]">
+            Conectando a las comunidades insulares para fortalecer el bienestar y el
+            desarrollo humano
+          </h2>
+          <p className="js-about-body mt-4 max-w-3xl text-[15px] leading-7 text-[#0B3B82]/75 sm:text-base">
+            NeuroFamilia Galápagos impulsa soluciones innovadoras para acercar apoyo,
+            información y oportunidades de desarrollo a las comunidades insulares,
+            integrando ciencia, salud mental, educación y transformación digital.
+          </p>
 
-            {/* Línea de conceptos */}
-            <ul className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2">
-              {CONCEPTOS.map(({ icon: Icon, label }) => (
-                <li
-                  key={label}
-                  className="flex items-center gap-1.5 text-sm font-semibold text-[#0B3B82]/80"
-                >
-                  <Icon
-                    aria-hidden="true"
-                    strokeWidth={1.8}
-                    className="h-4 w-4 shrink-0 text-[#0066CC]"
+          {/* Componentes del modelo */}
+          <ul className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2">
+            {CONCEPTOS.map(({ icon: Icon, label }) => (
+              <li
+                key={label}
+                className="flex items-center gap-1.5 text-sm font-semibold text-[#0B3B82]/80"
+              >
+                <Icon
+                  aria-hidden="true"
+                  strokeWidth={1.8}
+                  className="h-4 w-4 shrink-0 text-[#0066CC]"
+                />
+                {label}
+              </li>
+            ))}
+          </ul>
+
+          {/* Métricas institucionales */}
+          <dl className="mt-8 flex flex-wrap gap-x-12 gap-y-6 border-t border-[#0B3B82]/10 pt-7">
+            {METRICAS.map(({ valor, etiqueta }) => (
+              <div key={etiqueta} className="js-about-metrica">
+                <dt className="order-2 mt-1 text-[11px] font-bold uppercase tracking-[0.18em] text-[#0B3B82]/60">
+                  {etiqueta}
+                </dt>
+                <dd className="order-1 text-4xl font-extrabold leading-none text-[#0B3B82]">
+                  {valor}
+                </dd>
+              </div>
+            ))}
+          </dl>
+
+          {/* Bloque ODS · iconografía oficial de Naciones Unidas */}
+          <div className="mt-9">
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#0B3B82]/60">
+              Contribuimos a los Objetivos de Desarrollo Sostenible
+            </p>
+            <ul className="mt-3 flex flex-wrap items-center gap-4">
+              {ODS_OFICIALES.map(({ numero }) => (
+                <li key={numero}>
+                  <Image
+                    src={`/images/ods/ods-${numero}.svg`}
+                    alt={`ODS ${numero}`}
+                    width={60}
+                    height={60}
+                    unoptimized
+                    className="h-[60px] w-[60px] object-contain"
                   />
-                  {label}
                 </li>
               ))}
             </ul>
-
-            {/* Métricas institucionales */}
-            <dl className="mt-8 flex flex-wrap gap-x-12 gap-y-6 border-t border-[#0B3B82]/10 pt-7">
-              {METRICAS.map(({ valor, etiqueta }) => (
-                <div key={etiqueta} className="js-about-metrica">
-                  <dt className="order-2 mt-1 text-[11px] font-bold uppercase tracking-[0.18em] text-[#0B3B82]/60">
-                    {etiqueta}
-                  </dt>
-                  <dd className="order-1 text-4xl font-extrabold leading-none text-[#0B3B82]">
-                    {valor}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-
-            {/* Bloque ODS · iconografía oficial de Naciones Unidas */}
-            <div className="mt-9">
-              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#0B3B82]/60">
-                Contribuimos a los Objetivos de Desarrollo Sostenible
-              </p>
-              <ul className="mt-3 flex flex-wrap items-center gap-3">
-                {ODS_OFICIALES.map(({ numero, titulo }) => (
-                  <li key={numero}>
-                    <Image
-                      src={`/images/ods/ods-${numero}.svg`}
-                      alt={`ODS ${numero} — ${titulo}`}
-                      width={44}
-                      height={44}
-                      unoptimized
-                      className="h-11 w-11 object-contain"
-                    />
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* DERECHA (~40%) · contexto territorial — comunidades insulares conectadas */}
-          <div className="flex justify-center lg:justify-end">
-            <Image
-              src="/images/landing/comunidad-insular.png"
-              alt="Comunidades insulares de Galápagos conectadas por el ecosistema NeuroFamilia"
-              width={1672}
-              height={941}
-              priority
-              sizes="(max-width: 1024px) 90vw, 460px"
-              className="js-about-territorio h-auto w-full max-w-[420px] rounded-[20px] object-contain shadow-[0_24px_48px_-24px_rgba(4,43,96,0.35)]"
-            />
           </div>
         </div>
       </section>
