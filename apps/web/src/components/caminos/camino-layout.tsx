@@ -18,7 +18,7 @@ export function CaminoLayout({ emoji, title, subtitle, intro, cards, ctaLabel, c
     <main className="min-h-screen bg-[#0A4E9B] text-[#F8FBFF]">
       <header className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 pt-6 sm:px-8">
         <Link href="/" className="flex items-center gap-3" aria-label="Volver al inicio">
-          <Image src="/images/logos/nfg-logo.png" alt="Logo NFG · NeuroFamilia Galápagos" width={67} height={40} className="h-10 w-auto object-contain" />
+          <Image src="/images/logos/nfg-logo.png" alt="Logo NFG · NeuroFamilia Galápagos" width={1189} height={512} className="h-10 w-auto object-contain" />
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#F8FBFF]/80">NeuroFamilia Galápagos</p>
         </Link>
         <Link

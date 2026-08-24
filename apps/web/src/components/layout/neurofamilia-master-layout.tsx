@@ -34,8 +34,8 @@ export function NeurofamiliaMasterLayout({ children, profileName = 'Perfil activ
             <Image
               src="/images/logos/nfg-logo.png"
               alt="Logo NFG · NeuroFamilia"
-              width={67}
-              height={40}
+              width={1189}
+              height={512}
               className="h-10 w-auto object-contain"
             />
             <div>

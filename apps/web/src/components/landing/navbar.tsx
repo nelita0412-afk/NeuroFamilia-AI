@@ -36,8 +36,8 @@ export function LandingNavbar() {
           <Image
             src="/images/logos/nfg-logo.png"
             alt="Logo NFG · NeuroFamilia Galápagos"
-            width={168}
-            height={100}
+            width={1189}
+            height={512}
             priority
             className="h-[100px] w-auto object-contain"
           />

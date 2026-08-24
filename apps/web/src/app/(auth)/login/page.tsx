@@ -35,8 +35,8 @@ export default function LoginPage() {
             <Image
               src="/images/logos/nfg-logo.png"
               alt="Logo NFG · NeuroFamilia Galápagos"
-              width={80}
-              height={48}
+              width={1189}
+              height={512}
               className="h-12 w-auto object-contain"
             />
             <div>
