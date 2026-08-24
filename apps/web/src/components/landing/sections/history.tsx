@@ -60,10 +60,6 @@ export function HistorySection() {
           <h2 className="js-about-history-title mt-3 text-3xl font-extrabold leading-tight text-[#0B3B82] sm:text-4xl">
             Un camino nacido en Galápagos
           </h2>
-          <p className="js-about-history-body mx-auto mt-4 max-w-2xl text-base leading-7 text-[#0B3B82]/70">
-            Cada hito fue diseñado junto a familias, profesionales e instituciones, con la
-            mirada puesta en las próximas generaciones.
-          </p>
         </div>
 
         {/* Línea de tiempo vertical alternada */}

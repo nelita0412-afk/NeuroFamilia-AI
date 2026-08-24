@@ -9,7 +9,7 @@ import { LandingFooter } from '@/components/landing/footer';
 export const metadata: Metadata = {
   title: 'Nuestra Historia · NeuroFamilia Galápagos',
   description:
-    'Un camino nacido en Galápagos: cada hito fue diseñado junto a familias, profesionales e instituciones.',
+    'Un camino nacido en Galápagos: de la identificación de una necesidad a un modelo de alcance internacional.',
 };
 
 export default function HistoriaPage() {
