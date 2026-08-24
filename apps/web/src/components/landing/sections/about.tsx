@@ -325,10 +325,7 @@ export function AboutSection() {
       {/* ── 6. MIRANDO HACIA EL FUTURO · Ruta proyectiva ─────── */}
       <section className="js-about-future relative overflow-hidden bg-white py-20">
         <div className="relative z-10 mx-auto max-w-3xl px-5 text-center sm:px-8">
-          <p className="js-about-future-kicker text-xs font-bold uppercase tracking-[0.3em] text-[#0066CC]">
-            Mirando hacia el Futuro
-          </p>
-          <h2 className="js-about-future-title mt-4 text-3xl font-extrabold leading-tight text-[#0B3B82] sm:text-4xl">
+          <h2 className="js-about-future-title text-3xl font-extrabold leading-tight text-[#0B3B82] sm:text-4xl">
             Mirando hacia el futuro
           </h2>
           <p className="js-about-future-body mx-auto mt-5 max-w-2xl text-base leading-8 text-[#0B3B82]/75 sm:text-lg">
