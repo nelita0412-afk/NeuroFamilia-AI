@@ -83,7 +83,7 @@ const PURPOSE = [
     icon: Lightbulb,
     title: 'Innovación Social',
     detail:
-      'Diseñamos soluciones humanas apoyadas en tecnología para responder a necesidades reales.',
+      'Diseñamos e impulsamos soluciones colaborativas para responder a necesidades reales de las comunidades.',
     gradient: 'from-[#0B3B82]/10 via-[#00B8D9]/10 to-[#0B3B82]/15',
     iconBg: 'from-[#0B3B82] to-[#0066CC]',
   },
@@ -91,7 +91,7 @@ const PURPOSE = [
     icon: Globe,
     title: 'Desarrollo Humano',
     detail:
-      'Fortalecemos capacidades individuales, familiares y comunitarias para construir entornos más saludables.',
+      'Fortalecemos capacidades y oportunidades para favorecer el desarrollo integral de las personas y sus familias.',
     gradient: 'from-[#0066CC]/10 via-[#0B3B82]/10 to-[#00B8D9]/15',
     iconBg: 'from-[#00B8D9] to-[#0B3B82]',
   },
@@ -209,7 +209,7 @@ export function AboutSection() {
               Nuestro Propósito
             </p>
             <h2 className="js-about-purpose-title mt-3 text-3xl font-extrabold leading-tight text-[#0B3B82] sm:text-4xl">
-              Tres motores, un mismo camino
+              Cómo generamos impacto
             </h2>
           </div>
 
