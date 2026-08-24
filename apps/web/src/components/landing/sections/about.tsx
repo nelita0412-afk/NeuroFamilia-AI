@@ -106,15 +106,13 @@ const FOUNDERS = [
     name: 'Marianella Becerra Hernández',
     role: 'Fundadora y Directora',
     bio: 'Licenciada en Trabajo Social y Especialista en Gestión de la Salud Digital. Fundadora de NeuroFamilia Galápagos y promotora de iniciativas de innovación social, salud mental, desarrollo humano y transformación digital para fortalecer el bienestar de niños, adolescentes, familias e instituciones.',
-    tags: ['Trabajo Social', 'Salud Digital', 'Innovación Social', 'Desarrollo Humano', 'Gestión Comunitaria'],
   },
   {
     image: '/images/fundadora/BETSA.png',
-    alt: 'Betsabé Córdova',
-    name: 'Betsabé Córdova',
-    role: 'Cofundadora y Psicóloga Clínica',
-    bio: 'Psicóloga Clínica y Máster en Intervención Psicosocial. Cuenta con experiencia en atención psicológica a niños, adolescentes y adultos, neurodesarrollo, neuropsicología clínica, intervención comunitaria y acompañamiento a poblaciones vulnerables desde un enfoque basado en evidencia y derechos humanos.',
-    tags: ['Psicología Clínica', 'Neurodesarrollo', 'Neuropsicología', 'Intervención Psicosocial', 'Salud Mental Comunitaria'],
+    alt: 'Betsabé Córdova Wellington',
+    name: 'Betsabé Córdova Wellington',
+    role: 'Cofundadora',
+    bio: 'Máster en Intervención Psicosocial. Cuenta con experiencia en atención psicológica a niños, adolescentes y adultos, neurodesarrollo, neuropsicología clínica, intervención comunitaria y acompañamiento a poblaciones vulnerables desde un enfoque basado en evidencia y derechos humanos.',
   },
 ];
 
@@ -278,18 +276,6 @@ export function AboutSection() {
                 <p className="mt-4 max-w-xl text-[15px] leading-7 text-[#0B3B82]/70">
                   {founder.bio}
                 </p>
-
-                {/* Áreas de experiencia */}
-                <ul className="mt-5 flex flex-wrap items-center justify-center gap-2">
-                  {founder.tags.map((tag) => (
-                    <li
-                      key={tag}
-                      className="rounded-full bg-white px-4 py-1.5 text-[13px] font-bold text-[#0066CC] ring-1 ring-[#0066CC]/15"
-                    >
-                      {tag}
-                    </li>
-                  ))}
-                </ul>
               </div>
             ))}
           </div>
