@@ -69,10 +69,6 @@ export function LandingFooter() {
                 className="h-auto w-[170px] object-contain sm:w-[195px]"
               />
             </Link>
-            <p className="max-w-xs text-center text-sm leading-5 text-white/80">
-              Ciencia, tecnología y acompañamiento humano para el crecimiento de niños,
-              adolescentes y familias.
-            </p>
 
             {/* REDES SOCIALES — solo iconos, distribución horizontal */}
             <ul className="flex items-center gap-2.5 self-center">
