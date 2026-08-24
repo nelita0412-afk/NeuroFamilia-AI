@@ -4,21 +4,29 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {
   ArrowRight,
+  Atom,
   Brain,
   Globe,
   Handshake,
   HeartHandshake,
   Lightbulb,
   Lock,
+  Network,
   Rocket,
+  Sprout,
   TrendingUp,
   Users,
 } from 'lucide-react';
 
 /* ── 1. QUIÉNES SOMOS ─────────────────────────────────── */
 
-/* Conceptos institucionales (línea ✦ Quiénes Somos) */
-const CONCEPTOS = ['Ciencia', 'Salud Mental', 'Desarrollo Humano', 'Innovación Social'];
+/* Conceptos institucionales (línea de iconos · Quiénes Somos) */
+const CONCEPTOS = [
+  { icon: Atom, label: 'Ciencia' },
+  { icon: Brain, label: 'Salud Mental' },
+  { icon: Sprout, label: 'Desarrollo Humano' },
+  { icon: Network, label: 'Innovación Social' },
+];
 
 /* Métricas institucionales (Quiénes Somos) */
 const METRICAS = [
@@ -146,13 +154,17 @@ export function AboutSection() {
 
             {/* Línea de conceptos */}
             <ul className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2">
-              {CONCEPTOS.map((concepto) => (
+              {CONCEPTOS.map(({ icon: Icon, label }) => (
                 <li
-                  key={concepto}
-                  className="text-sm font-semibold text-[#0B3B82]/80"
+                  key={label}
+                  className="flex items-center gap-1.5 text-sm font-semibold text-[#0B3B82]/80"
                 >
-                  <span className="mr-1.5 text-[#00B8D9]" aria-hidden="true">✦</span>
-                  {concepto}
+                  <Icon
+                    aria-hidden="true"
+                    strokeWidth={1.8}
+                    className="h-4 w-4 shrink-0 text-[#0066CC]"
+                  />
+                  {label}
                 </li>
               ))}
             </ul>
