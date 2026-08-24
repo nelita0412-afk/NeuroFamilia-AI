@@ -39,7 +39,7 @@ export function LandingNavbar() {
             width={1189}
             height={512}
             priority
-            className="h-[28px] w-auto object-contain"
+            className="h-[26px] w-auto object-contain"
           />
         </Link>
 
