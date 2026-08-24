@@ -13,9 +13,9 @@ const NODOS_CONEXION = [
 
 export function AboutHeroSection() {
   return (
-    <section className="js-about-hero relative flex w-full justify-center overflow-hidden bg-[#032458]">
+    <section className="js-about-hero relative w-full bg-[#042b60]">
       {/* HERO-5 · portada institucional del ecosistema NeuroFamilia */}
-      {/* Panel panorámico ajustado: ancho = min(100%, 100svh×AR) — sin vacíos y con la imagen siempre completa */}
+      {/* La imagen define la altura de la sección: w-full + h-auto, siempre completa, sin recortes */}
       <Image
         src="/images/landing/hero-5.png"
         alt="Ecosistema NeuroFamilia: conexión entre comunidades insulares de Galápagos"
@@ -23,7 +23,7 @@ export function AboutHeroSection() {
         height={940}
         priority
         unoptimized
-        className="js-about-hero-image block h-auto w-[min(100%,calc(100svh*1.7778))] max-w-full object-contain"
+        className="js-about-hero-image block h-auto w-full object-contain"
       />
 
       {/* Brillo discreto en los nodos de conexión entre islas */}
