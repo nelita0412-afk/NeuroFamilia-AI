@@ -364,7 +364,10 @@ export function AboutSection() {
             <g transform="translate(288,22)">
               <path
                 d="M2,6.5 C0.8,9 2.5,12.5 5.5,13.8 C9,15.4 13.5,15 16.5,12.2 L22,12.8 C23.8,9.5 22.5,7 23.5,3.8 L19.5,0.8 L14.8,2.8 L10.8,0.8 L6.5,3.8 Z"
-                fill="#0B3B82"
+                stroke="#0B3B82"
+                strokeWidth="1.7"
+                strokeLinejoin="round"
+                fill="none"
               />
             </g>
             {/* El Mundo · globo terráqueo minimalista */}
