@@ -8,7 +8,7 @@ import { LandingFooter } from '@/components/landing/footer';
 export const metadata: Metadata = {
   title: 'NeuroMentores · NeuroFamilia Galápagos',
   description:
-    'NeuroMentores: acompañamiento con identidad para personas, familias y comunidades desde Galápagos.',
+    'Las ocho voces que dan vida al Modelo NeuroFamilia. Cada NeuroMentor traduce una dimensión del modelo en experiencias, herramientas y orientación para fortalecer el desarrollo humano.',
 };
 
 export default function NeuroMentoresPage() {

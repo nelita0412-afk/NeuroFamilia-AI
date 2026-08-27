@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, BookOpen, Cpu, Crown, Heart, MessageCircle, Network, Search, Shield, Sparkles, Sprout, Target, Users } from 'lucide-react';
+import { ArrowRight, BookOpen, Brain, Cpu, Crown, Footprints, Heart, Layers, Lightbulb, MessageSquare, Shield, Sparkles, Target, Users } from 'lucide-react';
 import { MENTOR_NAMES } from '@neurofamilia/shared';
 import { MENTOR_IDENTITY } from '@/lib/mentor-identity';
 import { MENTOR_COLORS } from '@/lib/mentor-visuals';
@@ -20,11 +20,17 @@ const MENTOR_DIMENSIONS: Record<string, { dimension: string; icon: keyof typeof 
   NIA:   { dimension: 'Acompañamiento transversal', icon: 'Sparkles' },
 };
 
-const HOW_BLOCKS = [
-  { title: 'Detectan necesidades', description: 'Ayudan a identificar necesidades, intereses y oportunidades de crecimiento desde una mirada preventiva.', Icon: Search },
-  { title: 'Acompañan procesos', description: 'Promueven conversaciones significativas que orientan el desarrollo personal, familiar y comunitario.', Icon: MessageCircle },
-  { title: 'Desarrollan capacidades', description: 'Fortalecen habilidades, bienestar emocional, aprendizaje y autonomía para la vida cotidiana.', Icon: Sprout },
-  { title: 'Articulan redes de apoyo', description: 'Conectan a las personas con familias, comunidades, servicios y oportunidades de acompañamiento.', Icon: Network },
+const ORIGIN_CARDS = [
+  { title: 'Las conversaciones que faltan', description: 'Hay preguntas sin espacio —cómo estoy, qué quiero para mi vida, cómo nos cuidamos en familia— y silencios que pesan cuando nadie las responde.', Icon: MessageSquare },
+  { title: 'Una voz por dimensión', description: 'El bienestar no es un solo tema: propósito, emociones, aprendizaje, resiliencia, vínculos, participación, creatividad y transformación digital se desarrollan juntos.', Icon: Layers },
+  { title: 'Pasos para hoy', description: 'NeuroMentores no diagnostica ni entrega recetas: propone acciones pequeñas, concretas y posibles que la familia puede probar el mismo día.', Icon: Footprints },
+];
+
+const PRINCIPLES = [
+  { title: 'Desarrollo humano integral', description: 'El desarrollo humano no se trabaja por partes: emociones, aprendizaje, vínculos y propósito se fortalecen juntos.', Icon: Brain },
+  { title: 'Aprendizaje significativo', description: 'Cada conversación se conecta con la vida real y termina en una acción pequeña que la persona puede aplicar hoy.', Icon: BookOpen },
+  { title: 'Vínculos que fortalecen', description: 'El cuidado se construye en relación: el modelo fortalece a la persona y a quienes la sostienen.', Icon: Users },
+  { title: 'Innovación con propósito', description: 'No es innovar por innovar: la tecnología y la creatividad existen para acercar el conocimiento a la vida cotidiana.', Icon: Lightbulb },
 ];
 
 export function MentorsSection() {
@@ -34,16 +40,16 @@ export function MentorsSection() {
       <section className="js-mentors-hero relative overflow-hidden bg-[#F0F7FF] px-5 py-28 sm:px-8">
         <div className="relative z-10 mx-auto max-w-4xl text-center">
           <p className="js-mentors-kicker text-xs font-bold uppercase tracking-[0.3em] text-[#0066CC]">
-            NeuroMentores
+            NeuroFamilia
           </p>
           <h1 className="js-mentors-title mt-4 text-4xl font-extrabold leading-tight text-[#0B3B82] sm:text-5xl">
             NeuroMentores
           </h1>
           <p className="js-mentors-hero-sub mt-5 text-xl font-bold text-[#0B3B82] sm:text-2xl">
-            Acompañamiento con identidad para personas, familias y comunidades.
+            Las ocho voces que dan vida al Modelo NeuroFamilia.
           </p>
           <p className="js-mentors-subtitle mx-auto mt-5 max-w-2xl text-[15px] leading-7 text-[#0B3B82]/70">
-            Ocho mentores con personalidad, metodología y una mirada propia que fortalecen las dimensiones del Modelo NeuroFamilia para personas, familias y comunidades.
+            Cada NeuroMentor traduce una dimensión del modelo en experiencias, herramientas y orientación para fortalecer el desarrollo humano.
           </p>
         </div>
       </section>
@@ -56,36 +62,18 @@ export function MentorsSection() {
             El origen de NeuroMentores
           </h2>
           <p className="js-mentors-why-body mx-auto mt-4 max-w-2xl text-[15px] leading-7 text-[#072A5C]">
-            En lugares donde el acompañamiento especializado no siempre está disponible, cada conversación puede convertirse en una oportunidad para aprender, crecer y fortalecer vínculos.
+            El desarrollo humano se juega en conversaciones: una pregunta sobre el futuro, una emoción que aún no tiene nombre, un vínculo que se fortalece o se quiebra. Cuando esas conversaciones no encuentran espacio, se enfrentan en soledad las cosas que, compartidas, pesan menos. NeuroMentores nace para que cada dimensión del ser humano tenga una voz.
           </p>
           <div className="js-mentors-why-cards mt-10 grid gap-5 sm:grid-cols-3">
-            <div className="rounded-2xl border border-[#0066CC]/10 bg-white p-6 sm:p-7">
-              <div className="grid h-12 w-12 place-items-center rounded-xl bg-[#00B8D9]/10 text-[#00B8D9]">
-                <span className="text-xl">🌊</span>
+            {ORIGIN_CARDS.map((card) => (
+              <div key={card.title} className="rounded-2xl border border-[#0066CC]/10 bg-white p-6 sm:p-7">
+                <div className="grid h-12 w-12 place-items-center rounded-xl bg-[#0066CC]/8 text-[#0066CC]">
+                  <card.Icon className="h-6 w-6" />
+                </div>
+                <h3 className="mt-4 text-lg font-extrabold text-[#0B3B82]">{card.title}</h3>
+                <p className="mt-2 text-[14px] leading-6 text-[#072A5C]">{card.description}</p>
               </div>
-              <h3 className="mt-4 text-lg font-extrabold text-[#0B3B82]">Razón</h3>
-              <p className="mt-2 text-[14px] leading-6 text-[#072A5C]">
-                En Galápagos, las barreras geográficas, el estigma y el acceso limitado a servicios especializados pueden dificultar el acompañamiento oportuno.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-[#0066CC]/10 bg-white p-6 sm:p-7">
-              <div className="grid h-12 w-12 place-items-center rounded-xl bg-[#0066CC]/8 text-[#0066CC]">
-                <span className="text-xl">🤝</span>
-              </div>
-              <h3 className="mt-4 text-lg font-extrabold text-[#0B3B82]">Respuesta</h3>
-              <p className="mt-2 text-[14px] leading-6 text-[#072A5C]">
-                NeuroMentores acerca herramientas de orientación, aprendizaje y bienestar a las personas, familias y comunidades.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-[#0066CC]/10 bg-white p-6 sm:p-7">
-              <div className="grid h-12 w-12 place-items-center rounded-xl bg-[#2E9B63]/10 text-[#2E9B63]">
-                <span className="text-xl">🌱</span>
-              </div>
-              <h3 className="mt-4 text-lg font-extrabold text-[#0B3B82]">Compromiso</h3>
-              <p className="mt-2 text-[14px] leading-6 text-[#072A5C]">
-                Cada interacción busca fortalecer capacidades, promover la autonomía y contribuir al desarrollo humano integral.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -94,12 +82,12 @@ export function MentorsSection() {
       <section className="js-mentors-gallery relative overflow-hidden bg-white px-5 py-20 sm:px-8">
         <div className="mx-auto max-w-6xl">
           <div className="text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#0066CC]">El modelo en acción</p>
+            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#0066CC]">Las voces</p>
             <h2 className="js-mentors-gallery-title mt-3 text-3xl font-extrabold leading-tight text-[#0B3B82] sm:text-4xl">
-              Quiénes acompañan el modelo
+              Cada dimensión, una voz
             </h2>
             <p className="js-mentors-gallery-body mx-auto mt-4 max-w-2xl text-[15px] leading-7 text-[#072A5C]">
-              Cada NeuroMentor representa una forma distinta de acompañar el crecimiento de las personas, las familias y las comunidades. Juntos conforman un ecosistema de apoyo que fortalece el bienestar, el aprendizaje, la participación y los vínculos familiares.
+              Ocho voces con mirada propia, listas para conversar, orientar y proponer acciones concretas. Cada una se conecta con más de una dimensión según el contexto.
             </p>
           </div>
 
@@ -141,31 +129,31 @@ export function MentorsSection() {
           </ul>
 
           <p className="mt-6 text-center text-[12px] italic text-[#0B3B82]/40">
-            NeuroMentores se inspira en las dimensiones del Modelo NeuroFamilia. Cada uno acompaña más de una dimensión según el contexto y la necesidad.
+            Voces inspiradas en las dimensiones del Modelo NeuroFamilia; cada una se conecta con más de una dimensión según el contexto y la necesidad.
           </p>
         </div>
       </section>
 
-      {/* ═══════════ CÓMO ACOMPAÑAN ═══════════ */}
+      {/* ═══════════ PRINCIPIOS ═══════════ */}
       <section className="js-mentors-how relative overflow-hidden bg-[#F0F7FF] px-5 py-20 sm:px-8">
         <div className="mx-auto max-w-6xl">
           <div className="text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#0066CC]">Acompañamiento</p>
+            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#0066CC]">Lo que los define</p>
             <h2 className="js-mentors-how-title mt-3 text-3xl font-extrabold leading-tight text-[#0B3B82] sm:text-4xl">
-              Cómo acompañan
+              Principios de NeuroMentores
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-7 text-[#072A5C]">
-              NeuroMentores forma parte de una ruta de acompañamiento que fortalece el bienestar, el aprendizaje y el desarrollo humano.
+              Cuatro convicciones orientan la manera en que estas voces hablan, escuchan y proponen.
             </p>
           </div>
           <div className="js-mentors-how-cards mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {HOW_BLOCKS.map((block) => (
-              <div key={block.title} className="rounded-2xl border border-[#0066CC]/10 bg-white p-6 text-center sm:p-7">
+            {PRINCIPLES.map((principle) => (
+              <div key={principle.title} className="rounded-2xl border border-[#0066CC]/10 bg-white p-6 text-center sm:p-7">
                 <div className="mx-auto grid h-14 w-14 place-items-center rounded-[14px] bg-[#0066CC]/6 text-[#0066CC]">
-                  <block.Icon className="h-6 w-6" />
+                  <principle.Icon className="h-6 w-6" />
                 </div>
-                <h3 className="mt-4 text-base font-extrabold text-[#0B3B82]">{block.title}</h3>
-                <p className="mt-2 text-[13px] leading-5 text-[#072A5C]">{block.description}</p>
+                <h3 className="mt-4 text-base font-extrabold text-[#0B3B82]">{principle.title}</h3>
+                <p className="mt-2 text-[13px] leading-5 text-[#072A5C]">{principle.description}</p>
               </div>
             ))}
           </div>
@@ -180,7 +168,7 @@ export function MentorsSection() {
             Nacidos en Galápagos,<br className="hidden sm:block" /> pensados para cualquier familia
           </h2>
           <p className="js-mentors-territory-body mt-5 max-w-2xl text-[15px] leading-7 text-[#072A5C]">
-            El Modelo NeuroFamilia nace en un territorio único: las islas Galápagos. La distancia, la diversidad cultural y las barreras de acceso convirtieron el archipiélago en un laboratorio de innovación social. Lo que funciona aquí — el acompañamiento cercano, la tecnología al servicio de las personas, el cuidado desde la comunidad — puede replicarse en cualquier contexto donde el desarrollo humano sea prioridad.
+            El Modelo NeuroFamilia nace en un territorio único: las islas Galápagos. La distancia, la diversidad cultural y las barreras de acceso convirtieron el archipiélago en un laboratorio de innovación social. Lo que funciona aquí — el apoyo cercano, la tecnología al servicio de las personas, el cuidado desde la comunidad — puede replicarse en cualquier contexto donde el desarrollo humano sea prioridad.
           </p>
         </div>
       </section>
@@ -190,10 +178,10 @@ export function MentorsSection() {
         <div className="mx-auto max-w-4xl text-center">
           <p className="text-xs font-bold uppercase tracking-[0.3em] text-white/50">NeuroFamilia</p>
           <h2 className="js-mentors-closing-title mt-3 text-3xl font-extrabold leading-tight text-white sm:text-4xl">
-            Un ecosistema para las<br className="hidden sm:block" /> próximas generaciones
+            Del modelo a la experiencia
           </h2>
           <p className="js-mentors-closing-body mx-auto mt-5 max-w-xl text-[15px] leading-7 text-white/80">
-            NeuroMentores forma parte de una visión más amplia: fortalecer el bienestar, el aprendizaje y el desarrollo humano desde Galápagos para las próximas generaciones.
+            El Modelo NeuroFamilia deja de ser teoría y se vuelve conversación: cercana, con identidad y al alcance de cada familia.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Link
