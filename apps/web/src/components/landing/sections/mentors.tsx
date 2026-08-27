@@ -178,24 +178,24 @@ export function MentorsSection() {
         <div className="mx-auto max-w-4xl text-center">
           <p className="text-xs font-bold uppercase tracking-[0.3em] text-white/50">NeuroFamilia</p>
           <h2 className="js-mentors-closing-title mt-3 text-3xl font-extrabold leading-tight text-white sm:text-4xl">
-            Del modelo a la experiencia
+            Ocho voces, una conversación
           </h2>
           <p className="js-mentors-closing-body mx-auto mt-5 max-w-xl text-[15px] leading-7 text-white/80">
-            El Modelo NeuroFamilia deja de ser teoría y se vuelve conversación: cercana, con identidad y al alcance de cada familia.
+            Cada dimensión del modelo tiene ahora una voz con mirada propia, lista para conversar con cada familia y proponer pasos concretos.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Link
               href="/teoria-de-cambio"
-              className="inline-flex items-center gap-2 rounded-full px-7 py-3 text-sm font-bold text-white transition-all duration-200 hover:-translate-y-0.5"
-              style={{ backgroundColor: '#00B8D9', boxShadow: '0 8px 24px rgba(0,184,217,0.35)' }}
+              className="inline-flex items-center gap-2 rounded-full px-7 py-3 text-sm font-bold transition-all duration-200 hover:-translate-y-0.5"
+              style={{ backgroundColor: '#00B8D9', color: '#0B3B82', border: '1.5px solid #00B8D9', boxShadow: '0 8px 24px rgba(0,184,217,0.35)' }}
             >
               Explorar la Teoría de Cambio
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
               href="/plataforma"
-              className="inline-flex items-center gap-2 rounded-full px-7 py-3 text-sm font-bold text-white transition-all duration-200 hover:bg-white/10"
-              style={{ border: '1.5px solid rgba(255,255,255,0.35)' }}
+              className="inline-flex items-center gap-2 rounded-full px-7 py-3 text-sm font-bold transition-all duration-200 hover:bg-white/10"
+              style={{ color: '#FFFFFF', border: '1.5px solid rgba(255,255,255,0.35)' }}
             >
               Conocer el Modelo NeuroFamilia
               <ArrowRight className="h-4 w-4" />
