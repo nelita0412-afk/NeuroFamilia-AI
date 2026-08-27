@@ -8,7 +8,7 @@ import { LandingFooter } from '@/components/landing/footer';
 export const metadata: Metadata = {
   title: 'NeuroMentores · NeuroFamilia Galápagos',
   description:
-    'Ocho guías con personalidad, metodología y una mirada propia sobre el ser humano. Acompañantes vivos del crecimiento.',
+    'Los NeuroMentores: ocho formas de acompañar el crecimiento humano. Acompañamiento especializado para personas, familias y comunidades desde Galápagos.',
 };
 
 export default function NeuroMentoresPage() {

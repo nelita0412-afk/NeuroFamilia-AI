@@ -379,21 +379,54 @@ export function LandingPage({ page, children }: { page: LandingPageKey; children
 
         if (page === 'neuromentores') {
           /* ═══════════════════════════════════════════════════════
-             NEUROMENTORES — Ocho guías, ocho caminos
+             NEUROMENTORES — Acompañamiento con identidad
              ═══════════════════════════════════════════════════════ */
+
+          /* Hero */
           gsap.timeline({
-            scrollTrigger: { trigger: '.js-mentors', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
+            scrollTrigger: { trigger: '.js-mentors-hero', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
           })
             .from('.js-mentors-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
             .from('.js-mentors-title', { y: 30, opacity: 0, duration: 0.6 }, 0.15)
-            .from('.js-mentors-subtitle', { y: 24, opacity: 0, duration: 0.6 }, 0.3)
-            .from('.js-mentor', {
-              y: 60,
-              opacity: 0,
-              duration: 0.7,
-              stagger: 0.1,
-              ease: 'power2.out',
-            }, 0.5);
+            .from('.js-mentors-hero-sub', { y: 24, opacity: 0, duration: 0.5 }, 0.3)
+            .from('.js-mentors-subtitle', { y: 24, opacity: 0, duration: 0.6 }, 0.4);
+
+          /* ¿Por qué nacen? */
+          gsap.timeline({
+            scrollTrigger: { trigger: '.js-mentors-why', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
+          })
+            .from('.js-mentors-why-title', { y: 30, opacity: 0, duration: 0.6 }, 0)
+            .from('.js-mentors-why-body', { y: 24, opacity: 0, duration: 0.5 }, 0.15)
+            .from('.js-mentors-why-cards > div', { y: 40, opacity: 0, duration: 0.6, stagger: 0.1, ease: 'power2.out' }, 0.3);
+
+          /* Galería */
+          gsap.timeline({
+            scrollTrigger: { trigger: '.js-mentors-gallery', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
+          })
+            .from('.js-mentors-gallery-title', { y: 30, opacity: 0, duration: 0.6 }, 0)
+            .from('.js-mentors-gallery-body', { y: 24, opacity: 0, duration: 0.5 }, 0.15)
+            .from('.js-mentor', { y: 60, opacity: 0, duration: 0.7, stagger: 0.1, ease: 'power2.out' }, 0.35);
+
+          /* Cómo acompañan */
+          gsap.timeline({
+            scrollTrigger: { trigger: '.js-mentors-how', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
+          })
+            .from('.js-mentors-how-title', { y: 30, opacity: 0, duration: 0.6 }, 0)
+            .from('.js-mentors-how-cards > div', { y: 40, opacity: 0, duration: 0.6, stagger: 0.1, ease: 'power2.out' }, 0.2);
+
+          /* Territorio */
+          gsap.timeline({
+            scrollTrigger: { trigger: '.js-mentors-territory', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
+          })
+            .from('.js-mentors-territory-title', { y: 30, opacity: 0, duration: 0.6 }, 0)
+            .from('.js-mentors-territory-body', { y: 24, opacity: 0, duration: 0.5 }, 0.15);
+
+          /* Cierre */
+          gsap.timeline({
+            scrollTrigger: { trigger: '.js-mentors-closing', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
+          })
+            .from('.js-mentors-closing-title', { y: 30, opacity: 0, duration: 0.6 }, 0)
+            .from('.js-mentors-closing-body', { y: 24, opacity: 0, duration: 0.5 }, 0.15);
         }
 
         if (page === 'plataforma') {
