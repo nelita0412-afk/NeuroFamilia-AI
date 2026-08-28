@@ -431,28 +431,74 @@ export function LandingPage({ page, children }: { page: LandingPageKey; children
 
         if (page === 'plataforma') {
           /* ═══════════════════════════════════════════════════════
-             PLATAFORMA — La herramienta entra en escena
+             PLATAFORMA — herramienta en primer plano
+             Escena 1: hero · Escena 3 (clímax): mockups con scrub
              ═══════════════════════════════════════════════════════ */
+          gsap
+            .timeline({
+              scrollTrigger: { trigger: '.js-platform-hero', start: 'top 70%', once: true },
+            })
+            .from('.js-platform-hero-kicker', { y: 24, opacity: 0, duration: 0.5, clearProps: 'transform,opacity' }, 0)
+            .from('.js-platform-hero-h1', { y: 30, opacity: 0, duration: 0.7, clearProps: 'transform,opacity' }, 0.15)
+            .from('.js-platform-hero-sub', { y: 24, opacity: 0, duration: 0.6, clearProps: 'transform,opacity' }, 0.3)
+            .from('.js-platform-hero-cta', { y: 20, opacity: 0, duration: 0.5, clearProps: 'transform,opacity' }, 0.5)
+            .from('.js-platform-hero-visual', { y: 40, opacity: 0, duration: 0.8, ease: 'power2.out', clearProps: 'transform,opacity' }, 0.6);
+
+          gsap.from('.js-platform-features li', {
+            y: 40,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: '.js-platform-capabilities', start: 'top 80%', once: true },
+            clearProps: 'transform,opacity',
+          });
+
+          /* Clímax visual — "Así se ve por dentro" */
           const platformTl = gsap.timeline({
-            scrollTrigger: { trigger: '.js-platform', start: 'top 65%', end: 'bottom 55%', scrub: 0.5 },
+            scrollTrigger: { trigger: '.js-platform-demo', start: 'top 65%', end: 'bottom 55%', scrub: 0.5 },
           });
           platformTl
-            .from('.js-platform-kicker', { y: 24, opacity: 0, duration: 0.4 }, 0)
-            .from('.js-platform-title', { y: 30, opacity: 0, duration: 0.5 }, 0.1)
-            .from('.js-platform-features li', { y: 30, opacity: 0, duration: 0.5, stagger: 0.1 }, 0.25)
-            .from('.js-platform-desktop-wrap', { scale: 0.9, opacity: 0, duration: 0.8, ease: 'power2.out' }, 0.5)
-            .from('.js-platform-tablet-wrap', { x: -70, y: 80, opacity: 0, duration: 0.8, ease: 'power2.out' }, 0.8)
-            .from('.js-platform-mobile-wrap', { x: 70, y: 90, opacity: 0, duration: 0.8, ease: 'power2.out' }, 0.95);
-          gsap.to('.js-platform-tablet-wrap', {
+            .from('.js-platform-demo-kicker', { y: 24, opacity: 0, duration: 0.4 }, 0)
+            .from('.js-platform-demo-title', { y: 30, opacity: 0, duration: 0.5 }, 0.1)
+            .from('.js-platform-demo-sub', { y: 24, opacity: 0, duration: 0.5 }, 0.2)
+            .from('.js-platform-captions li', { y: 30, opacity: 0, duration: 0.5, stagger: 0.1 }, 0.35);
+          gsap.to('.js-platform-desktop-wrap', {
             y: -30,
             ease: 'none',
-            scrollTrigger: { trigger: '.js-platform', start: 'top top', end: 'bottom top', scrub: 0.4 },
+            scrollTrigger: { trigger: '.js-platform-demo', start: 'top top', end: 'bottom top', scrub: 0.4 },
           });
           gsap.to('.js-platform-mobile-wrap', {
-            y: -60,
+            y: -70,
             ease: 'none',
-            scrollTrigger: { trigger: '.js-platform', start: 'top top', end: 'bottom top', scrub: 0.4 },
+            scrollTrigger: { trigger: '.js-platform-demo', start: 'top top', end: 'bottom top', scrub: 0.4 },
           });
+
+          gsap.from('.js-platform-flow > div', {
+            y: 40,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: '.js-platform-flow-sec', start: 'top 80%', once: true },
+            clearProps: 'transform,opacity',
+          });
+          gsap.from('.js-platform-proof > div', {
+            y: 30,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.12,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: '.js-platform-proof-sec', start: 'top 85%', once: true },
+            clearProps: 'transform,opacity',
+          });
+          gsap
+            .timeline({
+              scrollTrigger: { trigger: '.js-platform-close', start: 'top 75%', once: true },
+            })
+            .from('.js-platform-close > div h2', { y: 30, opacity: 0, duration: 0.6, clearProps: 'transform,opacity' }, 0)
+            .from('.js-platform-close > div p', { y: 24, opacity: 0, duration: 0.5, clearProps: 'transform,opacity' }, 0.15)
+            .from('.js-platform-close > div div', { y: 20, opacity: 0, duration: 0.5, clearProps: 'transform,opacity' }, 0.35);
         }
 
         if (page === 'servicios') {

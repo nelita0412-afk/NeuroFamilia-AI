@@ -8,7 +8,7 @@ import { LandingFooter } from '@/components/landing/footer';
 export const metadata: Metadata = {
   title: 'Plataforma · NeuroFamilia Galápagos',
   description:
-    'Tecnología al servicio del desarrollo humano: seguimiento, Archipiélago, mentoría con IA, recursos y comunidad.',
+    'El crecimiento, hecho visible: avanza, mentores cuando dudas, recursos y evidencia para familias, profesionales e instituciones, en una sola ventana.',
 };
 
 export default function PlataformaPage() {
