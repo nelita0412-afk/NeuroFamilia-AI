@@ -122,7 +122,7 @@ function MiniPoster({ name }: { name: string }) {
 
 function DesktopFrame() {
   return (
-    <div className="js-platform-desktop w-full overflow-hidden rounded-2xl bg-[#F8FBFF] shadow-[0_40px_90px_rgba(2,32,76,0.6)] ring-1 ring-white/20">
+    <div className="js-platform-desktop relative w-full overflow-hidden rounded-2xl bg-[#F8FBFF] shadow-[0_40px_90px_rgba(2,32,76,0.6)] ring-1 ring-white/20">
       <div className="flex items-center gap-2 border-b border-[#0A4E9B]/10 bg-white px-4 py-2.5">
         <span className="h-2.5 w-2.5 rounded-full bg-[#29C7D8]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#1476C6]/60" />
@@ -154,6 +154,12 @@ function DesktopFrame() {
           </div>
         </div>
       </div>
+      <span aria-hidden="true" className="absolute right-[20px] top-[133px] z-10 hidden flex-col items-center sm:flex">
+        <span className="h-7 w-px bg-[#00B8D9]" />
+        <span className="rounded-full bg-white px-2.5 py-1 text-[10px] font-extrabold tracking-wide text-[#0066CC] shadow-[0_6px_18px_rgba(2,32,76,0.28)] ring-1 ring-[#00B8D9]/40">
+          Mapa de avance
+        </span>
+      </span>
     </div>
   );
 }
@@ -242,7 +248,7 @@ export function PlatformSection() {
             El crecimiento, hecho visible.
           </h1>
           <p className="js-platform-hero-sub mx-auto mt-6 max-w-2xl text-[15px] leading-7 text-[#0B3B82]/70 sm:text-base">
-            Sigue el avance, conversa con mentores y encuentra recursos en un mismo lugar.
+            Ve el avance de tu hijo, conversa con mentores y encuentra recursos en un mismo lugar.
           </p>
           <div className="js-platform-hero-cta mt-8 flex flex-wrap items-center justify-center gap-3">
             <CtaPrimary href="mailto:neurofamiliagps@gmail.com?subject=Solicito%20acceso%20a%20la%20plataforma%20%2D%20NeuroFamilia">

@@ -10,3 +10,6 @@ coverage
 # macOS
 .DS_Store
 **/.DS_Store
+
+# Local review screenshots (not part of the codebase)
+/.capturas/
