@@ -454,6 +454,75 @@ export function LandingPage({ page, children }: { page: LandingPageKey; children
             scrollTrigger: { trigger: '.js-platform', start: 'top top', end: 'bottom top', scrub: 0.4 },
           });
         }
+
+        if (page === 'servicios') {
+          /* ═══════════════════════════════════════════════════════
+             SERVICIOS — página de conversión · entrada en escena
+             ═══════════════════════════════════════════════════════ */
+          gsap
+            .timeline({
+              scrollTrigger: { trigger: '.js-servicios-hero', start: 'top 70%', once: true },
+            })
+            .from('.js-servicios-hero-kicker', { y: 24, opacity: 0, duration: 0.5, clearProps: 'transform,opacity' }, 0)
+            .from('.js-servicios-hero-title', { y: 30, opacity: 0, duration: 0.7, clearProps: 'transform,opacity' }, 0.15)
+            .from('.js-servicios-hero-sub', { y: 24, opacity: 0, duration: 0.6, clearProps: 'transform,opacity' }, 0.3)
+            .from('.js-servicios-hero-cta', { y: 20, opacity: 0, duration: 0.5, clearProps: 'transform,opacity' }, 0.5)
+            .from('.js-servicios-hero-visual', { y: 40, opacity: 0, duration: 0.8, ease: 'power2.out', clearProps: 'transform,opacity' }, 0.35);
+
+          gsap.from('.js-servicios-audience-grid li', {
+            y: 40,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: '.js-servicios-audiences', start: 'top 80%', once: true },
+            clearProps: 'transform,opacity',
+          });
+          gsap.from('.js-servicios-methods-grid li', {
+            y: 40,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: '.js-servicios-methods', start: 'top 80%', once: true },
+            clearProps: 'transform,opacity',
+          });
+          gsap.from('.js-servicios-trust-grid li', {
+            y: 40,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: '.js-servicios-trust', start: 'top 80%', once: true },
+            clearProps: 'transform,opacity',
+          });
+          gsap.from('.js-servicios-impact-grid > div', {
+            y: 40,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.12,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: '.js-servicios-impact', start: 'top 80%', once: true },
+            clearProps: 'transform,opacity',
+          });
+          gsap.from('.js-servicios-unc', {
+            y: 40,
+            opacity: 0,
+            duration: 0.7,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: '.js-servicios-unc', start: 'top 85%', once: true },
+            clearProps: 'transform,opacity',
+          });
+          gsap.from('.js-servicios-ods > span', {
+            y: 20,
+            opacity: 0,
+            duration: 0.4,
+            stagger: 0.08,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: '.js-servicios-ods', start: 'top 90%', once: true },
+            clearProps: 'transform,opacity',
+          });
+        }
       });
 
       return () => mm.revert();
