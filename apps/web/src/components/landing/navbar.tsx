@@ -16,12 +16,9 @@ const NAV_LINKS = [
   { label: 'Plataforma', href: '/plataforma' },
 ];
 
-type Locale = 'es' | 'en';
-
 export function LandingNavbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [locale, setLocale] = useState<Locale>('es');
 
   const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname === href);
 
@@ -30,9 +27,9 @@ export function LandingNavbar() {
       aria-label="Menú principal"
       className="js-navbar sticky top-0 z-50 h-[115px] w-full border-b border-[#0B3B82]/5 bg-white shadow-[0_4px_24px_rgba(11,59,130,0.06)]"
     >
-      <div className="mx-auto grid h-full w-full max-w-[1500px] grid-cols-[auto_1fr_auto] items-center px-6 sm:px-10 lg:grid-cols-[22%_1fr_12%] lg:px-12">
+      <div className="mx-auto flex h-full w-full max-w-[1500px] items-center justify-between gap-6 px-6 sm:px-10 lg:px-12">
         {/* LOGO — protagonista, sin texto adicional */}
-        <Link href="/" className="flex items-center justify-self-start" aria-label="Inicio NeuroFamilia Galápagos">
+        <Link href="/" className="flex items-center" aria-label="Inicio NeuroFamilia Galápagos">
           <Image
             src="/images/logos/nfg-logo.png"
             alt="Logo NFG · NeuroFamilia Galápagos"
@@ -43,7 +40,7 @@ export function LandingNavbar() {
           />
         </Link>
 
-        {/* MENÚ PRINCIPAL — centrado entre logo y botón EN */}
+        {/* MENÚ PRINCIPAL — centrado entre logo y botón menú móvil */}
         <ul className="hidden items-center gap-6 2xl:gap-9 xl:flex">
           {NAV_LINKS.map((link) => {
             const isActiveLink = isActive(link.href);
@@ -67,27 +64,13 @@ export function LandingNavbar() {
           })}
         </ul>
 
-        {/* BOTÓN EN — extremo derecho */}
-        <button
-          type="button"
-          onClick={() => setLocale('en')}
-          aria-label="Cambiar idioma a inglés"
-          className={`hidden justify-self-end rounded-lg border-2 px-4 py-1.5 text-sm font-bold transition-colors duration-300 lg:block ${
-            locale === 'en'
-              ? 'border-[#0066CC] bg-[#0066CC] text-white'
-              : 'border-[#0066CC] text-[#0066CC] hover:bg-[#0066CC] hover:text-white'
-          }`}
-        >
-          EN
-        </button>
-
-        {/* BOTÓN MENÚ MÓVIL — solo móvil y tablet (≤1024px) */}
+        {/* BOTÓN MENÚ MÓVIL — solo tablet y móvil (≤1280px) */}
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-label="Abrir menú"
-          className="inline-flex h-11 w-11 items-center justify-center justify-self-end rounded-lg text-[#111827] transition-colors duration-300 hover:text-[#0066CC] xl:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-[#111827] transition-colors duration-300 hover:text-[#0066CC] xl:hidden"
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
@@ -116,20 +99,6 @@ export function LandingNavbar() {
               </li>
             );
           })}
-          <li className="mt-3">
-            <button
-              type="button"
-              onClick={() => setLocale('en')}
-              aria-label="Cambiar idioma a inglés"
-              className={`rounded-lg border-2 px-4 py-1.5 text-sm font-bold transition-colors duration-300 ${
-                locale === 'en'
-                  ? 'border-[#0066CC] bg-[#0066CC] text-white'
-                  : 'border-[#0066CC] text-[#0066CC] hover:bg-[#0066CC] hover:text-white'
-              }`}
-            >
-              EN
-            </button>
-          </li>
         </ul>
       </div>
     </nav>

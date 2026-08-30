@@ -29,7 +29,8 @@ export function LandingPage({ page, children }: { page: LandingPageKey; children
 
         if (page === 'inicio') {
           /* ═══════════════════════════════════════════════════════
-             INICIO — HERO INSTITUCIONAL FULLSCREEN
+             INICIO — hub de producto y conversión
+             Hero → Hub → Caminos → Impacto → Mentores → Cierre
              ═══════════════════════════════════════════════════════ */
           gsap.from('.js-hero-image', {
             scale: 1.08,
@@ -38,6 +39,7 @@ export function LandingPage({ page, children }: { page: LandingPageKey; children
             ease: 'power2.out',
           });
           gsap.from('.js-hero-overlay', { opacity: 0, duration: 1.2, delay: 0.4, ease: 'power2.out' });
+          gsap.from('.js-hero-eyebrow', { y: 20, opacity: 0, duration: 0.8, delay: 0.7, ease: 'power2.out' });
           gsap.from('.js-hero-title', { y: 40, opacity: 0, duration: 1, delay: 0.9, ease: 'power3.out' });
           gsap.from('.js-hero-subtitle', { y: 30, opacity: 0, duration: 0.9, delay: 1.2, ease: 'power2.out' });
           gsap.from('.js-hero-cta', { y: 24, opacity: 0, duration: 0.7, delay: 1.5, ease: 'power2.out' });
@@ -54,7 +56,43 @@ export function LandingPage({ page, children }: { page: LandingPageKey; children
             scrollTrigger: { trigger: '.js-hero', start: 'top top', end: 'bottom top', scrub: 1 },
           });
 
-          /* Impacto Alcanzado — tarjetas con contador (reveal único) */
+          /* Hub — tres puertas */
+          gsap.timeline({
+            scrollTrigger: { trigger: '.js-hub', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
+          })
+            .from('.js-hub-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
+            .from('.js-hub-title', { y: 30, opacity: 0, duration: 0.6 }, 0.15)
+            .from('.js-hub-body', { y: 24, opacity: 0, duration: 0.7 }, 0.3);
+          gsap.from('.js-hub-card', {
+            y: 50,
+            opacity: 0,
+            scale: 0.95,
+            duration: 0.7,
+            stagger: 0.12,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: '.js-hub', start: 'top 80%', once: true },
+            clearProps: 'transform,opacity',
+          });
+
+          /* Caminos — cuatro audiencias */
+          gsap.timeline({
+            scrollTrigger: { trigger: '.js-caminos', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
+          })
+            .from('.js-caminos-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
+            .from('.js-caminos-title', { y: 30, opacity: 0, duration: 0.6 }, 0.15)
+            .from('.js-caminos-body', { y: 24, opacity: 0, duration: 0.7 }, 0.3);
+          gsap.from('.js-caminos-card', {
+            y: 50,
+            opacity: 0,
+            scale: 0.95,
+            duration: 0.7,
+            stagger: 0.12,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: '.js-caminos', start: 'top 80%', once: true },
+            clearProps: 'transform,opacity',
+          });
+
+          /* Impacto — banda slim */
           gsap.timeline({
             scrollTrigger: { trigger: '.js-impact-reached', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
           })
@@ -71,40 +109,15 @@ export function LandingPage({ page, children }: { page: LandingPageKey; children
             scrollTrigger: { trigger: '.js-impact-reached', start: 'top 80%', once: true },
             clearProps: 'transform,opacity',
           });
-
-          /* Fundación — tarjetas premium 01/02/03 (reveal único) */
-          gsap.timeline({
-            scrollTrigger: { trigger: '.js-foundation', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
-          })
-            .from('.js-foundation-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
-            .from('.js-foundation-title', { y: 30, opacity: 0, duration: 0.6 }, 0.15)
-            .from('.js-foundation-body', { y: 24, opacity: 0, duration: 0.7 }, 0.3);
-          gsap.from('.js-foundation-card', {
-            y: 50,
+          gsap.from('.js-impact-reached-unc', {
+            y: 20,
             opacity: 0,
-            scale: 0.95,
-            duration: 0.7,
-            stagger: 0.14,
-            ease: 'power2.out',
-            scrollTrigger: { trigger: '.js-foundation', start: 'top 80%', once: true },
+            duration: 0.6,
+            scrollTrigger: { trigger: '.js-impact-reached-unc', start: 'top 92%', once: true },
             clearProps: 'transform,opacity',
           });
 
-          /* Vista previa Acerca — reveal único, sobrio */
-          gsap
-            .timeline({
-              scrollTrigger: { trigger: '.js-about-preview', start: 'top 80%', once: true },
-            })
-            .from('.js-about-preview-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
-            .from('.js-about-preview-title', { y: 30, opacity: 0, duration: 0.6 }, 0.15)
-            .from('.js-about-preview-body', { y: 24, opacity: 0, duration: 0.6 }, 0.3)
-            .from(
-              '.js-about-preview-cta',
-              { y: 20, opacity: 0, duration: 0.5, clearProps: 'transform,opacity' },
-              0.45
-            );
-
-          /* Vista previa NeuroMentores — banda navy con avatares */
+          /* Vista previa NeuroMentores — teaser de 4 */
           gsap
             .timeline({
               scrollTrigger: { trigger: '.js-mentors-preview', start: 'top 80%', once: true },
@@ -130,6 +143,16 @@ export function LandingPage({ page, children }: { page: LandingPageKey; children
               { y: 20, opacity: 0, duration: 0.5, clearProps: 'transform,opacity' },
               0.6
             );
+
+          /* Cierre de conversión */
+          gsap
+            .timeline({
+              scrollTrigger: { trigger: '.js-home-closing', start: 'top 80%', once: true },
+            })
+            .from('.js-home-closing-kicker', { y: 24, opacity: 0, duration: 0.5, clearProps: 'transform,opacity' }, 0)
+            .from('.js-home-closing-title', { y: 30, opacity: 0, duration: 0.6, clearProps: 'transform,opacity' }, 0.15)
+            .from('.js-home-closing-body', { y: 24, opacity: 0, duration: 0.6, clearProps: 'transform,opacity' }, 0.3)
+            .from('.js-home-closing-cta', { y: 20, opacity: 0, duration: 0.5, clearProps: 'transform,opacity' }, 0.45);
         }
 
         if (page === 'acerca') {

@@ -3,16 +3,17 @@ import type { Metadata } from 'next';
 import { LandingPage } from '@/components/landing/landing-page';
 import { LandingNavbar } from '@/components/landing/navbar';
 import { HeroSection } from '@/components/landing/sections/hero';
+import { HubSection } from '@/components/landing/sections/hub';
+import { CaminosSection } from '@/components/landing/sections/caminos';
 import { ImpactReachedSection } from '@/components/landing/sections/impact-reached';
-import { FoundationSection } from '@/components/landing/sections/foundation';
-import { AboutPreviewSection } from '@/components/landing/sections/about-preview';
 import { MentorsPreviewSection } from '@/components/landing/sections/mentors-preview';
+import { CtaFinaleSection } from '@/components/landing/sections/cta-finale';
 import { LandingFooter } from '@/components/landing/footer';
 
 export const metadata: Metadata = {
-  title: 'NeuroFamilia Galápagos — Desarrollo humano y bienestar comunitario',
+  title: 'NeuroFamilia Galápagos — Seguimiento, mentores y recursos para crecer',
   description:
-    'Plataforma digital para el desarrollo humano, la salud mental y el bienestar comunitario en Galápagos.',
+    'Sigue el avance de tu hijo, conversa con NeuroMentores y encuentra recursos y servicios para cada etapa. Nacido en Galápagos.',
 };
 
 export default function Home() {
@@ -20,10 +21,11 @@ export default function Home() {
     <LandingPage page="inicio">
       <LandingNavbar />
       <HeroSection />
+      <HubSection />
+      <CaminosSection />
       <ImpactReachedSection />
-      <FoundationSection />
-      <AboutPreviewSection />
       <MentorsPreviewSection />
+      <CtaFinaleSection />
       <LandingFooter />
     </LandingPage>
   );
