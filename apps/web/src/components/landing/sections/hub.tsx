@@ -3,30 +3,30 @@ import {
   Activity,
   ArrowRight,
   BookOpen,
-  MessageCircleHeart,
+  Compass,
 } from 'lucide-react';
 
 const HUBS = [
   {
     icon: Activity,
-    title: 'Seguimiento del avance',
-    detail: 'Datos claros de desarrollo: qué avanza y qué pide atención, con informes por etapa.',
+    title: 'Plataforma',
+    detail: 'El avance de tu hijo, visible cada semana.',
     href: '/plataforma',
     linkLabel: 'Ver la plataforma',
   },
   {
-    icon: MessageCircleHeart,
-    title: 'NeuroMentores',
-    detail: 'Ocho guías con identidad propia para conversar y recibir un paso concreto.',
-    href: '/neuromentores',
-    linkLabel: 'Conocer los mentores',
-  },
-  {
     icon: BookOpen,
-    title: 'Recursos y servicios',
-    detail: 'Contenido por edad y servicios para cada necesidad, listos para hoy.',
+    title: 'Servicios',
+    detail: 'Orientación, talleres y formación para cada necesidad.',
     href: '/servicios',
     linkLabel: 'Ver los servicios',
+  },
+  {
+    icon: Compass,
+    title: 'Caminos',
+    detail: 'Rutas pensadas para familias, adolescentes y más.',
+    href: '/caminos/familia',
+    linkLabel: 'Explorar caminos',
   },
 ];
 
@@ -34,19 +34,19 @@ export function HubSection() {
   return (
     <section
       id="hub"
-      className="js-hub relative overflow-hidden bg-white px-5 py-20 sm:px-8"
+      className="js-hub relative overflow-hidden bg-[#F0F7FF] px-5 py-20 sm:px-8"
     >
       <div className="mx-auto max-w-6xl">
         <div className="text-center">
           <p className="js-hub-kicker text-xs font-bold uppercase tracking-[0.3em] text-[#0066CC]">
-            Qué encuentras aquí
+            Qué puedes hacer hoy
           </p>
           <h2 className="js-hub-title mt-3 text-3xl font-extrabold leading-tight text-[#0B3B82] sm:text-4xl">
-            Un mismo lugar para cada etapa del crecimiento
+            En un mismo lugar
           </h2>
           <p className="js-hub-body mx-auto mt-4 max-w-2xl text-[15px] leading-7 text-[#072A5C]">
-            Tres puertas, un mismo hilo: saber cómo va, preguntar a un mentor y tener el recurso
-            adecuado.
+            Tres puertas, un mismo hilo: seguir el avance, encontrar el recurso adecuado y avanzar
+            con confianza.
           </p>
         </div>
 

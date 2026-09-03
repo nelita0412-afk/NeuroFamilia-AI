@@ -98,7 +98,11 @@ export function MentorsSection() {
               const dim = MENTOR_DIMENSIONS[name];
               const Icon = DIMENSION_ICONS[dim.icon];
               return (
-                <li key={name} className="js-mentor h-full">
+                <li
+                  key={name}
+                  id={name.toLowerCase()}
+                  className="js-mentor h-full scroll-mt-32"
+                >
                   <div className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-[0_8px_30px_rgba(11,59,130,0.08)] ring-1 ring-[#0066CC]/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_48px_rgba(11,59,130,0.16)]">
                     <div className="relative aspect-[9/16]">
                       <Image

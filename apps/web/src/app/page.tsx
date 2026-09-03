@@ -3,10 +3,10 @@ import type { Metadata } from 'next';
 import { LandingPage } from '@/components/landing/landing-page';
 import { LandingNavbar } from '@/components/landing/navbar';
 import { HeroSection } from '@/components/landing/sections/hero';
-import { HubSection } from '@/components/landing/sections/hub';
-import { CaminosSection } from '@/components/landing/sections/caminos';
-import { ImpactReachedSection } from '@/components/landing/sections/impact-reached';
 import { MentorsPreviewSection } from '@/components/landing/sections/mentors-preview';
+import { TerritorySection } from '@/components/landing/sections/territory';
+import { HubSection } from '@/components/landing/sections/hub';
+import { ImpactReachedSection } from '@/components/landing/sections/impact-reached';
 import { CtaFinaleSection } from '@/components/landing/sections/cta-finale';
 import { LandingFooter } from '@/components/landing/footer';
 
@@ -21,10 +21,10 @@ export default function Home() {
     <LandingPage page="inicio">
       <LandingNavbar />
       <HeroSection />
-      <HubSection />
-      <CaminosSection />
-      <ImpactReachedSection />
       <MentorsPreviewSection />
+      <TerritorySection />
+      <HubSection />
+      <ImpactReachedSection />
       <CtaFinaleSection />
       <LandingFooter />
     </LandingPage>

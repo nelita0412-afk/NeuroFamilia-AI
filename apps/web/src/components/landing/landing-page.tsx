@@ -29,8 +29,8 @@ export function LandingPage({ page, children }: { page: LandingPageKey; children
 
         if (page === 'inicio') {
           /* ═══════════════════════════════════════════════════════
-             INICIO — hub de producto y conversión
-             Hero → Hub → Caminos → Impacto → Mentores → Cierre
+             INICIO — híbrido emocional + producto
+             Hero → Mentores → Territorio → Hub → Impacto → Cierre
              ═══════════════════════════════════════════════════════ */
           gsap.from('.js-hero-image', {
             scale: 1.08,
@@ -56,6 +56,41 @@ export function LandingPage({ page, children }: { page: LandingPageKey; children
             scrollTrigger: { trigger: '.js-hero', start: 'top top', end: 'bottom top', scrub: 1 },
           });
 
+          /* Vista previa NeuroMentores — teaser de 3 protagonistas */
+          gsap
+            .timeline({
+              scrollTrigger: { trigger: '.js-mentors-preview', start: 'top 80%', once: true },
+            })
+            .from('.js-mentors-preview-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
+            .from('.js-mentors-preview-title', { y: 30, opacity: 0, duration: 0.6 }, 0.1)
+            .from('.js-mentors-preview-body', { y: 24, opacity: 0, duration: 0.6 }, 0.25)
+            .from(
+              '.js-mentor-card',
+              {
+                y: 30,
+                opacity: 0,
+                scale: 0.95,
+                duration: 0.5,
+                stagger: 0.06,
+                ease: 'power2.out',
+                clearProps: 'transform,opacity',
+              },
+              0.35
+            )
+            .from(
+              '.js-mentors-preview-cta',
+              { y: 20, opacity: 0, duration: 0.5, clearProps: 'transform,opacity' },
+              0.6
+            );
+
+          /* Territorio — origen emocional */
+          gsap.timeline({
+            scrollTrigger: { trigger: '.js-territory', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
+          })
+            .from('.js-territory-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
+            .from('.js-territory-title', { y: 30, opacity: 0, duration: 0.6 }, 0.15)
+            .from('.js-territory-body', { y: 24, opacity: 0, duration: 0.7 }, 0.3);
+
           /* Hub — tres puertas */
           gsap.timeline({
             scrollTrigger: { trigger: '.js-hub', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
@@ -71,24 +106,6 @@ export function LandingPage({ page, children }: { page: LandingPageKey; children
             stagger: 0.12,
             ease: 'power2.out',
             scrollTrigger: { trigger: '.js-hub', start: 'top 80%', once: true },
-            clearProps: 'transform,opacity',
-          });
-
-          /* Caminos — cuatro audiencias */
-          gsap.timeline({
-            scrollTrigger: { trigger: '.js-caminos', start: 'top 70%', end: 'bottom 55%', scrub: 0.4 },
-          })
-            .from('.js-caminos-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
-            .from('.js-caminos-title', { y: 30, opacity: 0, duration: 0.6 }, 0.15)
-            .from('.js-caminos-body', { y: 24, opacity: 0, duration: 0.7 }, 0.3);
-          gsap.from('.js-caminos-card', {
-            y: 50,
-            opacity: 0,
-            scale: 0.95,
-            duration: 0.7,
-            stagger: 0.12,
-            ease: 'power2.out',
-            scrollTrigger: { trigger: '.js-caminos', start: 'top 80%', once: true },
             clearProps: 'transform,opacity',
           });
 
@@ -116,33 +133,6 @@ export function LandingPage({ page, children }: { page: LandingPageKey; children
             scrollTrigger: { trigger: '.js-impact-reached-unc', start: 'top 92%', once: true },
             clearProps: 'transform,opacity',
           });
-
-          /* Vista previa NeuroMentores — teaser de 4 */
-          gsap
-            .timeline({
-              scrollTrigger: { trigger: '.js-mentors-preview', start: 'top 80%', once: true },
-            })
-            .from('.js-mentors-preview-kicker', { y: 24, opacity: 0, duration: 0.5 }, 0)
-            .from('.js-mentors-preview-title', { y: 30, opacity: 0, duration: 0.6 }, 0.1)
-            .from('.js-mentors-preview-body', { y: 24, opacity: 0, duration: 0.6 }, 0.25)
-            .from(
-              '.js-mentor-card',
-              {
-                y: 30,
-                opacity: 0,
-                scale: 0.95,
-                duration: 0.5,
-                stagger: 0.06,
-                ease: 'power2.out',
-                clearProps: 'transform,opacity',
-              },
-              0.35
-            )
-            .from(
-              '.js-mentors-preview-cta',
-              { y: 20, opacity: 0, duration: 0.5, clearProps: 'transform,opacity' },
-              0.6
-            );
 
           /* Cierre de conversión */
           gsap
